@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style: CSS Pick and Mix Classes</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/blog/2009/09/16/css-pick-and-mix-classes/"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry">
+  
+  <header>
+    
+      <h1 class="entry-title">CSS Pick and Mix Classes</h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2009-09-16 00:00:00 +0100" pubdate  updated >Sep 16<span>th</span>, 2009</time>
+
+
+</p>
+    
+  </header>
+
+
+<div class="entry-content"><p>
+  I was just browsing through my tweets and came across this little gem as put forward my Nate Abele; he of CakePHP lead developer fame&#8230;
+</p>
+
+
+
+
+<p><a href="http://twitter.com/nateabele/statuses/4031886580"><img src="http://twictur.es/i/4031886580.gif" /></a></p>
+
+
+
+
+<p>
+  It got me thinking about how I organise my CSS files and code, and as I have been writing a lot of CSS recently when developing <a href="http://codaset.com">Codaset</a>, it made me realise that I have developed a bit of a habit with my own CSS. So I thought I&#8217;d share it all with you.
+</p>
+
+
+
+
+<p>
+  Over the last year or so, there seems to have been an explosion of CSS frameworks. I suppose it was inevitable really, as it happened with Javascript, so why not CSS. ANd to be honest, I would say that is a good thing, and there are some decent ones out there. But my CSS framework of choice is the excellent <a href="http://www.blueprintcss.org/">Blueprint framework</a>. It&#8217;s a great starting point for all your CSS, and sets some good reset points. It&#8217;s also very lite-weight.
+</p>
+
+
+
+
+<p>Before I continue, I just want to say that I will not be telling you how to use Blueprint or indeed, how to write CSS. I use Blueprint&#8217;s grid classes, but again, I won&#8217;t be talking about them. This post is more about how I use a class based system for my CSS.</p>
+
+
+
+
+<p>
+  First, if I don&#8217;t already have one, I create a <code>css</code> directory within my public root, the place Blueprint&#8217;s three CSS base files within a sub-directory. I usually call that <code>blueprint</code>. (surprise, surprise). Then I create two files within my <code>css</code> directory called <code>base.css</code> and <code>site.css</code>.
+</p>
+
+
+
+
+<p>I&#8217;ve used this structure for this site:</p>
+
+
+
+
+<p><img src="/img/wpuploads/2009/09/one.png" /></p>
+
+
+
+
+<p>
+  Pretty obvious so far! Now let me explain what I do with the <code>base.css</code> and <code>site.css</code> file.
+</p>
+
+
+
+
+<h3><code>base.css</code></h3>
+
+
+<p>
+  Blueprint has a great set of resets or default styles, but sometimes, I want to overwrite these. I also find myself writing my own default styles, so I put all these within the <code>base.css</code> file. A simple rule of thumb is that only classes are allowed in the <code>base.css</code> file.
+</p>
+
+
+<p>
+  Since I started using Blueprint, I&#8217;ve started using it&#8217;s default classes a lot. Classes such as <code>.quiet</code> and <code>.small</code> make it very obvious what I am doing to a particular element. So if I want told make a line of text a little smaller, I can simply wrap the text with a <code>div</code> or a <code>span</code>, and give that <code>div</code> or a <code>span</code> a class of <code>small</code>:
+</p>
+
+
+
+
+<div><figure role=code><figcaption><span>html </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>&lt;div class="small">
+</div><div class='line'>  Here is some text I made a little smaller than the rest.
+</div><div class='line'>&lt;/div></div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>If I wanted it to be colored a little lighter too, then I can add another class to the <code>div</code>:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>html </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>&lt;div class="small quiet">
+</div><div class='line'>  Here is some text I made a little smaller than the rest, and it's quieter.
+</div><div class='line'>&lt;/div></div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>
+  Both those classes and more are all ready to go as part of Blueprint. But I know also want to make this text bold. So I could either give this <code>div</code> an <code>id</code> and create a CSS rule for that new ID like this:
+</p>
+
+
+
+
+<div><figure role=code><figcaption><span>css </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>#myNewDiv {
+</div><div class='line'>  font-weight: bold;
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<div><figure role=code><figcaption><span>html </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>&lt;div class="small quiet" id="myNewDiv">
+</div><div class='line'>  Here is some text I made a little smaller than the rest, and it's quieter and now bolded.
+</div><div class='line'>&lt;/div></div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>But that&#8217;s a bit daft, as I am likely to want to make other elements bold. So a new class would be better:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>css </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>.bold {
+</div><div class='line'>  font-weight: bold;
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<div><figure role=code><figcaption><span>html </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>&lt;div class="small quiet bold">
+</div><div class='line'>  Here is some text I made a little smaller than the rest, and it's quieter and now bolded.
+</div><div class='line'>&lt;/div></div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Now I could easily have given this <code>div</code> an ID instead and done away with all the classes completely. But again, that isn&#8217;t reusable. Another thing I like about the above, is that is very readable and obvious what the classes are doing. It&#8217;s very expressive, and even makes it very easy and fast to style, as all I need to do is assign a few classes, rather than creating any new CSS styles. It&#8217;s like a pick and mix for CSS!</p>
+
+
+
+
+<p>So I&#8217;m now finding that my HTML is full of classes, and I&#8217;m seeing less and less ID&#8217;s. I only tend to use an ID to style an element if that element is more complex, or has specific needs that are not used elsewhere.</p>
+
+
+
+
+<h3>site.css</h3>
+
+
+<p>So the <code>site.css</code> file is therefore used for element specific styling. So any CSS styles that are defined with an ID, are placed in this file. Not much more to say about that actually.</p>
+
+
+
+
+<p>For more about how it all fits in, check out the source and CSS of this site and of <a href="http://codaset.com"></a>. I would love to know your thoughts and feedback on this. Comment away&#8230;</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joel Moss</span></span>
+
+      
+
+
+
+
+<time datetime="2009-09-16 00:00:00 +0100" pubdate  updated >Sep 16<span>th</span>, 2009</time>
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/articles/'>articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://developwithstyle.com/blog/2009/09/16/css-pick-and-mix-classes/" data-via="joelmoss" data-counturl="http://developwithstyle.com/blog/2009/09/16/css-pick-and-mix-classes/" >Tweet</a>
+  
+  
+</div>
+
+    
+  </footer>
+</article>
+
+</div>
+
+<aside role=sidebar>
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,1195 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/blog/page/5/index.html"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/06/01/10-reasons-why-ruby-is-better-than-php-reason-4/">10 Reasons Why Ruby Is Better Than PHP - Reason #4</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2009-06-01 00:00:00 +0100" pubdate  updated >Jun 1<span>st</span>, 2009</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I bet you thought I&#8217;d never get any more reasons out did ya? Well, today, I&#8217;m going to tell you all about IRB and the Rails command line debugger, both of which I use religiously.</p>
+
+
+
+
+<p>One of the great pleasures of using Ruby, apart from the <a href="http://developingwithstyle.com/articles/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1.html">previous</a> <a href="http://developingwithstyle.com/articles/2009/05/21/10-reasons-why-ruby-is-better-than-php-reason-2.html">three</a> <a href="http://developingwithstyle.com/articles/2009/05/27/10-reasons-why-ruby-is-better-than-php-reason-3.html">reasons</a>, and of course the following five reasons, is the wonder that is the Interactive Ruby console, or IRB. IRB is an interactive interpreter; which means that instead of processing a file, it processes what you type in during a session. It&#8217;s a great tool for testing Ruby code, and a great tool for learning Ruby. </p>
+
+
+
+
+<p>Once you have Ruby installed on your computer, you will notice that the <code>ruby</code> command will do the same thing as PHP - it silently waits for a script to be streamed in on <code>stdin</code>. On it&#8217;s own, that&#8217;s not particularly friendly, or even that useful. But another command that is installed alongside Ruby, is the <code>irb</code> command. Start up your command line tool of choice, and simply enter these three immortal letters: <code>irb</code>. Then you will see this:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>irb></div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>This is the <code>irb</code> prompt. Now all you do is simply type any ruby code, and it will show you the result of each and every expression as it is evaluated. Not sure how a method works, or can&#8217;t remember the output of a method? Then test it with IRB.</p>
+
+
+
+
+<p>IRB lets you do things without having to fake out your controller. For example, in PHP, I&#8217;m forever using <code>echo</code> or CakePHP&#8217;s <code>debug</code> function to print out some useful info to the browser when debugging my code. But when developing with Ruby, I simply have my trusty IRB prompt ready and waiting for me to inflict world domination.</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>>> @george = Person.find_by_name('George')
+</div><div class='line'>>> @bob = Person.find_by_name('Bob')
+</div><div class='line'>>> @bob.friends &lt;&lt; @george</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Each of the above lines will be following by IRB echoing the result. So I can see exactly what is going on, and without me having to echo out data all through my code and to the browser.</p>
+
+
+
+
+<p>This is actually very, very useful, and is a great way to test your code, or in fact any code at all. It&#8217;s even better if you are a command line freak like me.</p>
+
+
+
+
+<p>What is even better, better (!?) is that Rails also has its own command line interpreter, which is basically an extension of IRB. What makes it a little different, is that when it is started up, it also loads all your Rails code. So you have instant access to your Rails models, which is also very handy. Just cd to your Rails app root, and run:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>script/console</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>You are then shown a similar command line prompt to IRB, and can run any part of your Rails app code.</p>
+
+
+
+
+<p>To wrap up reason #4, I want to tell you about one of the best things about developing with Ruby on Rails. It&#8217;s another extension of IRB, similar to Rails <code>script/console</code>, but is simply genius when debugging your Rails code.</p>
+
+
+
+
+<p>There are several ways in which you can run your Rails app, but the traditional method is by using the the <code>script/server</code> script within your app. When run on the command line, this will start up a small web server, usually run by Webrick or Mongrel. Now I wouldn&#8217;t recommend this method when running your app in production, as <a href="http://www.modrails.com/">there are much better, and more efficient ways to do so</a>, but I use this all the time when developing or testing my app code.</p>
+
+
+
+
+<p>Just <code>cd</code> to your Rails app root and run this on the command line:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>script/server -u</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Notice I appended a command line flag; <code>-u</code>. This tells the Rails server to start up in Debug mode. If you use Mongrel, this is what you will see:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>=> Booting Mongrel
+</div><div class='line'>=> Rails 2.3.2 application starting on http://0.0.0.0:3000
+</div><div class='line'>=> Debugger enabled
+</div><div class='line'>=> Call with -d to detach
+</div><div class='line'>=> Ctrl-C to shutdown server</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>And the command line prompt will sit there blinking at you, waiting for you to load your app in your browser. So don&#8217;t keep it waiting, open up your browser, and go to <code>http://localhost:3000</code>, and you will be shown your Rails app in all its glory.</p>
+
+
+
+
+<p>Now we get to the good bit. Open up the code of any of your controllers in your favourite IDE or <a href="http://macromates.com">text editor</a>. Then type the word <code>debugger</code> within one of your actions. Then go back your browser and navigate to that page. You should the notice that the page does not appear to finish loading. That is because your <code>debugger</code> keyword within the action method, has paused the server until you tell it to continue.</p>
+
+
+
+
+<p>Go back to your command line when you started the Rails server, and you will see a bunch of log data, following by what looks like an IRB prompt. That is effectively what it is. You can now type any Ruby code at that prompt, just like you would with IRB or <code>script/console</code>. But the beauty of this, is that you have access to all the variables and methods at exactly the same point in your code where you placed the <code>debugger</code> keyword.</p>
+
+
+
+
+<p>So instead of having to type echo or print statements throughout your code, and running them through your browser to see the results. You can add the debugger keywork at the point where you want to debug, and use the command line to access your code in real time.</p>
+
+
+
+
+<p>I really hope you got all that, as this feature has saved me hours and hours of time when debugging my code. I can honestly say that it is a life saver. You really should try it out now, or if you&#8217;re a little impatient, <a href="http://tryruby.hobix.com/">try it out in your browser for instant gratification</a>. You should also check out Amy Hoy&#8217;s &#8221;<em><a href="http://slash7.com/articles/2006/12/21/secrets-of-the-rails-console-ninjas">Secrets of the Rails Console Ninja&#8217;s</a></em>&#8221;.</p>
+
+
+
+
+<p>Thanks again for sticking with me, and hold on to your pants for reason #5 where I will be talking about Modules; Ruby&#8217;s answer to namespaces. Which will lead me nicely onto another Ruby exclusive: Mixins!</p>
+
+
+
+
+<p>P.S. I really appreciate everyone&#8217;s comments. Keep them coming.</p>
+
+</div>
+  <footer>
+    <a rel="full-article" href="/blog/2009/06/01/10-reasons-why-ruby-is-better-than-php-reason-4/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/05/27/10-reasons-why-ruby-is-better-than-php-reason-3/">10 Reasons Why Ruby Is Better Than PHP - Reason #3</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2009-05-27 00:00:00 +0100" pubdate  updated >May 27<span>th</span>, 2009</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So onwards and upwards! It appears that I still have a little work to do to convince you non-believers, so lets try again&#8230;</p>
+
+
+
+
+<p>As <a href="http://developingwithstyle.com/articles/2009/05/21/10-reasons-why-ruby-is-better-than-php-reason-2.html">previously mentioned</a>, Ruby has some features that simply cannot be found in many other languages, let alone PHP. So here I introduce yet another one, and this is a biggie. But, please be warned that this one is a little harder to explain, so please be bear with me as I attempt to enlighten you.</p>
+
+
+
+
+<p>Some of you may have heard of a language feature known in computer science as <em>closures</em>. If you have done any Javascript development, you should be familiar with closures, but may not know them by name. Ruby uses closures extensively, but refers to them simply as <em>blocks</em>. Which is actually easier to understand.</p>
+
+
+
+
+<p>Many developers seem to think that blocks are somewhat of an obscure language feature, as they are pretty hard to find an equivalent in other languages. PHP is not the only language without support for blocks, but you should understand them, as they can be very useful, and quite powerful.</p>
+
+
+
+
+<p>Although there is no direct translation of blocks in PHP, we can make some analogies to PHP that will help us understand and become familiar with blocks, and how they are useful. Lets use PHP to start a family:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>function start_family($num) {
+</div><div class='line'>  echo "There are now $num kids in my family"
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>for ($kids = 99; $kids &gt; 0; $kids--) {
+</div><div class='line'>  start_family($kids);
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>When the above code is executed, PHP evaluates the condition in the for loop, which calls the <code>start_family</code> function on each iteration.</p>
+
+
+
+
+<p>The <code>for</code> and <code>function</code> keywords are built-in constructs of PHP, in the same way that semi-colons and curly braces are built-in. But there are very few control constructs in PHP that allow code to be attached to them within the curly braces. It&#8217;s not actually possible to add or create new control constructs in PHP, unless of course you fancy whipping up a PHP extension in C. (eurghh!)</p>
+
+
+
+
+<p>To be fair, we could condense the above into the following, as there really would be no need to use a function within the for loop.</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>for ($num = 99; $num &gt; 0; $num--) {
+</div><div class='line'>  echo "There are now $num kids in my family"
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>So now lets do the same thing in Ruby:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>99.downto(1) { |num| puts "There are now #{$num} kids in my family" }</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Slightly unfamilar syntax, but that&#8217;s nothing new when comparing Ruby with PHP. But the above is actually quite declarative. Lets break this down a little.</p>
+
+
+
+
+<p>Hopefully, if you read <a href="http://developingwithstyle.com/articles/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1.html">reason #1</a> you will now know that <code>99</code> is an object, which has a method called <code>downto</code>. It&#8217;s pretty obvious that this method simply counts down from 99 to 1, and iterates through each number. It serves roughly the same purpose as the <code>for</code> construct in our PHP example. The odd looking bit between the curly braces, with the goalposts, is the block.</p>
+
+
+
+
+<p>There are many similarities between the Ruby block and the PHP <code>for</code> loop. This is because the Ruby block is actually just a function in another form. A block is a function without a name, or an anonymous function. Yes I know PHP 5.3 will include some sort of support for anonymous functions, but again, it&#8217;s an afterthought.</p>
+
+
+
+
+<p>A Ruby block can receive parameters in much the same way a method or PHP function can, but they are placed within the goalposts of the block. In our case, we place the number (<code>num</code>) of kids between the goal posts, and this becomes our one and only parameter. We can pass more parameters to the block, by simply separating them with a comma. If we don&#8217;t want to pass any parameters, then we leave off the goalposts completely. The rest of the block is executable code, just like any other Ruby method.</p>
+
+
+
+
+<p>Every method in Ruby, whether it be a built-in one, or one that you create, can be passed a block. And that one simple fact is what makes blocks so powerful. In fact, if the <code>downto</code> method were written in pure ruby, it could look something like this:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Integer
+</div><div class='line'>  def downto(value, &block)
+</div><div class='line'>    n = self
+</div><div class='line'>    while n >= value
+</div><div class='line'>      block.call n
+</div><div class='line'>      n -= 1
+</div><div class='line'>    end
+</div><div class='line'>    return self
+</div><div class='line'>  end
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>So we <a href="http://developingwithstyle.com/articles/2009/05/21/10-reasons-why-ruby-is-better-than-php-reason-2.html">reopen</a> the <code>Integer</code> class, and redeclare the <code>downto</code> method. We then pass two parameters to that method. Pay particular attention to the second parameter: <code>&block</code>, as it is very important.</p>
+
+
+
+
+<p>When a block is passed to a Ruby method, it can be captured in a variable. In fact, the code that we pass within the block to <code>downto</code> is converted into an object, and then stored inside a variable. The ampersand <code>&block</code> tells Ruby to store this block in a variable called <code>block</code>. The keyword <code>self</code> in this example refers to the object itself, which in this case is the integer <code>99</code>.</p>
+
+
+
+
+<p>Still with me? Good! Lets take our earlier example again, and apply it to the <code>downto</code> method that we just created:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>99.downto(1) do |num|
+</div><div class='line'>  puts "There are now #{$num} kids in my family"
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Hold a second, the above code is different to our first example isn&#8217;t it? Yes it is, well spotted! Just as in everything in Ruby, you don&#8217;t need the curly braces. The use of the <code>do</code> keyword is usually used for larger blocks, that need to span multiple lines. But it does exactly the same thing.</p>
+
+
+
+
+<p>When the <code>downto</code> method is called, it receives two parameters: <code>value</code> contains the number of kids we have, and <code>block</code> contains the block of code that will be run on each iteration.</p>
+
+
+
+
+<p>The inside of our <code>downto</code> method should look familiar to you, as it is effectively doing the same thing as our PHP <code>for</code> loop. It just counts down from 99 to 1, using a <code>while</code> loop. Then on each iteration of the <code>while</code> loop, it yields control to the code that is passed in the <code>block</code> variable, by calling the <code>block.call</code> method. Any parameters passed to <code>block.call</code>, are passed in the same way to the goalposts in the block.</p>
+
+
+
+
+<p>A little confusing I know, but I really wanted to explain how blocks work as well as I could, as they are becoming ever more useful to me, the more that I develop with Ruby.</p>
+
+
+
+
+<p>To finish off, I really want to show you an awesome way that Ruby&#8217;s blocks are used. I won&#8217;t go into it too much though, as it leads on to another of my reasons. There is a Ruby library (Gem) called <em><a href="http://www.thoughtbot.com/projects/shoulda/">Shoulda</a></em> which improves the <em>Test:Unit</em> unit testing library that is supported as standard in Ruby on Rails. Shoulda improves the language of your unit tests, and turns them into an almost human readable form. So here we have a test:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>context "a User instance" do
+</div><div class='line'>  should "return its full name"
+</div><div class='line'>    assert_equal 'John Doe', user.full_name
+</div><div class='line'>  end
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Now start from the beginning of that code and just read it out load. It may end up something like this &#8221;<em>a User instance should return its full name</em>&#8221;. Of course there is more in between, but what I am trying to convey is how expressive and readable the above code is. And that is because of the power of blocks.</p>
+
+
+
+
+<p>Hope that helps a little. Keep the comments coming guys, and thanks for reading.</p>
+
+</div>
+  <footer>
+    <a rel="full-article" href="/blog/2009/05/27/10-reasons-why-ruby-is-better-than-php-reason-3/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/05/21/10-reasons-why-ruby-is-better-than-php-reason-2/">10 Reasons Why Ruby Is Better Than PHP - Reason #2</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2009-05-21 00:00:00 +0100" pubdate  updated >May 21<span>st</span>, 2009</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Well now then. <a href="/articles/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1.html">My last post</a>, or the comments in it, seemed to have stirred up a little hornets nest. I had my fair share of supporters and my fair share of thanks for my writings, but I also received a little criticism. I think I&#8217;ve covered most of those in the <a href="/articles/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1.html#comments">comments</a> and also on <a href="http://twitter.com/joelmoss">Twitter</a>, so I won&#8217;t say much more, other than to simply remind you all what I am trying to do.</p>
+
+
+
+
+<p>In this little series of blog posts, my objective was to be as fair as possible when explaining my reasons why I think Ruby is better than PHP. But at the same time, this is not a comparison. Which means I won&#8217;t be pointing out PHP&#8217;s strong points - of which there are many. Also, this is my opinion, and no one elses, and I am entitled to that. And so to, are you guys.</p>
+
+
+
+
+<p>And one last thing before I start reason #2. I want to say thanks to <a href="http://www.littlehart.net/atthekeyboard/2009/05/21/laziness-vs-efficiency/">Chris Hartjes for his blog post</a> earlier today. I made a comment on Twitter about lazy coders, being good coders, and he basically put me to rights, and explained what I was saying in much better terms, than I could ever do. But also, I do think he was a little harsh on me. Hear my other reasons first Chris. No hard feelings though.</p>
+
+
+
+
+<p>Back to business. In todays post, I wanted to give more of a solid reason why I think Ruby excels over PHP. So I picked one that simply cannot be matched in any way by PHP. Add probably won&#8217;t ever be. But I would love to see this being made possible.</p>
+
+
+
+
+<h3>Re-opening in Classes is soooo Useful!</h3>
+
+
+
+
+<p>Both languages support the creation of classes as part of their object-oriented design. And they do so in much the same way. Both languages allow you to set method visibility with the use of <code>public</code>, <code>protected</code> and <code>private</code> declarations, and behave accordingly. Classes are written in a similar fashion:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Person {
+</div><div class='line'>  public function greeting() {
+</div><div class='line'>    return 'Hello you!';
+</div><div class='line'>  }
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Person
+</div><div class='line'>  def greeting
+</div><div class='line'>    'Hello you!'
+</div><div class='line'>  end
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Very similar, but let me explain one thing. In the PHP example above, I returned the string &#8221;<code>Hello you!</code>&#8221; by prefixing it with the <code>return</code> keyword. Like this:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>return 'Hello you!';</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>But in the Ruby example, you may have noticed that there is no <code>return</code> keyword before the &#8221;<code>Hello you!</code>&#8221; string. It was just this:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>'Hello you!'</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>That works perfectly fine, and the &#8221;<code>Hello you!</code>&#8221; string will still be returned when calling the <code>greeting</code> method of the <code>Person</code> class. That is because Ruby will return the value from the last line of the method. You can use <code>return</code> if you want to, but you don&#8217;t have to.</p>
+
+
+
+
+<p>So we&#8217;ve determined that writing classes is pretty much on the par in both PHP and Ruby. But, you may have accidentally redeclared a class in PHP, and received a nasty error:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Person {
+</div><div class='line'>  public function greeting() {
+</div><div class='line'>    return 'Hello you!';
+</div><div class='line'>  }
+</div><div class='line'>}
+</div><div class='line'>
+</div><div class='line'>class Person {
+</div><div class='line'>  public function greeting() {
+</div><div class='line'>    return 'Hey, hey, hey!';
+</div><div class='line'>  }
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Doing the above will give tell you <code>PHP Fatal error: Cannot redeclare class Person</code>. Everyone knows that you just cannot do that with PHP. And to be honest it seems to make sense for it to prevent this from happening. But Ruby actually allows you to do this. In fact, you are almost encouraged to reopen classes if and when needed.</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Person
+</div><div class='line'>  def greeting
+</div><div class='line'>    'Hello you!'
+</div><div class='line'>  end
+</div><div class='line'>end
+</div><div class='line'>
+</div><div class='line'>class Person
+</div><div class='line'>  def greeting
+</div><div class='line'>    'Hey, hey, hey!'
+</div><div class='line'>  end
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>In the above case, no error will be returned. Instead, Ruby will simply redefine the <code>greeting</code> method in the first class, with the same method from the second class. So you get this:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>p = Person.new
+</div><div class='line'>puts p.greeting</div></code></pre></td></tr></table></div></figure></div>
+
+
+<p>Which returns &#8221;<code>Hey, hey, hey!</code>&#8221; and not &#8221;<code>Hello you!</code>&#8221;</p>
+
+<p>Oh no, here it comes. I can hear the cries now: &#8220;But that&#8217;s gonna cause untold problems and bugs in my code!&#8221;. Not if you use it wisely! Part of Ruby&#8217;s philosophy is to provide you with all the tools you need, then entrusting you to use that power with care. What was it Uncle Ben said to Peter? &#8220;With great power comes great responsibility.&#8221;</p>
+
+
+
+
+<p>This type of feature may seem a little dodgy, but in practice it becomes extremely useful. It means that I can reopen any class that I want, at any time, which often leads to more manageable code.</p>
+
+
+
+
+<p>But I&#8217;m not just limited to reopening my own classes. I can even reopen Ruby&#8217;s base classes. This is referred to as &#8220;Monkey patching&#8221;, and is usually frowned upon, as it is not very wise to be overriding the core of the language. But if used carefully and sparingly, we are able to add a little extra functionality to our app by extending a base class or two.</p>
+
+
+
+
+<p>When it comes to Rails, Ruby&#8217;s base classes are extended quite a bit, especially within its ActiveSupport library, which reopens the String, Integer, and many other base classes. But it does so to add a lot of extra, and very useful functionality. It&#8217;s done so with care and attention.</p>
+
+
+
+
+<p>For example, I want to know if an integer is odd or even, but Ruby provides no such method for doing so, so I write my own. But instead of writing a standalone function within my class, I can reopen Ruby&#8217;s Integer class like so:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Integer
+</div><div class='line'>  def odd?
+</div><div class='line'>    self % 2 == 1
+</div><div class='line'>  end
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+<p>and now I can call:</p>
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>3.odd?</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>which would of course return true. All I am doing is reopening the Integer class, and adding a new method.</p>
+
+
+
+
+<p>&#8220;But what&#8217;s that question mark doing there? Is that part of the method name?&#8221; Actually, yes it is. In PHP, you can only use letters, number, and underscores in method and function names. But Ruby lets be a little more expressive, and use other characters such as <code>?</code>, <code>!</code>, and even <code>/</code>. So in the <code>odd</code> example above, I ended the method name with a question mark, because what I am doing is effectively asking a question of the number. &#8220;Are you an odd integer?&#8221;. Which it replies with a true or false value. Neat hey?</p>
+
+
+
+
+<p>One of the most powerful uses of reopening classes, is the plugin system available in Rails. We can use Rails plugins to extend and override nearly every part of Rails. Which is why there are thousands of Rails plugins. You can do pretty much anything you want.</p>
+
+
+
+
+<p>So I hope I have provided a good, solid reason why Ruby is better than PHP, with a feature that simply cannot be achieved with PHP. It really is very powerful, that when used carefully, can save you a lot of time, and make coding with Ruby lots of fun. Which after all, that&#8217;s why we&#8217;re here isn&#8217;t it?!</p>
+
+
+
+
+<p>Next time, I think I&#8217;ll talk about Blocks; yet another feature of Ruby that PHP cannot emulate.</p>
+
+</div>
+  <footer>
+    <a rel="full-article" href="/blog/2009/05/21/10-reasons-why-ruby-is-better-than-php-reason-2/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1/">10 Reasons Why Ruby Is Better Than PHP - Reason #1</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2009-05-20 00:00:00 +0100" pubdate  updated >May 20<span>th</span>, 2009</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So it seems that I didn&#8217;t provide the best of examples in <a href="http://developingwithstyle.com/articles/2009/05/19/why-i-chose-ruby-on-rails-instead-of-cakephp-for-codaset.html">my last post</a>, when explaining <a href="http://developingwithstyle.com/articles/2009/05/19/why-i-chose-ruby-on-rails-instead-of-cakephp-for-codaset.html">why I chose Ruby on Rails instead of CakePHP</a> for developing <a href="http://codaset.com">Codaset</a>. So I decided that I will write 10 [solid] reasons, why Ruby is better than PHP. After all, that is why I chose it.</p>
+
+
+
+
+<p>I already explained a little bit about the aesthetics of Ruby, and how you can write a method without the need for any curly braces or even parenthesis. So I think I will leave the aesthetics alone for a little bit.</p>
+
+
+
+
+<h3>What a wonderful Objectified world!</h3>
+
+
+
+
+<p>I think one of the most significant differences between Ruby and PHP, and perhaps the basis for a lot of other features of Ruby, is that everything in Ruby is an object. Even though PHP supports Object Oriented Programming, OOP was not even thought of when PHP started out. OOP was simply hacked into the language, and so is not a pure object-oriented language. That is because it uses primitive types; things that are not objects. We use primitive types all the time in PHP. Things like integers, floats and strings are all primitive types. Pretty much all we can do with them, is store data in them and pass them around. On their own, they do very little.</p>
+
+
+
+
+<p>Ruby is a pure object-oriented language, and it was built like that from the start.</p>
+
+
+
+
+<p>So why should I care? I hear you say. Well, because everything in Ruby is an object, everything accepts method calls, even <code>nil</code>. (<code>nil</code> is Ruby&#8217;s equivalent to PHP&#8217;s <code>null</code>.)  In PHP, a string isn&#8217;t smart enough to do anything on its own. If we want to get the length of a string, we would have to call a separate function, and pass the string to it:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>$my_string = 'Just another string';
+</div><div class='line'>echo strlen($my_string);</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>With Ruby, we can ask the string directly, to tell us its length:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>my_string = "Just another string"
+</div><div class='line'>puts my_string.length</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>FYI: PHP variables always start with a dollar sign <code>$</code>, but Ruby doesn&#8217;t have this requirement. Yet another keystroke saved. Yay! You also may have noticed that we also don&#8217;t need to type the semi-colon <code>;</code> at the end of each line in Ruby. You can, but you don&#8217;t have to, unless of course the above two lines are placed on the same line. In which case, the semi-colon will be needed to separate the two.</p>
+
+
+
+
+<p>We could also write the above ruby code like this:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>puts "Just another string".length</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<h3>Chicken or Egg?</h3>
+
+
+
+
+<p>One of the biggest frustrations for me when it comes to coding in PHP, is the need to memorise the order of arguments to the language&#8217;s many global functions. I&#8217;ve been coding in PHP for over 10 years now, and I still have trouble remembering which argument comes first in a function call. Was it the chicken or was it the egg?</p>
+
+
+
+
+<p>For example, let&#8217;s take the <code>in_array</code> function:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>in_array($chicken, $egg);</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>And then lets compare that with the <code>array_push</code> function, which takes its arguments in the reverse order:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>array_push($egg, $chicken);</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Most of PHP&#8217;s array functions take an array as the first argument, but there are a few exceptions. Inconsistencies such as this can get very frustrating, and PHP is riddled with them. When you don&#8217;t know any differently, you tend to overlook these. But ever since I started working with Ruby, these little annoyances actually become big annoyances.</p>
+
+
+
+
+<p>But this is the nature of PHP and it&#8217;s procedural programming design. Fortunately, Ruby solves this problem with object orientation. Lets look at Ruby&#8217;s equivalents to <code>in_array</code> and <code>array_push</code>.</p>
+
+
+
+
+<p>First we create an array and assign it to the <code>fruit</code> variable:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>fruit = ['apple', 'orange']</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Then we check to see if <code>'banana'</code> is in the fruit array. This is the same as PHP&#8217;s <code>in_array</code> function:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>fruit.include? 'banana'</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>So the above obviously returns <code>false</code>, as <code>'banana'</code> does not exist, or is not included in the <code>fruit</code> array. So lets push it in:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>fruit.push 'banana'</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>And now <code>fruit</code> equals <code>['apple', 'orange', 'banana']</code></p>
+
+
+
+
+<p>In Ruby, an array is an object, so if we want to push a variable into the array, we simply take that array and just call <code>push</code>. It needs only one argument, since the method is attached to the object on which it will operate. And we now have no source of confusion.</p>
+
+
+
+
+<p>Not only does this help with remembering arguments, it also helps to organize the Ruby code space. Instead of having many procedural functions in a global space like PHP, Ruby packages all its methods nice and neatly into the objects that actually need them.</p>
+
+
+
+
+<p>Of course, there are many more reasons why objectifying everything can help you, but these are some of the most notable. But I hope you can see that Ruby&#8217;s object-oriented nature actually makes life simpler.</p>
+
+
+
+
+<p>In my next post where I explain reason #2 as to why Ruby is better than PHP, I will attempt to explain and show you one of the biggest differences, and the reason why developing plugins in Rails is so powerful.</p>
+
+
+
+
+<p>Thanks for tuning in guys, and don&#8217;t forget to leave your comments. I&#8217;d love to know your thoughts and opinions.</p>
+
+</div>
+  <footer>
+    <a rel="full-article" href="/blog/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/05/19/why-i-chose-ruby-on-rails-instead-of-cakephp-for-codaset/">Why I Chose Ruby on Rails Instead of CakePHP for Codaset</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2009-05-19 00:00:00 +0100" pubdate  updated >May 19<span>th</span>, 2009</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So <a href="http://codaset.com">Codaset</a> is being written in Ruby on Rails and not CakePHP. A bold decision I think, but a decision backed up by years of sitting on the fence when it came to Ruby and Rails, but also a little controversial, since I have been working with PHP and Cake for a long time now. So I wanted to lay out my reasons for going with Rails for the development of Codaset.</p>
+
+
+
+
+<p>CakePHP is and probably always will be, the best PHP framework out there. I like to think that it has its head screwed on. Of course, that is all about the heads of the core team leading it, but as long as they stay focused on what Cake is there for, then it should stay like that. I continue to use Cake extensively with my day job at <a href="http://shermanstravel.com">ShermansTravel</a>, and will do so for while to come. But, ever since I discovered Ruby on Rails a few years ago, I&#8217;ve been constantly teased by it&#8217;s power - due largely in part by the Ruby language it is written in. A power that PHP simply does not have, and probably never will. Cake is severely limited by PHP, and makes the most of a language that is probably a little inadaquet at times. Unfortunately PHP has bad design decisions written all over it.</p>
+
+
+
+
+<p>In fact, there is not a day goes by, that PHP does not frustrate me with its design. A task completed in PHP, is - most of the time - completed so much more elegantly if done in Ruby. Ruby is just so damn expressive, and actually, very, very natural. PHP is not! I mean, why the hell should I have to write curly braces around every single expression, or wrap things in parenthesis? In Ruby, parentheses are optional in method calls, except to clarify which parameters go to which method calls.</p>
+
+
+
+
+<p>This is PHP:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Parrot {
+</div><div class='line'>  public function say($word) {
+</div><div class='line'>    // say it here
+</div><div class='line'>  }
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>And this is Ruby:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Parrot
+</div><div class='line'>  def say(word)
+</div><div class='line'>    # say it here
+</div><div class='line'>  end
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Now isn&#8217;t that so much nicer?</p>
+
+
+
+
+<p>Yes, I know that&#8217;s all about aesthetics, but I like my code to look good. It makes looking at it and working with it, much more pleasant. But also this is just one of the hundreds of reasons why I chose Ruby and Rails. I suppose you could name this post &#8220;Why I chose Rails instead of Cake: <strong>Reason #1</strong>&#8221;.</p>
+
+
+
+
+<p>The bottom line, is that I have played around with Rails for years now, but never took the plunge and wrote an entire - completed - application with it. I started a few times, but then went back to using Cake. But this was because I didn&#8217;t know Ruby well enough, and because of that, it was taking a long time to do something that I could have done much quicker in PHP. But because of all that tinkering, I can confidently say that I now know the basics of Ruby and can quite easily write a Ruby script, or a full Rails app.</p>
+
+
+
+
+<p>So writing Codaset in Rails was the right decision. Every time I open it up in Textmate, I&#8217;m excited by what I see. Everytime I see another Rails plugin or Ruby gem, I want to install it. The thought of developing the next feature of Codaset exites me in ways that PHP almost never has. And because of all that, I&#8217;m learning a new programming language at an incredible rate. Once you get past the learning curve, you really start zooming through any app.</p>
+
+
+
+
+<p>I&#8217;m even considering open sourcing Codaset! I want the world to see what I&#8217;ve done, and how I did it.</p>
+
+
+
+
+<p>Lovin&#8217; it!</p>
+
+</div>
+  <footer>
+    <a rel="full-article" href="/blog/2009/05/19/why-i-chose-ruby-on-rails-instead-of-cakephp-for-codaset/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/05/13/so-what-the-hell-is-codaset/">So What the Hell Is Codaset?</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2009-05-13 00:00:00 +0100" pubdate  updated >May 13<span>th</span>, 2009</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://codaset.com"><img class="alignleft size-full wp-image-343" title="Codaset Logo" src="/img/wpuploads/2009/05/00000002_r4_c2.jpg" alt="Codaset Logo" width="181" height="53" /></a>Ever since I began working for <a href="http://www.shermanstravel.com">ShermansTravel</a>, and in particular, since I became more involved with <a href="http://cakephp.org">CakePHP</a> and open source software, I&#8217;ve spent a LOT of time using <a href="http://trac.edgewall.org/">Trac</a> and <a href="http://github.com/joelmoss">Github</a>. Trac is somewhat of a defacto standard for managing software projects, and is what we use at work. Github is what I use for my personal and open source projects; and is also what I wish I could use at work. Both are great at what they do, but in most cases, each does something better than the other.</p>
+
+<p>Trac has a kickass issue tracking system, which is very customisable, and integrates very neatly with Subversion. Unfortunately it&#8217;s not especially user friendly, and doesn&#8217;t support Git. (there is a git plugin, but it&#8217;s alpha code). It&#8217;s also self hosted and written in Python, which means it&#8217;s not the easiest to get up and running.</p>
+
+<p>Github is so hot right now! And for good reason too. It&#8217;s built entirely around the excellent Git, and implements it&#8217;s features all around the ideal&#8217;s of Git. But that&#8217;s about all it does. Only up until recently has it been given an issue tracking system, and to be honest&#8230; that sucks!</p>
+
+<p>So basically, both Trac and Github have their strengths and their weaknesses. But each is missing a part or parts of the other.</p>
+
+<p>So that is why I am creating <a href="http://codaset.com">Codaset</a>. Codaset aims to be all that Trac and Github are good at, in one nice, neat package. It will be based on Git, allowing it to offer great social features, but it will also have a kickass issue tracking</p>
+
+<p>system that will integrate perfectly with your source control.</p>
+
+<p>But I don&#8217;t intend to make this a Github/Trac clone. It&#8217;s gonna be sooo much more&#8230; eventually! Things that you cannot find on any other web based software project management system.</p>
+
+<p><a href="/img/wpuploads/2009/05/picture-2.png"><img class="size-medium wp-image-335 alignleft" title="Git Tree screenshot" src="/img/wpuploads/2009/05/picture-2-300x229.png" alt="Git Tree screenshot" width="300" height="229" /></a></p>
+
+<p>So this was just a little teaser, and an <a href="http://codaset.com">invite</a> for you all to <a href="http://codaset.com">join in the private beta</a>, which I hope to start soon. Take a look over at <a href="http://codaset.com">Codaset.com</a>, and signup now. I&#8217;ll be posting more about what to expect as and when I can. In the meantime, here&#8217;s a quick screen shot to wet your appetite.</p>
+
+<p>Oh and don&#8217;t forget to <a href="http://twitter.com/joelmoss">follow me on Twitter</a>.</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/blog/2009/05/13/so-what-the-hell-is-codaset/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+<nav role="pagination">
+  <div>
+    
+      <a class="prev" href="/blog/page/6/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/4/">Newer &rarr;</a>
+    
+  </div>
+</nav>
+
+</div>
+<aside role=sidebar>
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>

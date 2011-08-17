@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style: Tail your Logs with a Touch of Color</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/blog/2010/04/20/tail-your-logs-with-a-touch-of-color/"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry">
+  
+  <header>
+    
+      <h1 class="entry-title">Tail Your Logs With a Touch of Color</h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2010-04-20 00:00:00 +0100" pubdate  updated >Apr 20<span>th</span>, 2010</time>
+
+
+</p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="http://eric.lubow.org">Eric Lubow</a> (@elubow), a colleague of mine just released his first <a href="http://eric.lubow.org/2010/ruby/colortail-gem/">Ruby Gem</a> and published it on <a href="http://codaset.com/elubow/colortail">Codaset</a>, and I gotta say, it&#8217;s a pretty damn useful one too.</p>
+
+
+
+
+<p>ColorTail - or ColourTail if you want the correct english spelling - is a very easy way to give your log files a touch of color when you tail them. Tailing logs can be very useful, but can also be very confusing, and sometimes a touch mind blowing with all the data that some logs can spew out at you. So adding a bit of color, or underlining certain lines, or even flashing them would really help you identify the important bits of your log.</p>
+
+
+
+
+<p>Just install ColorTail:</p>
+
+
+
+
+<div class="highlight"><pre>
+  <span class="x"># sudo gem install colortail</span>
+</pre></div>
+
+
+
+
+<p>Then create a file in your home directory called <code>.colortailrc</code>, and define your colortail config:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+<span class='line'>12</span>
+<span class='line'>13</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>Groupings = {
+</div><div class='line'>  # This default matching scheme
+</div><div class='line'>  'default' => [
+</div><div class='line'>      { :match => /Completed in/,    :color => :red,     :attribute => :reverse },
+</div><div class='line'>      { :match => /EMERGENCY/,    :color => :red,     :attribute => :reverse },
+</div><div class='line'>      { :match => /FATAL/,        :color => :red,     :attribute => :bright },
+</div><div class='line'>      { :match => /CRITICAL/,     :color => :red },
+</div><div class='line'>      { :match => /DEBUG/,        :color => :green },
+</div><div class='line'>      { :match => /ERROR/,        :color => :green },
+</div><div class='line'>      { :match => /INFO/,         :color => :none },
+</div><div class='line'>      { :match => /WARN/,         :color => :yellow }
+</div><div class='line'>  ]
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>The above is the default, so will apply to all logs whenever you tail them with the colortail command, like so:</p>
+
+
+
+
+<div class="highlight"><pre>
+  <span class="x"># colortail -g log/development.log</span>
+</pre></div>
+
+
+
+
+<p>Which will give you this:</p>
+
+
+
+
+<p><img src="/img/posts/colored_log_example.jpg" width="590" /></p>
+
+
+
+
+<p><a href="http://codaset.com/elubow/colortail">Check out the project</a>, and enjoy!</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joel Moss</span></span>
+
+      
+
+
+
+
+<time datetime="2010-04-20 00:00:00 +0100" pubdate  updated >Apr 20<span>th</span>, 2010</time>
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/articles/'>articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://developwithstyle.com/blog/2010/04/20/tail-your-logs-with-a-touch-of-color/" data-via="joelmoss" data-counturl="http://developwithstyle.com/blog/2010/04/20/tail-your-logs-with-a-touch-of-color/" >Tweet</a>
+  
+  
+</div>
+
+    
+  </footer>
+</article>
+
+</div>
+
+<aside role=sidebar>
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>

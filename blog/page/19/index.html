@@ -1,0 +1,713 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/blog/page/19/index.html"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/22/the-joy-of-cake-migrations-my-first-tutorial/">The Joy of Cake Migrations - My First Tutorial</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2006-11-22 00:00:00 +0000" pubdate  updated >Nov 22<span>nd</span>, 2006</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As <a href="http://joelmoss.info/switchboard/blog/1992:Cake_DB_Migrations_strikes_back">promised</a>, the following is a tutorial on how to use and take advantage of Migrations in your <a href="http://cakephp.org">CakePHP</a> development. I suppose you could also call it a basic manual.</p>
+
+<p>This article assumes that you already have an installation of CakePHP which is already configured and ready to go. It also assumes that you know what migrations are and why you need them.  For more information on DB Migrations, please see <a href="http://joelmoss.info/switchboard/blog/1992:Cake_DB_Migrations_strikes_back">here</a>.</p>
+
+<h4>Getting started</h4>
+
+
+<p>Once you have installed and configured CakePHP, you should download the Migrations package from <a href="http://homepageuniverse.com">HomepageUniverse</a> <a href="http://homepageuniverse.com/migrations.zip">here</a>. Unzip the archive into your <em>vendors</em> directory that is above your <em>app</em> directory.</p>
+
+<p><strong>Remember</strong> that you should place the migrations package in your top level <em>vendors</em> directory, not the <em>vendors</em> directory within your <em>app</em> directory.</p>
+
+<p>Within the <em>migrations</em> directory are a number of files and two more directories. I will explain each here:</p>
+
+<ul>
+    <li>migrate.php <em>[file]</em> - This is the main Migrations script.</li>
+    <li>MDB2.php <em>[file]</em> - This is Pear&#8217;s MDB2 database abstraction library.</li>
+    <li>Spyc.php <em>[file]</em> - The Spyc YAML library (just in case you don&#8217;t have the PHP Syck extension  installed)</li>
+    <li>MDB2 <em>[directory]</em> - The included MDB2 library files.</li>
+    <li>Examples <em>[directory]</em> - A few example YAML migration files</li>
+</ul>
+
+
+<p>The main file you should be interested in, is the migrate.php file. This is the script that you need to run on your command line, and helps you generate, run and manage your migrations.</p>
+
+<p>To use it, simply run the following from within your cake root directory and follow the on screen prompts:</p>
+
+<pre><code>php vendors/migrations/migrate.php
+</code></pre>
+
+
+<p>Read on for more detailed description of its usage.</p>
+
+<h4>Migration Basics</h4>
+
+
+<p>I will quickly run through what migrations do and how they do it. This should help you understand how and why you should use them.</p>
+
+<p><strong>Database Support</strong>
+All migrations let you do is run database queries in a structured and simple manner. Pear&#8217;s <a href="http://pear.php.net/package/MDB2">MDB2</a> library is used to interface with your database, so you can use any database engine that MDB2 supports. Why do I use MDB2 when Cake has a very good database? Because Cake&#8217;s DB classes do not support the creation of tables, fields, indexes, etc.</p>
+
+<p><strong>Migration Files</strong>
+Migrations use a selection of migration files that are used to manage your database. You can roll forward and backwards through each file, just as you would with any version control system, such as subversion. The migration files are written in a very simple, human readable language called <a href="http://en.wikipedia.org/wiki/YAML">YAML</a>, and do not need to contain any SQL queries at all. This way, migrations are 100% portable and can be used with almost any database engine. You can find some example migration files in the Examples directory of the download.</p>
+
+<p>When you run a migration, the script simply analyses each migration file and converts the YAML into database queries and performs the actions specified in the file. The best way to demonstrate this would be to actually do it. So on we go to the meat of this tutorial.</p>
+
+<h4>The Migration Script</h4>
+
+
+<p>Just like Cake&#8217;s Bake.php script, the migrate.php script must be run via the command line. You can do three things with the migrate.php script:</p>
+
+<ol>
+    <li>Generate Migration Files</li>
+    <li>Run Migrations</li>
+    <li>Reset your Migrations</li>
+</ol>
+
+
+<p>We will go through each one in turn in the next section.</p>
+
+<p>The migrate.php script also takes some optional command line arguments, but I will not go into them too much here. Just run the following for more help:</p>
+
+<pre><code>php vendors/migrations/migrate.php -h
+</code></pre>
+
+
+<h4>The Generation Game</h4>
+
+
+<p>Before you can do anything else, you need to generate your migration files. You can of course create these manually yourself, but it&#8217;s much easier and less error prone if you use migrate.php. So go ahead and run the migrate script;</p>
+
+<pre><code>php vendors/migrations/migrate.php
+</code></pre>
+
+
+<p>Assuming everything is good, you should see a lovely little <em>&#8216;CAKEPHP MIGRATIONS&#8217;</em> banner in your command line window.</p>
+
+<p>If you have not already configured your Cake database config, it will help you with that in the same way that bake.php does. So go ahead and follow the prompts if you need to do that.</p>
+
+<p>After that, the script will then check that the &#8216;schema_info&#8217; table exists in your database, and creates it if it isn&#8217;t there. This table is used to keep a record of what migration version your app is currently at. So it is very important and should not be tampered with.</p>
+
+<p>Once all that is done, you should see a few lines of data. The first line tells you which application [dir] you are using. Then it tells you your current migration version, along with the number of migration files previously generated.</p>
+
+<p>Now choose &#8216;Generate&#8217; from the three Options menu. Then just follow the prompts and your very first migration file will be created for you and placed in a <em>migrations</em> directory in your app&#8217;s <em>config</em> directory. Take a look and you will see that the script has numbered your file. It will do this for every file generated and simply increment each time. This numerical value is used to determine what order your migrations should be run. It is basically the version number.</p>
+
+<h4>YAML, YAML, YAML</h4>
+
+
+<p>Before we get started on editing your migration file, I strongly recommend that you get acquainted with YAML. You should read a brilliant little tutorial called <a href="http://yaml.kwiki.org/?YamlInFiveMinutes">YAML in Five Minutes</a>. And of course you can check out the <a href="http://www.yaml.org">official YAML site</a></p>
+
+<p>I am going to try and explain a migration file as best I can. So please bear with me, if I splutter.</p>
+
+<p>A migration file consists of two main parts; an UP and a DOWN. The UP section contains the commands that you would like performed when migrating up to this file. And the contents of the DOWN section are run when you rollback from or through this file to a previous version. So usually, the DOWN section contains an exact opposite of what is in the UP section, as you would usually want it to reverse the changes made in the UP section.</p>
+
+<p>Lets start by creating a table. Enter the following into your migration file;</p>
+
+<div><figure role=code><div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+<span class='line'>12</span>
+<span class='line'>13</span>
+<span class='line'>14</span>
+<span class='line'>15</span>
+<span class='line'>16</span>
+<span class='line'>17</span>
+<span class='line'>18</span>
+<span class='line'>19</span>
+<span class='line'>20</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>#
+</div><div class='line'># migration YAML file
+</div><div class='line'>#
+</div><div class='line'>UP:
+</div><div class='line'>  create_table:
+</div><div class='line'>    users:
+</div><div class='line'>      first_name:
+</div><div class='line'>    type: text
+</div><div class='line'>    index: true
+</div><div class='line'>      last_name:
+</div><div class='line'>    type: text
+</div><div class='line'>      email:
+</div><div class='line'>    type: text
+</div><div class='line'>    unique: true
+</div><div class='line'>      age:
+</div><div class='line'>    type: integer
+</div><div class='line'>    length: 3
+</div><div class='line'>    notnull: false
+</div><div class='line'>DOWN:
+</div><div class='line'>  drop_table: users</div></code></pre></td></tr></table></div></figure></div>
+
+
+<p>Directly under the UP section name, is the action that should be performed. We are creating a table, so we use &#8216;create_table&#8217;. Then you tell the migrate script what we want to call this table. After which we create the fields by specifying each field name and its properties. All properties are optional, apart from the &#8216;type&#8217;, which is required.</p>
+
+<p>Available field types are:</p>
+
+<ul>
+    <li>text</li>
+    <li>integer</li>
+    <li>blob</li>
+    <li>boolean</li>
+    <li>float</li>
+    <li>date</li>
+    <li>time</li>
+    <li>timestamp (datetime)</li>
+</ul>
+
+
+<p>You can then set the following optional properties:</p>
+
+<ul>
+    <li>length</li>
+    <li>notnull</li>
+    <li>default</li>
+    <li>index</li>
+    <li>unique</li>
+    <li>primary</li>
+</ul>
+
+
+<p>If you notice in the example above, I have not specified a primary key on any of the fields, and there is no ID field. That is because the migrate.php script will create an ID field for you and set it as the primary key. You can overide that if you wish. Just add a line directly under the UP line like this:</p>
+
+<div><figure role=code><div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>UP:
+</div><div class='line'>  create_table:
+</div><div class='line'>    users:
+</div><div class='line'>      no_id: true
+</div><div class='line'>      first_name:
+</div><div class='line'>    type: text
+</div><div class='line'>    index: true
+</div><div class='line'>      last_name:
+</div><div class='line'>    type: text
+</div><div class='line'>
+</div><div class='line'>....</div></code></pre></td></tr></table></div></figure></div>
+
+
+<p>If you do use the &#8216;no_id&#8217; line, you will need to set the primary key and ID field yourself.</p>
+
+<p>Now we need to define the DOWN section. All we want to do is to reverse the actions of the UP section. So we simply say:</p>
+
+<div><figure role=code><div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>DOWN:
+</div><div class='line'>  drop_table: users</div></code></pre></td></tr></table></div></figure></div>
+
+
+<p>In both sections, you can create/drop more than one table. To create another table, just create another create_table section starting from the table name. To drop more than one table, do this:</p>
+
+<div><figure role=code><div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>DOWN:
+</div><div class='line'>  drop_table: [users, table2, another_table]</div></code></pre></td></tr></table></div></figure></div>
+
+
+<p>And that my friends, is your very first migration file. I won&#8217;t go into the details of all the actions that migrations can do as the Examples are pretty good at doing that, and this tutorial is already pretty long.</p>
+
+<p>Other actions available:</p>
+
+<ul>
+    <li>alter_field</li>
+    <li>add_field</li>
+    <li>drop_field</li>
+    <li>query</li>
+</ul>
+
+
+<p>Pretty self explanatory really, but the last one; &#8216;query&#8217;, lets you run a raw SQL query. So you can use it to insert/update data. Something like:</p>
+
+<div><figure role=code><div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>query: INSERT INTO users SET first_name='Joel'</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<h4>Run it!</h4>
+
+
+<p>Now we get to the exciting part. We run the migration.</p>
+
+<p>Start the script again and accept the default option: &#8220;Migrate&#8221;. It will then give you a list of migration files along with their version number. You only have one file, so type the number of that file, which should be &#8216;1&#8217;.</p>
+
+<p>Ta Da!! migrate.php will then fetch and parse the file and run the commands on your database. Now check your database and you should see a spangly new table ready for your app to use.</p>
+
+<p>But what happens if you don&#8217;t like that table and want to change it. You got two options; roll back the version or generate and run a new migration file with the changes.</p>
+
+<p>To rollback the changes, just run migrate.php, accept the default option and enter the number &#8216;0&#8217;. This happens to be the version prior to the migration you just made, and is also the base. So choosing that will rollback all migrations back to the beginning. Try it now. You should now notice that your table has been dropped.</p>
+
+<h4>Is that good or wot?</h4>
+
+
+<p>That is pretty much it. The last option: &#8216;Reset&#8217;, will do exactly that. It will reset all your migrations and optionally delete your migrations files. So be careful when using that.</p>
+
+<p>Play around with it and <a href="http://developingwithstyle.com/switchboard/forum/create">create a forum post</a> here if you have any questions, bug reports or suggestions.</p>
+
+<p>Thanks again and look out for more [shorter] tutorials and maybe a few screencasts in the near future.</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/blog/2006/11/22/the-joy-of-cake-migrations-my-first-tutorial/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/21/morphing-with-scriptaculous/">Morphing With Scriptaculous</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2006-11-21 00:00:00 +0000" pubdate  updated >Nov 21<span>st</span>, 2006</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A new beta version of the Scriptaculous javascript effects library has just been released, and very nice it is too. Version 1.7 features a new effect called morphing, which allows for CSS style effects. Effectively allowing you to change an element based on CSS. But the element doesn&#8217;t just change. it morphs!</p>
+
+<p>Here&#8217;s an example</p>
+
+<div><figure role=code><div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>new Effect.Morph('error_message',{
+</div><div class='line'>    style:'border-width:3px; font-size:15pt; color:#f00'
+</div><div class='line'>});</div></code></pre></td></tr></table></div></figure></div>
+
+
+<p>Just take a look at the <a href="http://mir.aculo.us/demos/script-aculo-us-1-7-beta-demos">morphing demo</a>, then read all the <a href="http://mir.aculo.us/2006/11/21/script-aculo-us-hits-1-7-beta">details</a>.</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/blog/2006/11/21/morphing-with-scriptaculous/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/21/cake-db-migrations-strikes-back/">Cake DB Migrations Strikes Back</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2006-11-21 00:00:00 +0000" pubdate  updated >Nov 21<span>st</span>, 2006</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I am proud to announce the immediate availability of Cake DB Migrations V2.0.</p>
+
+<p>This new version has been rewritten with portability in mind and now supports a list of database engines as long as your arm. The new features and changes are as follows:</p>
+<ul>
+	<li>Now supports mutiple database engines with the help of <a href="http://pear.php.net/package/MDB2">Pear&#8217;s MDB2</a></li>
+	<li>Simplified YAML migration files</li>
+	<li>Fully supports adding/dropping and altering fields</li>
+	<li>Supports the following field types: text, integer, blob, boolean, float, date, time, timestamp(datetime)</li>
+	<li>Ability to create primary key and unique indexes on new and existing fields</li>
+	<li>Script moved to the main Cake Vendors directory, so no need to touch your Cake core</li>
+	<li>Supports multiple Cake applications in the same way as Bake.php does</li>
+	<li>Works out of the box</li>
+</ul>
+<h4>What is Cake DB Migrations</h4>
+<p>Cake DB Migrations is a port of the very useful Ruby on Rails Migrations functionaility. Cake Migrations allow you to use Cake to define changes to your database schema, making it possible to use a version control system to keep things synchronised with the actual code.</p>
+
+<p>This has many uses, including:</p>
+<ul>
+	<li>Teams of developers</li>
+</ul>
+</div>
+  <footer>
+    <a rel="full-article" href="/blog/2006/11/21/cake-db-migrations-strikes-back/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/16/cakes-easy-peasy-database-config/">Cake&#8217;s Easy-peasy Database Config</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2006-11-16 00:00:00 +0000" pubdate  updated >Nov 16<span>th</span>, 2006</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Like a lot of developers out there, I use Subversion to keep control of my code and projects, and I also use a different database for development and production. But when using Cake this can be a problem when checking out my code from development to production. Unless I edit my database.php with my production config, the production code would have problems, as it would be trying to access data from the development database.</p>
+
+<p>What I needed was an easy-peasy way of being able to check in my code to production without having to edit the <code>app/config/database.php</code> config file. So what I did was very simple and can be found below:</p>
+
+<div><figure role=code><figcaption><span>Database Config - database.php </span></figcaption>
+ <div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+<span class='line'>12</span>
+<span class='line'>13</span>
+<span class='line'>14</span>
+<span class='line'>15</span>
+<span class='line'>16</span>
+<span class='line'>17</span>
+<span class='line'>18</span>
+<span class='line'>19</span>
+<span class='line'>20</span>
+<span class='line'>21</span>
+<span class='line'>22</span>
+<span class='line'>23</span>
+<span class='line'>24</span>
+<span class='line'>25</span>
+<span class='line'>26</span>
+<span class='line'>27</span>
+<span class='line'>28</span>
+<span class='line'>29</span>
+<span class='line'>30</span>
+<span class='line'>31</span>
+<span class='line'>32</span>
+<span class='line'>33</span>
+<span class='line'>34</span>
+<span class='line'>35</span>
+<span class='line'>36</span>
+<span class='line'>37</span>
+<span class='line'>38</span>
+</pre></td><td class='code' width='100%'><pre><code class='php'><div class='line'><span class="x">class DATABASE_CONFIG {</span>
+</div><div class='line'>
+</div><div class='line'><span class="x">    var $development = array(</span>
+</div><div class='line'><span class="x">        &#39;driver&#39; =&gt; &#39;mysql&#39;,</span>
+</div><div class='line'><span class="x">        &#39;connect&#39; =&gt; &#39;mysql_connect&#39;,</span>
+</div><div class='line'><span class="x">        &#39;host&#39; =&gt; &#39;localhost&#39;,</span>
+</div><div class='line'><span class="x">        &#39;login&#39; =&gt; &#39;user&#39;,</span>
+</div><div class='line'><span class="x">        &#39;password&#39; =&gt; &#39;passwd&#39;,</span>
+</div><div class='line'><span class="x">        &#39;database&#39; =&gt; &#39;app_devel&#39;</span>
+</div><div class='line'><span class="x">    );</span>
+</div><div class='line'><span class="x">    var $production = array(</span>
+</div><div class='line'><span class="x">        &#39;driver&#39; =&gt; &#39;mysql&#39;,</span>
+</div><div class='line'><span class="x">        &#39;connect&#39; =&gt; &#39;mysql_connect&#39;,</span>
+</div><div class='line'><span class="x">        &#39;host&#39; =&gt; &#39;localhost&#39;,</span>
+</div><div class='line'><span class="x">        &#39;login&#39; =&gt; &#39;user&#39;,</span>
+</div><div class='line'><span class="x">        &#39;password&#39; =&gt; &#39;passwd&#39;,</span>
+</div><div class='line'><span class="x">        &#39;database&#39; =&gt; &#39;app&#39;</span>
+</div><div class='line'><span class="x">    );</span>
+</div><div class='line'><span class="x">    var $test = array(</span>
+</div><div class='line'><span class="x">        &#39;driver&#39; =&gt; &#39;mysql&#39;,</span>
+</div><div class='line'><span class="x">        &#39;connect&#39; =&gt; &#39;mysql_connect&#39;,</span>
+</div><div class='line'><span class="x">        &#39;host&#39; =&gt; &#39;localhost&#39;,</span>
+</div><div class='line'><span class="x">        &#39;login&#39; =&gt; &#39;user&#39;,</span>
+</div><div class='line'><span class="x">        &#39;password&#39; =&gt; &#39;passwd&#39;,</span>
+</div><div class='line'><span class="x">        &#39;database&#39; =&gt; &#39;app_test&#39;</span>
+</div><div class='line'><span class="x">    );</span>
+</div><div class='line'><span class="x">    var $default = array();</span>
+</div><div class='line'>
+</div><div class='line'><span class="x">    function __construct()</span>
+</div><div class='line'><span class="x">    {</span>
+</div><div class='line'><span class="x">        $this-&gt;default = ($_SERVER[&#39;SERVER_ADDR&#39;] == &#39;127.0.0.1&#39;) ?</span>
+</div><div class='line'><span class="x">            $this-&gt;development : $this-&gt;production;</span>
+</div><div class='line'><span class="x">    }</span>
+</div><div class='line'><span class="x">    function DATABASE_CONFIG()</span>
+</div><div class='line'><span class="x">    {</span>
+</div><div class='line'><span class="x">        $this-&gt;__construct();</span>
+</div><div class='line'><span class="x">    }</span>
+</div><div class='line'><span class="x">}</span>
+</div></code></pre></td></tr></table></div></figure></div>
+
+
+<p>What you have here are three arrays for each datasource: development, production and test.  Each one defines the database connection variables for each environment. Nothing special there. Directly underneath that is the <code>$default</code> array, but it is empty. So all we have to do is fill that with the appropriate datasource.</p>
+
+<p>So we set the <code>construct</code> method for the <code>DATABASE_CONFIG</code> class and include simply one line of code. What this code does is to set the <code>$default</code> datasource to the development datasource if the <code>SERVER_ADDR</code> is a local IP. As most of us develop the code on our local machines and then push it to a production server, this will do nicely, as the <code>SERVER_ADDR</code> on your production server will not be a local one.</p>
+
+<p>So now I don&#8217;t have to edit anything when moving my code to production.</p>
+
+<p>Easy-peasy lemon squeasy ;)</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/blog/2006/11/16/cakes-easy-peasy-database-config/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/11/16/caked-in-it/">Caked in It!</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2006-11-16 00:00:00 +0000" pubdate  updated >Nov 16<span>th</span>, 2006</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After much deliberation, I have decided to ditch my own framework design in favour of the power of the open source community.</p>
+
+<p>CakePHP is now my preferred choice of PHP framework and my first task is to rebuild Cake Migrations and release it as version 2. I also plan on blogging a lot more, in particular about Cake. CakePHP that is ;)</p>
+
+<p>So stand by for some bad-ass blogging.</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/blog/2006/11/16/caked-in-it/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/10/28/yahoo-bookmarks-uses-symfony-php-framework/">Yahoo Bookmarks Uses Symfony PHP Framework</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2006-10-28 00:00:00 +0100" pubdate  updated >Oct 28<span>th</span>, 2006</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The release of the new Yahoo! Bookmarks Beta has been on all the news portals lately. Yahoo! Bookmarks has 20 million users, and is available in 12 languages (and counting). But the real news about the new Yahoo! Bookmarks is that it was built with symfony; one of the most popular PHP frameworks, and one of the many frameworks that I rejected.</p>
+
+<p>Reading news such as this really makes me wonder if I made the right choice.</p>
+
+<p><a href="http://www.symfony-project.com/weblog/2006/10/28/yahoo-bookmarks-uses-symfony.html">read more</a> | <a href="http://digg.com/software/Yahoo_Bookmarks_uses_Symfony_PHP_Framework">digg story</a></p>
+</div>
+  <footer>
+    <a rel="full-article" href="/blog/2006/10/28/yahoo-bookmarks-uses-symfony-php-framework/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+<nav role="pagination">
+  <div>
+    
+      <a class="prev" href="/blog/page/20/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/18/">Newer &rarr;</a>
+    
+  </div>
+</nav>
+
+</div>
+<aside role=sidebar>
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>

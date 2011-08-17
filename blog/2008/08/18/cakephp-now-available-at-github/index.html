@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style: CakePHP now available at Github</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/blog/2008/08/18/cakephp-now-available-at-github/"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry">
+  
+  <header>
+    
+      <h1 class="entry-title">CakePHP Now Available at Github</h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2008-08-18 00:00:00 +0100" pubdate  updated >Aug 18<span>th</span>, 2008</time>
+
+
+</p>
+    
+  </header>
+
+
+<div class="entry-content"><p><em><strong>Update:</strong> The Github repository I created now has an untouched clone of the CakePHP 1.2 SVN branch as the master. I then created a branch of this called &#8216;pimped&#8217;, which contains my own custom code. This means that you can choose to use the official Cake core, or my pimped copy. I&#8217;ll try to write a little more about my pimped branch in a future post.</em></p>
+
+<p>For the last few months, I&#8217;ve been developing an application which I hope to release to the unsuspecting public very soon. So I wanted to get it on my server and tested remotely, which I promptly did by checking out a copy from my SVN repository. I also did the same for the Cake core, by checking out <a href="https://svn.cakephp.org/repo/branches/1.2.x.x/cake">https://svn.cakephp.org/repo/branches/1.2.x.x/cake</a>.</p>
+
+<p>Great, all worked fine&#8230; until I spotted loads of errors in the app. I then remembered that I made some local changes to the Cake core. I know, I know, it&#8217;s a cardinal sin. But I really needed these changes for this app, and it was doing nobody any harm, as they stayed on my local machine. But now, I also needed them on my remote copy on the server, but want to be able to &#8216;svn up&#8217; the cake core, whenever there are updates.</p>
+
+<p>So I figured the best way would actually be to use a different SCM just for this purpose. I&#8217;d played with <a href="http://git.or.cz/">Git</a> a little, and have been really impressed at <a href="http://github.com">Github</a>. So I created a public repo at Github, and proceeded to create a clone of the Cake SVN repo, which I then pushed to the public repo at Github. I then applied my custom changes, and now we have a mirror of the CakePHP 1.2 branch at <a href="https://github.com/joelmoss/cakephp/tree">https://github.com/joelmoss/cakephp/tree</a>.</p>
+
+<p>I can now clone the new git repo on my remote server, and I have a copy of CakePHP with all my custom changes, which I can update as and when I need to. This is all assuming of course, that I regulalry update the repo from the Cake SVN repo.</p>
+
+<p>So things have actually turned out quite well. Please feel free to push and pull to/from the new <a href="http://github.com/joelmoss/cakephp/tree/master">git repo</a>, and let me know your thoughts.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joel Moss</span></span>
+
+      
+
+
+
+
+<time datetime="2008-08-18 00:00:00 +0100" pubdate  updated >Aug 18<span>th</span>, 2008</time>
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/articles/'>articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://developwithstyle.com/blog/2008/08/18/cakephp-now-available-at-github/" data-via="joelmoss" data-counturl="http://developwithstyle.com/blog/2008/08/18/cakephp-now-available-at-github/" >Tweet</a>
+  
+  
+</div>
+
+    
+  </footer>
+</article>
+
+</div>
+
+<aside role=sidebar>
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>

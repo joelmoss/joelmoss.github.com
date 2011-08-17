@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style: Migrations V2.1 - Now with Fixtures</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/blog/2006/11/25/migrations-v21-now-with-fixtures/"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry">
+  
+  <header>
+    
+      <h1 class="entry-title">Migrations V2.1 - Now With Fixtures</h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2006-11-25 00:00:00 +0000" pubdate  updated >Nov 25<span>th</span>, 2006</time>
+
+
+</p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I have just pushed out a new version of Cake Migrations available for <a href="http://homepageuniverse.com/migrations.zip">download</a> right now. Version 2.1 fixes a few bugs here and there, but more significantly, Migrations now come with Fixtures.</p>
+
+<p>Following is a quick rundown of what&#8217;s new in this release.</p>
+
+<h4>Fixtures</h4>
+
+
+<p>Fixtures are pretty much the same thing as migrations, but are only used for inserting test data into your development database. So after you run your migrations, simply create a fixture for each of your tables, which will fill them up with test data you can use to test your apps. Coz if you think about it, it&#8217;s a bit pointless testing without actual data.</p>
+
+<p>So now when you run the migrate script, you get to choose whether you want to work with your migrations or your fixtures. Select fixtures and presuming you have some tables in your DB, it will ask you which table you want to create fixtures for. Selecting a table will then create a blank fixture file in <em>app/config/fixtures</em> which you should then place your fixtures into.</p>
+
+<p>Something like this:</p>
+
+<div><figure role=code><div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+<span class='line'>12</span>
+<span class='line'>13</span>
+<span class='line'>14</span>
+<span class='line'>15</span>
+<span class='line'>16</span>
+<span class='line'>17</span>
+<span class='line'>18</span>
+<span class='line'>19</span>
+<span class='line'>20</span>
+<span class='line'>21</span>
+<span class='line'>22</span>
+<span class='line'>23</span>
+<span class='line'>24</span>
+<span class='line'>25</span>
+<span class='line'>26</span>
+<span class='line'>27</span>
+<span class='line'>28</span>
+<span class='line'>29</span>
+<span class='line'>30</span>
+<span class='line'>31</span>
+<span class='line'>32</span>
+<span class='line'>33</span>
+<span class='line'>34</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>#
+</div><div class='line'># Fixture YAML file
+</div><div class='line'>#
+</div><div class='line'>-
+</div><div class='line'> name: bob1
+</div><div class='line'> username: bobby1
+</div><div class='line'> password: mypass
+</div><div class='line'> created: NOW
+</div><div class='line'>-
+</div><div class='line'> name: bob2
+</div><div class='line'> username: bobby2
+</div><div class='line'> password: mypass
+</div><div class='line'> created: NOW
+</div><div class='line'> modified: NOW
+</div><div class='line'>-
+</div><div class='line'> name: bob3
+</div><div class='line'> username: bobby3
+</div><div class='line'> password: mypass
+</div><div class='line'> created: NOW
+</div><div class='line'>-
+</div><div class='line'> name: bob4
+</div><div class='line'> username: bobby4
+</div><div class='line'> password: mypass
+</div><div class='line'> created: NOW
+</div><div class='line'>-
+</div><div class='line'> name: bob5
+</div><div class='line'> username: bobby5
+</div><div class='line'> password: mypass
+</div><div class='line'> created: NOW
+</div><div class='line'>-
+</div><div class='line'> name: bob6
+</div><div class='line'> username: bobby6
+</div><div class='line'> password: mypass
+</div><div class='line'> created: NOW</div></code></pre></td></tr></table></div></figure></div>
+
+
+<p>After each hyphen a fixture or table row is set. You simply set key:value pairs for the fields you want to fill. Don&#8217;t forget the hyphen before each fixture and of course the usual YAML indents, etc.</p>
+
+<p>You may notice that I have not specified a date in any of the <em>created</em> values. I used the <em>NOW</em> keyword instead, which basically inserts the current datetime for you (and in the right format).</p>
+
+<p>Now all you need to do is run migrate.php again, select fixtures and the table you want to run these fixtures for. It will detect this fixture file and insert your data. And voila! Instant test data for your app.</p>
+
+<h4>Created/Modified fields</h4>
+
+
+<p>Previously you had to specify that you wanted the <em>created</em> and <em>modified</em> fields created in your migrations. Not anymore! These two fields will be created for you in every table, so just leave them out completely.</p>
+
+<h4>Primary Key auto incremented</h4>
+
+
+<p>One thing that I left out in previous versions was to make the primary key field auto increment. This is now added.</p>
+
+<p>As you can see, not many changes there, but I thought it deserved a minor increment in version number because of the addition of Fixtures. Watch out for more changes, including the ability to generate migration files from the structure of an existing database. I also plan on making the Migrations script independant. So it will work with and without Cake.</p>
+
+<p>So as usual, please play around with it and let me if you find any bugs. It would also be great to hear what you all think about it all.</p>
+
+<p>Enjoy!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joel Moss</span></span>
+
+      
+
+
+
+
+<time datetime="2006-11-25 00:00:00 +0000" pubdate  updated >Nov 25<span>th</span>, 2006</time>
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/articles/'>articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://developwithstyle.com/blog/2006/11/25/migrations-v21-now-with-fixtures/" data-via="joelmoss" data-counturl="http://developwithstyle.com/blog/2006/11/25/migrations-v21-now-with-fixtures/" >Tweet</a>
+  
+  
+</div>
+
+    
+  </footer>
+</article>
+
+</div>
+
+<aside role=sidebar>
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>

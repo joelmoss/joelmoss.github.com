@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style: 10 Reasons why Ruby is better than PHP - Reason #2</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/blog/2009/05/21/10-reasons-why-ruby-is-better-than-php-reason-2/"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry">
+  
+  <header>
+    
+      <h1 class="entry-title">10 Reasons Why Ruby Is Better Than PHP - Reason #2</h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2009-05-21 00:00:00 +0100" pubdate  updated >May 21<span>st</span>, 2009</time>
+
+
+</p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Well now then. <a href="/articles/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1.html">My last post</a>, or the comments in it, seemed to have stirred up a little hornets nest. I had my fair share of supporters and my fair share of thanks for my writings, but I also received a little criticism. I think I&#8217;ve covered most of those in the <a href="/articles/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1.html#comments">comments</a> and also on <a href="http://twitter.com/joelmoss">Twitter</a>, so I won&#8217;t say much more, other than to simply remind you all what I am trying to do.</p>
+
+
+
+
+<p>In this little series of blog posts, my objective was to be as fair as possible when explaining my reasons why I think Ruby is better than PHP. But at the same time, this is not a comparison. Which means I won&#8217;t be pointing out PHP&#8217;s strong points - of which there are many. Also, this is my opinion, and no one elses, and I am entitled to that. And so to, are you guys.</p>
+
+
+
+
+<p>And one last thing before I start reason #2. I want to say thanks to <a href="http://www.littlehart.net/atthekeyboard/2009/05/21/laziness-vs-efficiency/">Chris Hartjes for his blog post</a> earlier today. I made a comment on Twitter about lazy coders, being good coders, and he basically put me to rights, and explained what I was saying in much better terms, than I could ever do. But also, I do think he was a little harsh on me. Hear my other reasons first Chris. No hard feelings though.</p>
+
+
+
+
+<p>Back to business. In todays post, I wanted to give more of a solid reason why I think Ruby excels over PHP. So I picked one that simply cannot be matched in any way by PHP. Add probably won&#8217;t ever be. But I would love to see this being made possible.</p>
+
+
+
+
+<h3>Re-opening in Classes is soooo Useful!</h3>
+
+
+
+
+<p>Both languages support the creation of classes as part of their object-oriented design. And they do so in much the same way. Both languages allow you to set method visibility with the use of <code>public</code>, <code>protected</code> and <code>private</code> declarations, and behave accordingly. Classes are written in a similar fashion:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Person {
+</div><div class='line'>  public function greeting() {
+</div><div class='line'>    return 'Hello you!';
+</div><div class='line'>  }
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Person
+</div><div class='line'>  def greeting
+</div><div class='line'>    'Hello you!'
+</div><div class='line'>  end
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Very similar, but let me explain one thing. In the PHP example above, I returned the string &#8221;<code>Hello you!</code>&#8221; by prefixing it with the <code>return</code> keyword. Like this:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>return 'Hello you!';</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>But in the Ruby example, you may have noticed that there is no <code>return</code> keyword before the &#8221;<code>Hello you!</code>&#8221; string. It was just this:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>'Hello you!'</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>That works perfectly fine, and the &#8221;<code>Hello you!</code>&#8221; string will still be returned when calling the <code>greeting</code> method of the <code>Person</code> class. That is because Ruby will return the value from the last line of the method. You can use <code>return</code> if you want to, but you don&#8217;t have to.</p>
+
+
+
+
+<p>So we&#8217;ve determined that writing classes is pretty much on the par in both PHP and Ruby. But, you may have accidentally redeclared a class in PHP, and received a nasty error:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Person {
+</div><div class='line'>  public function greeting() {
+</div><div class='line'>    return 'Hello you!';
+</div><div class='line'>  }
+</div><div class='line'>}
+</div><div class='line'>
+</div><div class='line'>class Person {
+</div><div class='line'>  public function greeting() {
+</div><div class='line'>    return 'Hey, hey, hey!';
+</div><div class='line'>  }
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Doing the above will give tell you <code>PHP Fatal error: Cannot redeclare class Person</code>. Everyone knows that you just cannot do that with PHP. And to be honest it seems to make sense for it to prevent this from happening. But Ruby actually allows you to do this. In fact, you are almost encouraged to reopen classes if and when needed.</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Person
+</div><div class='line'>  def greeting
+</div><div class='line'>    'Hello you!'
+</div><div class='line'>  end
+</div><div class='line'>end
+</div><div class='line'>
+</div><div class='line'>class Person
+</div><div class='line'>  def greeting
+</div><div class='line'>    'Hey, hey, hey!'
+</div><div class='line'>  end
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>In the above case, no error will be returned. Instead, Ruby will simply redefine the <code>greeting</code> method in the first class, with the same method from the second class. So you get this:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>p = Person.new
+</div><div class='line'>puts p.greeting</div></code></pre></td></tr></table></div></figure></div>
+
+
+<p>Which returns &#8221;<code>Hey, hey, hey!</code>&#8221; and not &#8221;<code>Hello you!</code>&#8221;</p>
+
+<p>Oh no, here it comes. I can hear the cries now: &#8220;But that&#8217;s gonna cause untold problems and bugs in my code!&#8221;. Not if you use it wisely! Part of Ruby&#8217;s philosophy is to provide you with all the tools you need, then entrusting you to use that power with care. What was it Uncle Ben said to Peter? &#8220;With great power comes great responsibility.&#8221;</p>
+
+
+
+
+<p>This type of feature may seem a little dodgy, but in practice it becomes extremely useful. It means that I can reopen any class that I want, at any time, which often leads to more manageable code.</p>
+
+
+
+
+<p>But I&#8217;m not just limited to reopening my own classes. I can even reopen Ruby&#8217;s base classes. This is referred to as &#8220;Monkey patching&#8221;, and is usually frowned upon, as it is not very wise to be overriding the core of the language. But if used carefully and sparingly, we are able to add a little extra functionality to our app by extending a base class or two.</p>
+
+
+
+
+<p>When it comes to Rails, Ruby&#8217;s base classes are extended quite a bit, especially within its ActiveSupport library, which reopens the String, Integer, and many other base classes. But it does so to add a lot of extra, and very useful functionality. It&#8217;s done so with care and attention.</p>
+
+
+
+
+<p>For example, I want to know if an integer is odd or even, but Ruby provides no such method for doing so, so I write my own. But instead of writing a standalone function within my class, I can reopen Ruby&#8217;s Integer class like so:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Integer
+</div><div class='line'>  def odd?
+</div><div class='line'>    self % 2 == 1
+</div><div class='line'>  end
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+<p>and now I can call:</p>
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>3.odd?</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>which would of course return true. All I am doing is reopening the Integer class, and adding a new method.</p>
+
+
+
+
+<p>&#8220;But what&#8217;s that question mark doing there? Is that part of the method name?&#8221; Actually, yes it is. In PHP, you can only use letters, number, and underscores in method and function names. But Ruby lets be a little more expressive, and use other characters such as <code>?</code>, <code>!</code>, and even <code>/</code>. So in the <code>odd</code> example above, I ended the method name with a question mark, because what I am doing is effectively asking a question of the number. &#8220;Are you an odd integer?&#8221;. Which it replies with a true or false value. Neat hey?</p>
+
+
+
+
+<p>One of the most powerful uses of reopening classes, is the plugin system available in Rails. We can use Rails plugins to extend and override nearly every part of Rails. Which is why there are thousands of Rails plugins. You can do pretty much anything you want.</p>
+
+
+
+
+<p>So I hope I have provided a good, solid reason why Ruby is better than PHP, with a feature that simply cannot be achieved with PHP. It really is very powerful, that when used carefully, can save you a lot of time, and make coding with Ruby lots of fun. Which after all, that&#8217;s why we&#8217;re here isn&#8217;t it?!</p>
+
+
+
+
+<p>Next time, I think I&#8217;ll talk about Blocks; yet another feature of Ruby that PHP cannot emulate.</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joel Moss</span></span>
+
+      
+
+
+
+
+<time datetime="2009-05-21 00:00:00 +0100" pubdate  updated >May 21<span>st</span>, 2009</time>
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/articles/'>articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://developwithstyle.com/blog/2009/05/21/10-reasons-why-ruby-is-better-than-php-reason-2/" data-via="joelmoss" data-counturl="http://developwithstyle.com/blog/2009/05/21/10-reasons-why-ruby-is-better-than-php-reason-2/" >Tweet</a>
+  
+  
+</div>
+
+    
+  </footer>
+</article>
+
+</div>
+
+<aside role=sidebar>
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>

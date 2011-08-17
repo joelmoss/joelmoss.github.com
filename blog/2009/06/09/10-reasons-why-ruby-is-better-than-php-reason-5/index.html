@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style: 10 Reasons why Ruby is better than PHP - Reason #5</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/blog/2009/06/09/10-reasons-why-ruby-is-better-than-php-reason-5/"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry">
+  
+  <header>
+    
+      <h1 class="entry-title">10 Reasons Why Ruby Is Better Than PHP - Reason #5</h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2009-06-09 00:00:00 +0100" pubdate  updated >Jun 9<span>th</span>, 2009</time>
+
+
+</p>
+    
+  </header>
+
+
+<div class="entry-content"><p>It&#8217;s been a while I know, and I am aware that some of you are chomping at the bit to read reason #5. Apologies for the wait, but some of us have work to do, and a <a href="http://codaset.com">mammoth side project</a> to complete, which by the way, is coming along nicely.</p>
+
+
+
+
+<p>Before I start on reason #5, I want to mention a couple of posts in a similar vein to my series.</p>
+
+
+
+
+<p>Andy Jeffries &#8221;<a href="http://andyjeffries.co.uk/articles/4-reasons-why-ruby-syntax-is-better-than-phps-">4 Reasons why Ruby syntax is better than PHP&#8217;s</a>&#8221; is a straight to the point article all about the strengths of Ruby&#8217;s syntax over PHP. If after reading his post, you still think syntax doesn&#8217;t matter, then you are a lost cause, and beyond help of any kind!</p>
+
+
+
+
+<p>Another post I actually read a while ago, but forgot all about until I was <a href="http://twitter.com/m3nt0r/status/2091044381">pleasantly reminded of</a>, is Bitcetera&#8217;s &#8221;<a href="http://www.bitcetera.com/en/techblog/2009/04/07/10-reasons-why-php-is-still-better-than-ruby-/">10 Reasons why PHP is still better than Ruby</a>&#8221;. Read it carefully all the way through, as it is a great read.</p>
+
+
+
+
+<p>Now, we get to Modules in Ruby, again, a feature that has no direct equivalent in PHP. Modules are very similar to classes, in fact they are written in much the same way:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>module Animal
+</div><div class='line'>  def name
+</div><div class='line'>    "Dog"
+</div><div class='line'>  end
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>So what are they used for? Well, modules are generally used for two purposes; creating namespaces and mixins. I&#8217;m sure (and I hope) that you all know what namespaces are. But you probably have no idea what a mixin is. Well I&#8217;ll get to that in a bit. Let&#8217;s quickly talk about how Ruby uses namespaces.</p>
+
+
+
+
+<p>Let us imagine that we have been charged with cleaning up and re-organizing our code, and we have a lot of it. Normally in PHP you might simply stick this code in a file and include it wherever you need it, but what if you have two methods or constants that are named the same? Some developers have worked around this by separating different class package names with underscores. This solution solves the immediate problem and also works conveniently with autoloading in PHP. It can, however, leave us with some really long class names.</p>
+
+
+
+
+<p>Let&#8217;s imagine we have two classes that define a <code>Document</code> class. In PHP we would probably prefix each class name with the document type:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+<span class='line'>12</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class XML_Document {
+</div><div class='line'>  public function __construct() {
+</div><div class='line'>    print "new xml document\n";
+</div><div class='line'>  }
+</div><div class='line'>}
+</div><div class='line'>class PDF_Document {
+</div><div class='line'>  public function __construct() {
+</div><div class='line'>    print "new pdf document\n";
+</div><div class='line'>  }
+</div><div class='line'>}
+</div><div class='line'>$xml = new XML_Document; 
+</div><div class='line'>$pdf = new PDF_Document;</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Ruby would achieve the same thing like this:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+<span class='line'>12</span>
+<span class='line'>13</span>
+<span class='line'>14</span>
+<span class='line'>15</span>
+<span class='line'>16</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>module XML 
+</div><div class='line'>  class Document 
+</div><div class='line'>    def initialize 
+</div><div class='line'>      puts 'new xml document' 
+</div><div class='line'>    end 
+</div><div class='line'>  end 
+</div><div class='line'>end 
+</div><div class='line'>module PDF 
+</div><div class='line'>  class Document 
+</div><div class='line'>    def initialize 
+</div><div class='line'>      puts 'new pdf document' 
+</div><div class='line'>    end 
+</div><div class='line'>  end 
+</div><div class='line'>end 
+</div><div class='line'>xml = XML::Document.new 
+</div><div class='line'>pdf = PDF::Document.new</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Now I know that the as-yet-to-be-released PHP 5.3 will introduce namespaces, but come on! <a href="http://php.net/manual/language.namespaces.rationale.php">Have you actually seen how PHP namespaces are created and written?!</a> WTF!? Using slashes just looks wrong! Slashes are used in directory paths, and that is where they should stay. And why should I have to declare my namespace at the very top of the file and no where else?</p>
+
+
+
+
+<p>But the best thing about Ruby&#8217;s modules, is the ability to mix them into my classes, as if it was part of the original class code. Think of it as inheritance, but better. Everyone knows that in PHP and Ruby, a class can only inherit from one class at a time. To inherit from another class would involve you having to create a complicated chain of inheritance. Mixins eliminate that need. Just create a class, inherit from another class, and then mixin as many modules as you want.</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+<span class='line'>12</span>
+<span class='line'>13</span>
+<span class='line'>14</span>
+<span class='line'>15</span>
+<span class='line'>16</span>
+<span class='line'>17</span>
+<span class='line'>18</span>
+<span class='line'>19</span>
+<span class='line'>20</span>
+<span class='line'>21</span>
+<span class='line'>22</span>
+<span class='line'>23</span>
+<span class='line'>24</span>
+<span class='line'>25</span>
+<span class='line'>26</span>
+<span class='line'>27</span>
+<span class='line'>28</span>
+<span class='line'>29</span>
+<span class='line'>30</span>
+<span class='line'>31</span>
+<span class='line'>32</span>
+<span class='line'>33</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>module Movement 
+</div><div class='line'>  def run 
+</div><div class='line'>    puts "I'm running!" 
+</div><div class='line'>  end 
+</div><div class='line'>  def walk 
+</div><div class='line'>    puts "I'm walking a bit briskly!" 
+</div><div class='line'>  end 
+</div><div class='line'>  def crawl 
+</div><div class='line'>    puts "I'm so slowwww!" 
+</div><div class='line'>  end 
+</div><div class='line'>end
+</div><div class='line'>
+</div><div class='line'>class Man 
+</div><div class='line'>  include Movement 
+</div><div class='line'>  def jump 
+</div><div class='line'>    puts "I'm bipedal and I can jump like a fool!" 
+</div><div class='line'>  end 
+</div><div class='line'>end
+</div><div class='line'>
+</div><div class='line'>class Sloth 
+</div><div class='line'>  include Movement 
+</div><div class='line'>  def flop 
+</div><div class='line'>    puts "It's all a lie...all I can do is flop around." 
+</div><div class='line'>  end 
+</div><div class='line'>end
+</div><div class='line'>
+</div><div class='line'>mister_man = Man.new 
+</div><div class='line'>mister_man.run 
+</div><div class='line'>?  I'm running!
+</div><div class='line'>
+</div><div class='line'>mister_slothy = Sloth.new 
+</div><div class='line'>mister_slothy.flop 
+</div><div class='line'>?  It's all a lie...all I can do is flop around.</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>As you can see, this mechanism is very similar to inheritance in that you can use all of the mixin&#8217;s code.  To use a mixin, simply define a module and then use the include keyword followed by the module&#8217;s name (note I said module; the include keyword has nothing to do with files or libraries like in PHP); from then on the class has access to all of that module&#8217;s constants and methods.</p>
+
+
+
+
+<p>The above example really doesn&#8217;t do mixins justice, but it&#8217;s a very simple example to help demonstrate how they work. Modules are a very versatile tool in Ruby and allow us to extract and share common behavior in objects, and are another reason why Ruby is better than PHP (in my opinion).</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joel Moss</span></span>
+
+      
+
+
+
+
+<time datetime="2009-06-09 00:00:00 +0100" pubdate  updated >Jun 9<span>th</span>, 2009</time>
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/articles/'>articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://developwithstyle.com/blog/2009/06/09/10-reasons-why-ruby-is-better-than-php-reason-5/" data-via="joelmoss" data-counturl="http://developwithstyle.com/blog/2009/06/09/10-reasons-why-ruby-is-better-than-php-reason-5/" >Tweet</a>
+  
+  
+</div>
+
+    
+  </footer>
+</article>
+
+</div>
+
+<aside role=sidebar>
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>
