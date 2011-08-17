@@ -1,0 +1,18 @@
+--- 
+wordpress_id: 59
+layout: post
+title: "Whats new in CakePHP: Asset Sharing"
+wordpress_url: http://developingwithstyle.com/2007/01/16/whats-new-in-cakephp-asset-sharing/
+categories: articles
+---
+Back in November of last year, I wrote a <a href="http://joelmoss.info/switchboard/blog/2028:Cakes_global_CSS_Javascript_and_images">short article</a> on how to achieve global CSS, Javascript and Images using CakePHP.  It was and still is a great way of sharing your assets between mutiple Cake applications, but it was only really touched upon slightly and still needed additional tweaking.
+
+Well, CakePHP 1.2 has done just that and made it soooo easy to share your assets between apps.
+
+Simply forget about my <a href="http://joelmoss.info/switchboard/blog/2028:Cakes_global_CSS_Javascript_and_images">previous method</a> and make sure you are using the 1.2 pre release of CakePHP. Now in your top Vendors directory you should notice a couple of new directories: css and js. Simply place your shared CSS files in the css directory and do the same for your javascript files, placing them in the js directory.
+
+That my friends, is it!
+
+Whenever you call a CSS or javascript file from within your views, Cake will first look for that file in your app's webroot. If it can't find it, it will look in your top vendors directory and include it if found.
+
+Zero configuration and no hacking!! Enjoy ;)

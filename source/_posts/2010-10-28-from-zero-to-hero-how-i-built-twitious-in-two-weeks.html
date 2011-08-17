@@ -1,0 +1,21 @@
+---
+layout: post
+title: "From Zero to Hero: How I built Twitious in Two Weeks"
+date: 2010-10-28
+comments: true
+categories: articles
+---
+
+<p>... and that wasn't even part time!</p>
+
+<p>I've been using <a href="http://twitter.com/joelmoss">Twitter</a> for quite a while now, and I have quickly found that every time I come across a site or web page of interest - I will tweet it.  And quite often, I have found myself either forgetting to add these links to my bookmarks in Firefox, or just not bothering. But that's not good, as also quite often, I remember I tweeted a link that I need to refer back to, but just can't remember the damn thing.</p>
+
+<p>Twitter has become my primary means of bookmarking. But there is a problem with that - Twitter doesn't give me an easy way to see all those bookmarks. It is for that reason that I promptly set about building a web app that will make it easy for me to find all my tweeted links and organise them by hashtags.</p>
+
+<p>I came up with the idea of <a href="http://twitious.com">Twitious</a> just two weeks ago, and it went live just three days ago, and now now has over 15,000 bookmarks! An achievement that I am extremely proud of. Don't get me wrong, it's not a complex app, but everything <a href="http://twitious.com">you see</a> was created from scratch by myself - part time. I have a very busy full time freelance job remember. Not to mention <a href="http://twitious.com">Codaset</a>.</p>
+
+<p>The app was built with Rails 3 on Ruby 1.9.2. I originally had intended to use <a href="http://mongodb.org">MongoDB</a> as the data backend, but settled with the tried and tested MySQL setup. Simply because I didn't actually see a reason not to. It's running on an Ubuntu slice at <a href="http://slicehost.com">Slicehost</a>, under Nginx and Passenger 3. In fact, pretty much every part of the stack is the latest and greatest, which was really fun to do. (no legacy shit to deal with)</p>
+
+<p>Obviously, the app communicates with the Twitter API quite a lot, as every time a user signs up for Twitious, the app needs to scan through the users entire timeline, and parse out any links and hash tags. And it also needs to do that on a regular basis to ensure Twitious shows the latest links from each users tweets. I needed to run all this as background tasks via some sort of queueing system. This was a bit of a no-brainer too. I went with my trusted old friend; <a http://github.com/defunkt/resque>Resque</a>, which I already use with Codaset.</p>
+
+<p>There is plenty more that I want to do with Twitious, but I think it's already a really efficient way to create and manage your bookmarks; especially if you are already using Twitter. So please feel free to check out <a href="http://twitious.com">Twitious</a> and sign up. It's completely free, so why the hell not! And I would love to know what you think.</p>

@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
+url: http://developwithstyle.com
+title: Develop With Style
 subtitle: A blogging framework for hackers.
-author: Your Name
+author: Joel Moss
 simple_search: http://google.com/search
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)

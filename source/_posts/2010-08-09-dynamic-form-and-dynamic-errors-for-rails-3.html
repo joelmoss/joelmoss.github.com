@@ -1,0 +1,17 @@
+---
+layout: post
+title: Dynamic Form and Dynamic Errors for Rails 3
+date: 2010-08-09 9:00
+comments: true
+categories: articles
+---
+
+<p>Rails 3 is awesome! <strong>BUT</strong>...</p>
+
+<p>For some unknown reason, the powers that be decided to remove the <code>error_message_on</code> and <code>error_messages_for</code> form helpers. I'm not sure about every one else, but I use these in pretty much every single form that I create, so I just have no idea why it was removed.</p>
+
+<p>Fortunately, all is not lost. The code for these helpers was extracted out into a plugin called <a href="http://github.com/rails/dynamic_form">dynamic_form</a>. But unfortunately it doesn't seem to have been kept up to date, as the last commit was back on June 12th. Running the tests failed all over the place, simply because the HTML returned has changed slightly in the release candidate. So I took it upon myself to <a href="http://codaset.com/joelmoss/dynamic-form/">fork the code</a> and managed to get the tests passing with Rails 3 RC. I then also packaged it up into a <a href="http://rubygems.org/gems/dynamic_form">Gem</a> which you can <a href="http://rubygems.org/gems/dynamic_form">grab now and install</a> in your Rails 3 app.</p>
+
+<p>My next task was to get the <a href="http://github.com/jeremydurham/custom-err-msg/">custom-err-msg</a> plugin working with Rails 3. But rather than fix and refactor that as it is, I decided to simply integrate it into the <a href="http://codaset.com/joelmoss/dynamic-form">dynamic_form</a> plugin, as it's functionality is closely related.</p>
+
+<p>So the <a href="http://codaset.com/joelmoss/dynamic-form">dynamic_form</a> plugin has been enhanced a little, so please install and let me know what you think. I've put in a pull request to the official dynamic_form repo, so hopefully they will accept that soon. But in the meantime, you can still use my version by simply running <code>gem install dynamic_form</code> or adding to your Gemfile (if you are using Bundler) <code>gem "dynamic_form"</code>.</p>
