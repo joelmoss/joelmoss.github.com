@@ -34,14 +34,14 @@ $indented-lists: false !default;
     margin-left: 5%;
     &.first { margin-left: 0; }
   }
+  header { display: none; }
 }
 
 body {
   -webkit-text-size-adjust: none;
-  max-width: $max-width;
   position: relative;
   margin: 0 auto;
-  > header, > nav, > footer, #content > article, #content > div > article, #content > div > section, nav[role=pagination] {
+  #content > header, > nav, > footer, #content > article, #content > div > article, #content > div > section, nav[role=pagination] {
     @extend .group;
     padding-left: $pad-min;
     padding-right: $pad-min;
@@ -58,7 +58,7 @@ body {
       padding-right: $pad-wide;
     }
   }
-  > header {
+  #content > header {
     font-size: 1em;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
@@ -72,6 +72,19 @@ aside[role=sidebar] {
   padding: 0 $pad-min 1px;
   background-color: lighten($sidebar-bg, 2);
   border-top: 1px solid $sidebar-border;
+  > header {
+    h1 {
+      display: inline-block;
+      margin: 25px 0 0 0;
+      a {
+        background: #f2f2f2 url(/images/logo_v.gif) no-repeat scroll top left;
+        text-indent: -9999px;
+        display: block;
+        width: 212px;
+        height: 94px;
+      }
+    }
+  }
   @extend .group;
 }
 
@@ -86,20 +99,22 @@ body.sidebar-footer {
 }
 
 @media only screen and (min-width: 550px) {
-  body > header { font-size: 1em; }
+  aside[role=sidebar] > header { display: none; }
+  #content > header { display: block; }
 }
 @media only screen and (min-width: 750px) {
   aside[role=sidebar] { @include collapse-sidebar; }
+  #content > header { display: block; }
 }
 @media only screen and (min-width: 768px) {
   body { -webkit-text-size-adjust: auto; }
-  body > header { font-size: 1.2em; }
   #main {
     @extend .group;
     padding: 0;
     margin: 0 auto;
   }
   #content {
+    > header { display: none; }
     @extend .group;
     margin-right: $sidebar-width-medium;
     position: relative;
@@ -126,13 +141,24 @@ body.sidebar-footer {
     .collapse-sidebar & {
       @include collapse-sidebar;
     }
+    > header {
+      display: block;
+      h1 {
+        margin: 40px 0 0 0;
+        a {
+          background-image: url(/images/logo_v_sm.gif);
+          width: 159px;
+          height: 71px;
+        }
+      }
+    }
   }
 }
 
 @media only screen and (min-width: 992px) {
-  body > header { font-size: 1.3em; }
   #content { margin-right: $sidebar-width-wide; }
   #content {
+    > header { display: none; }
     > div, > article {
       padding-top: $pad-wide/2;
       padding-bottom: $pad-wide/2;
@@ -144,6 +170,14 @@ body.sidebar-footer {
     .collapse-sidebar & {
       padding: { left: $pad-wide; right: $pad-wide; }
       @extend .group;
+    }
+    > header h1 {
+      margin: 25px 0 0 0;
+      a {
+        background-image: url(/images/logo_v.gif);
+        width: 212px;
+        height: 94px;
+      }
     }
   }
 }
