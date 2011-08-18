@@ -1,0 +1,629 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/articles/page/6/index.html"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/DevelopingWithStyle" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/DevelopingWithStyle" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="">Home</a></li>
+  <li><a href="/articles">Blog</a></li>
+  <li><a href="http://twitter.com/joelmoss">Twitter</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header>
+      <div class="blog-index">
+
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2009/03/23/enhanced-controller-callbacks-for-cakephp/">Enhanced Controller Callbacks for CakePHP</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2009-03-23 00:00:00 +0000" pubdate  updated >Mar 23<span>rd</span>, 2009</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I had this idea a while ago, and actually implemented it into a Cake project, but it was a bit hacky and required hacking the core. So I didn&#8217;t like it. But today, I had a need for this same functionality, so I had a little think about how I could implement it without hacking the core, and thus was born the <a href="http://codaset.com/joelmoss/cakephp-callbacks">Callbacks plugin</a> for CakePHP.</p>
+
+
+
+
+<p>If any of you have ever used Ruby on Rails, you should be familiar with its callback system. Well, it was this system that I needed.  I just started fleshing out a new Cake app, and needed to run a <em>beforeFilter</em> callback on a couple of specific controller actions. Of course, I could do this:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class MyController extends AppController {
+</div><div class='line'>    function beforeFilter() {
+</div><div class='line'>        if ($this->params['action'] == 'index' || $this->params['action'] == 'view') {
+</div><div class='line'>            # do something here that only the 'index' and 'view' actions need
+</div><div class='line'>        }
+</div><div class='line'>    }
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>But that&#8217;s just not very elegant, and will get pretty messy the more you do it. So I came up with the Callback plugin, which is basically a simple component that provides some sweetly fine grained control over your callbacks. So now I can do this instead:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class MyController extends AppController {
+</div><div class='line'>      var $beforeFilter = array('myCallback');
+</div><div class='line'>
+</div><div class='line'>      function _myCallback() {
+</div><div class='line'>          # do something here
+</div><div class='line'>      }
+</div><div class='line'>  }</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>and I can even call several callbacks, each with their own methods:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+<span class='line'>12</span>
+<span class='line'>13</span>
+<span class='line'>14</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class MyController extends AppController {
+</div><div class='line'>      var $beforeFilter = array('myCallback', 'anotherCallback', 'andAnotherOne');
+</div><div class='line'>
+</div><div class='line'>      function _myCallback() {
+</div><div class='line'>          # do something here
+</div><div class='line'>      }
+</div><div class='line'>
+</div><div class='line'>      function _anotherCallback() {
+</div><div class='line'>          # do something here
+</div><div class='line'>      }
+</div><div class='line'>
+</div><div class='line'>      function _andAnotherOne() {
+</div><div class='line'>          # do something here
+</div><div class='line'>      }</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Now the above is lovely and all, but it doesn&#8217;t really provide any extra functionality above what Cake already provides. So far, my code just looks cleaner. What I really want to do is only run the <em>anotherCallback</em> when calling the <em>index</em> action. So I change the $beforeFilter param:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class MyController extends AppController {
+</div><div class='line'>      var $beforeFilter = array(
+</div><div class='line'>          'myCallback',
+</div><div class='line'>          'anotherCallback' => array(
+</div><div class='line'>              'only' => 'index'
+</div><div class='line'>          )
+</div><div class='line'>          'andAnotherOne'
+</div><div class='line'>      );</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Much better! I can also specify to run a callback on all actions, except the &#8216;delete&#8217; action:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class MyController extends AppController {
+</div><div class='line'>      var $beforeFilter = array(
+</div><div class='line'>          'anotherCallback' => array(
+</div><div class='line'>              'except' => 'delete'
+</div><div class='line'>          )
+</div><div class='line'>      );</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Even better! But still I wanted more!</p>
+
+
+
+
+<p>I wanted to be able to add even more control, and only run a callback if a certain condition is/not met:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class MyController extends AppController {
+</div><div class='line'>      var $beforeFilter = array(
+</div><div class='line'>          'anotherCallback' => array(
+</div><div class='line'>              'if' => 'ifTrue'
+</div><div class='line'>          )
+</div><div class='line'>      );
+</div><div class='line'>
+</div><div class='line'>      function _ifTrue() {
+</div><div class='line'>          # do something here and return true for the callback to run
+</div><div class='line'>          return true;
+</div><div class='line'>      }</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>So the <em>anotherCallback</em> callback will now only run if the <em>_ifTrue</em> method returns true. Lovely!</p>
+
+
+
+
+<p>Right now it supports the three main controller callbacks: beforeFilter, beforeRender and afterFilter. The plan is to provide the same functionality to Models.</p>
+
+
+
+
+<p>You can checkout the code from Codaset repo at <a href="http://codaset.com/joelmoss/cakephp-callbacks">http://codaset.com/joelmoss/cakephp-callbacks</a>. Feel free to fork away!</p>
+
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2009/03/23/enhanced-controller-callbacks-for-cakephp/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2009/02/09/cake-nibbles-4/">Cake Nibbles #4</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2009-02-09 00:00:00 +0000" pubdate  updated >Feb 9<span>th</span>, 2009</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It&#8217;s been too long, but here&#8217;s another handful of nibbles for your CakePHP applications and development.</p>
+
+<p><strong>Plugin Server</strong></p>
+
+<p>After some great improved support for re-usable plugins in Cake 1.2, and Gwoo&#8217;s <span style="text-decoration: line-through;">announcement</span> mention at last years CakeFest in Florida; we are now starting to see some evidence of a fabled plugin server. The idea, is that after installing a small Cake shell in your vendors directory, you would be able to install a selection of official and unoffical Cake plugins into your application via the command line. So no need to manually download, unzip and copy files into your plugins directory, as the shell would do it for you. The actual server code is also planning on becoming publicly available, so that we can all host our own CakePHP plugin server.</p>
+
+<p>You can test the first release at <a href="http://plugins.thoughtglade.com">http://plugins.thoughtglade.com</a></p>
+
+<p>I gotta say, that I love this idea, and would really help in spreading the word. Not to mention, make it easier to use Cake and its increasing selection of plugins. I just wish that there would be a similar way to install Cake. There are some great things to be said about systems such as Pear, which would allow you to install the Cake core in a central place on your machine. Then create apps anywhere else on the same machine.</p>
+
+<p><strong>CakePHP 1.2.1</strong></p>
+
+<p>Hot on the heals on the final release of CakePHP 1.2, comes a bug fix and security release. 1.2.1 includes a few bug fixes, but most importantly, fixes a nasty security risk in 1.2. So please <a href="http://cakephp.org/">upgrade</a> as soon as you can.</p>
+
+<p><strong>API Viewer</strong></p>
+
+<p>Up until now, the Cake API left a lot to be desired. But after some frustrations with Doxygen, Core developer Mark Story led the charge to create a Cake based API generator. And man did he do a great job. Check out the new API viewer now at <a href="http://api.cakephp.org">http://api.cakephp.org</a>, or check out and use the code at <a href="http://thechaw.com/api_generator">http://thechaw.com/api_generator</a></p>
+
+<p><strong>DebugKit Moves home</strong></p>
+
+<p>And just a quick reminder that the excellent DebugKit plugin has moved to a new home at The Chaw: <a href="http://thechaw.com/debug_kit">http://thechaw.com/debug_kit</a> - Don&#8217;t leave home without it!</p>
+
+<p><strong>CakePHP Twitter Timeline</strong></p>
+
+<p>This just in, you can now see all the buzz and twitterrings about Cake in a very pleasing way: <a href="http://cakealot.com/cakephp-timeline.html">http://cakealot.com/cakephp-timeline.html</a></p>
+
+<p><strong>BedPosted</strong></p>
+
+<p>And this is just great. A web app which you can use to keep track of your sex life. Haven&#8217;t you always wondered how often you scored this past month, or would like to see a rolling sex history of your life? Well worry no more, coz some bright spark has done just that, and it&#8217;s all done with CakePHP. Check out <a href="http://www.bedposted.com/">BedPost</a>.</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2009/02/09/cake-nibbles-4/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2008/12/27/and-finally-cakephp-12-is-stable-and-final/">And Finally&#8230; CakePHP 1.2 Is Stable and Final!</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2008-12-27 00:00:00 +0000" pubdate  updated >Dec 27<span>th</span>, 2008</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Just a quick one, as I am sure that you have already <a href="http://bakery.cakephp.org/articles/view/the-gift-of-1-2-final">read</a>, but I am extremely pleased to tell you all that CakePHP has been released as a final and stable release. This means no more alpha&#8217;s, beta&#8217;s or release candidates. <a href="http://cakephp.org">Get it while it is hot</a>, as it is very HOT!</p>
+
+<p>Big congrats go to Nate, Gwoo and all the core team. Well done guys! On to 1.3&#8230;</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2008/12/27/and-finally-cakephp-12-is-stable-and-final/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2008/12/19/cake-nibbles-3/">Cake Nibbles #3</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2008-12-19 00:00:00 +0000" pubdate  updated >Dec 19<span>th</span>, 2008</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This will be a short edition of Cake Nibbles, and I suppose, a bit of a Christmas special.</p>
+
+<p><strong>CakePHP RC4 Released</strong></p>
+
+<p>First up, and the reason for this short, but special edition, is that last nights <a href="http://bakery.cakephp.org/articles/view/rc4-close">announcement</a> of release candidate 4. Even though RC3 was announced as being the last RC before a stable version of CakePHP 1.2, it seems that this new release is actually the last RC. I&#8217;ve mentioned this before, but I really wish that the core team would adhere more to the <em>&#8220;release often, release early&#8221;</em> principle. I really don&#8217;t see how Cake could become any more stable, and unfortunately don&#8217;t think we have any chance of seeing a final stable release by Christmas. But I am encouraged by Nate&#8217;s promise of a final release &#8220;very soon&#8221; after this release. We shall see&#8230;</p>
+
+<p><strong>CakeBattles</strong></p>
+
+<p><a href="http://www.jamesfairhurst.co.uk">James Fairhurst</a> continues to impress. He just <a href="http://www.jamesfairhurst.co.uk/posts/view/introducing_cakebattles">announced</a> and released another fun application built with Cake.</p>
+
+<blockquote><a href="http://cakebattles.jamesfairhurst.co.uk/">CakeBattles</a> is an online application that allows Contenders to be pitted against each and allows users to vote on who/what would win. Each Contender can be assigned to multiple Tags which are used to create battles with similar Contenders. Each Contender can also have multiple images and these are displayed at random to keep the battles fresh.</blockquote>
+
+
+<p>I wish I could just write a fun little app, But instead I find myself drawn to very large and complex apps, that I never seem to get finished. Fun to do, but all a little pointless if they never get finished. So hats off to James.</p>
+
+<p>And that&#8217;s about it for now. All that remains for me to do now, is to wish and yours a very Merry Christmas and a happy new year. Have a good one!</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2008/12/19/cake-nibbles-3/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2008/12/04/cakephp-plugins-that-love-git/">CakePHP Plugins That Love Git</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2008-12-04 00:00:00 +0000" pubdate  updated >Dec 4<span>th</span>, 2008</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Since the announcement of the <a href="http://github.com/cakephp/debug_kit">DebugKit plugin</a>, and its source control taking place on <a href="http://github.com">Github</a>, there have been a slew of Cake users placing their code under Git control, in particular, on Github. So I thought I would give you all a run down of the great and good in Cake/Git land.</p>
+
+<p><a href="https://github.com/joelmoss/cakephp-db-migrations"><strong>DB Migrations</strong></a></p>
+
+<p>Oh come on! You didn&#8217;t really think I wouldn&#8217;t mention this one did ya? The easiest and best way to manage your database schema has been Gittified for a few months now. And already the new wiki has received contributions from people other than me.</p>
+
+<p><a href="http://github.com/joelmoss/cakephp-namedscope"><strong>Named Scope</strong></a></p>
+
+<p>Last one of mine - I promise! Inspired by a Ruby on Rails feature, Named Scope is actually a very powerful and useful addition to Cake. I&#8217;ve started to use it extensively in my Cake apps. You really should check it out. You&#8217;ll wonder how you ever got by without it.</p>
+
+<p><a href="http://github.com/cakephp/debug_kit"><strong>Debug Kit</strong></a></p>
+
+<p>Probably the most popular Cake repo controlled by Git and Github, this extremely useful plugin places a small bar at the top right of your app&#8217;s pages, presenting you with debugging data, such as your DB log, view variables, and params. This should be part of the core, and is the best example of how Git can really help with developing open source code, and encouraging others to contribute. It has already been forked several times.</p>
+
+<p><a href="http://github.com/rafaelbandeira3/cakephp-plugins"><strong>Rafael Bandeira&#8217;s Plugins</strong></a></p>
+
+<p><em>Rafael Bandeira</em> created a couple of model behaviors, and has made them available on Github for all to see. One in particular sticks out and impresses, and that is the <a href="http://github.com/rafaelbandeira3/cakephp-plugins/tree/master/behaviors%2Flazy_loader.php">Lazy Loader behavior</a>. This will allow you to get related model data with simple, readable and nice method calls. <a href="http://rafaelbandeira3.wordpress.com/2008/11/21/lazy-loader-behavior-what-you-need-when-you-need-the-way-you-want/">His blog</a> explains more.</p>
+
+<p><a href="http://github.com/klevo/wildflower"><strong>Wildflower</strong></a></p>
+
+<p>Wildflower is a very promising &#8220;Content management system and application platform built on the CakePHP framework and jQuery Javascript library&#8221;. I actually discovered this after a tip from Nate. If handled well, this could mean good things for Cake.</p>
+
+<p><a href="http://github.com/markstory/story-scribbles/tree/master/cakephp"><strong>Story Scribbles</strong></a></p>
+
+<p>Cake&#8217;s very own <em>Mark Story</em> now has a Github repo full of lovely little Cake &#8216;scribbles&#8217;. Enjoy things such as his ACL based Menu component, web service behavior and his Geshi helper.</p>
+
+<p><a href="http://github.com/felixge/debuggable-scraps/tree/master/cakephp"><strong>Felix&#8217;s Scraps</strong></a></p>
+
+<p>Another bunch of Cake bits and bobs, but this time from <em>Felix Geisendorfer</em>, he of <a href="http://debuggable.com/">Debuggable</a> fame. What interests me the most is his collection of datasources, allowing you to connect your Cake apps to external services such as Akismet, Amazon and Google.</p>
+
+<p>These are just what I feel are the pick of the crop, but there is <a href="http://github.com/search?q=cakephp">a lot more</a> than I originally thought on Github, including an <a href="http://github.com/georgious/cakephp-yaml-migrations-and-fixtures">alternative migrations shell</a>, that doesn&#8217;t rely on Pear, and that just might spur me on to get rid of my reliance on the MDB2 library.</p>
+
+<p>The Cake community seems to be loving Git right now. I only wish the powers that be will make that decision to switch.</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2008/12/04/cakephp-plugins-that-love-git/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2008/11/26/cake-nibbles-2/">Cake Nibbles #2</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2008-11-26 00:00:00 +0000" pubdate  updated >Nov 26<span>th</span>, 2008</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Welcome to the second edition of Cake Nibbles; where I tell you all about the latest goings-on in the world of CakePHP.</p>
+
+<p><strong>Cook Book goes open source</strong></p>
+
+<p>First up is the news that the <a href="http://book.cakephp.org/">Cake Cook Book</a> has been <a href="http://thechaw.com/cakebook">open sourced</a>. The best part of this news is that it uses Git and not Subversion for its source control. This is great news for the Cake community, and what is even greater is mentioned next&#8230;</p>
+
+<p><strong>Chew on The Chaw</strong></p>
+
+<p>I was a little puzzled at that one as well, and to be honest I still am. But as you may have noticed, the CookBook was released on a new service called <a href="http://thechaw.com/">The Chaw</a>. The Chaw is similar to <a href="http://github.com">GitHub</a>, in that it lets you host your Git repositories, and manage them online. But what sets The Chaw apart from Github, is that it also provides a ticketing/issue management system, which is something that Github sorely lacks. So apart from the name (what the hell is a Chaw?), this is great news.</p>
+
+<p><strong>CakeFest #2</strong></p>
+
+<p>December 2nd, will see the start of <a href="http://cakefest.org/">CakeFest #2</a>. The second official CakePHP conference will take place in Buenos Aires, Argentina between December 2nd and 5th, and is looking every bit as promising as the first CakeFest was in Orlando earlier this year.</p>
+
+<p><strong>New release of ModelBaker and appearance at MacWorld</strong></p>
+
+<p>A few months ago I <a href="http://developingwithstyle.com/articles/2008/09/06/modelbaker-a-desktop-application-for-building-cakephp-applications.html">blogged</a> about a promising new Mac application called <a href="http://www.widgetpress.com/">ModelBaker</a>. Well, a new release has just been announced, as well as news that ModelBaker will be in attendance at MacWorld Conference in January. Of course, it is still in closed Beta, but I do have access to that, and still intend to provide a short review and more info on that as soon as I can.</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2008/11/26/cake-nibbles-2/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+<nav role="pagination">
+  <div>
+    
+      <a class="prev" href="/articles/page/7/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/articles/page/5/">Newer &rarr;</a>
+    
+  </div>
+</nav>
+
+<script type="text/javascript">
+    var disqus_shortname = 'dws';
+    (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+</div>
+<aside role=sidebar>
+  
+    <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header><section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>

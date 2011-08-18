@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/articles/page/11/index.html"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/DevelopingWithStyle" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/DevelopingWithStyle" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="">Home</a></li>
+  <li><a href="/articles">Blog</a></li>
+  <li><a href="http://twitter.com/joelmoss">Twitter</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header>
+      <div class="blog-index">
+
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2007/12/26/my-first-accepted-cakephp-patch/">My First Accepted CakePHP Patch</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2007-12-26 00:00:00 +0000" pubdate  updated >Dec 26<span>th</span>, 2007</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A few weeks ago, I submitted a <a href="https://trac.cakephp.org/ticket/3587">patch and test</a> to the CakePHP trac, that added support for multiple resource routes. It was something I needed for my use, but was such an easy fix, I thought I would create a ticket and see if the Cake core team decide to add it to the core.</p>
+
+<p>To be honest, I wasn&#8217;t hopeful. But yesterday, my patch was added right into the core and is <a href="https://trac.cakephp.org/changeset/6257">now available</a> in the 1.2 branch. Woohoo!</p>
+
+<p>I didn&#8217;t have any plans to submit any more patches or tickets, but this little piece of news just might spur me on to do more.</p>
+
+<p>Another good thing to come out of this, was my first taste of unit testing. The path I submitted, also included a test case which worked perfectly. I am pretty sure that the inclusion of that test, helped my patch become included in the core.</p>
+
+<p>So I think I feel more testing coming along. I might even contemplate writing a patch for migrations. But I wouldn&#8217;t expect that to appear in the core, as I have been told that the core team don&#8217;t like YAML.</p>
+
+<p>But ya never know ;)</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2007/12/26/my-first-accepted-cakephp-patch/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2007/12/09/cake-no-longer-uses-its-own-shortcuts/">Cake No Longer Uses Its Own Shortcuts</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2007-12-09 00:00:00 +0000" pubdate  updated >Dec 9<span>th</span>, 2007</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Well it appears that Cake no longer uses its own function shortcuts within the core. As of <a href="https://trac.cakephp.org/changeset/6128">changeset 6128</a> all usage of the good old low/up, am, r and friends, are no longer used within the core. However, these functions still exist for you to use in your own code.</p>
+
+<p>So the question I ask is; why are these functions no longer good enough for the core? Are they soon to be deprecated? (I hope not).</p>
+
+<p>It&#8217;s an interesting move nevertheless.</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2007/12/09/cake-no-longer-uses-its-own-shortcuts/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2007/10/23/cakephp-12-pre-beta/">CakePHP 1.2 Pre-Beta!?</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2007-10-23 00:00:00 +0100" pubdate  updated >Oct 23<span>rd</span>, 2007</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Well <a href="http://joelmoss.info/switchboard/blog/3079:Is_CakePHP_12_Beta_on_the_horizon">I was almost right</a>. Yesterday saw <a href="http://bakery.cakephp.org/articles/view/new-cakephp-releases">another release of CakePHP 1.2</a>, but instead of being another alpha, or even a beta that I was expecting, this release has been marked as a &#8220;Pre-Beta&#8221;. Which really means it&#8217;s another Alpha release. But, according to the CakePHP site and Nate - one of Cake&#8217;s core devs &#8230;</p>
+
+<blockquote>At this point we&#8217;re done adding new features, but we do still have a couple of features which I consider critical to this release that still need a little clean-up.  So, rather than have that hold us up any longer, we decided to do a quick push on the bug fixes and get a release out.</blockquote>
+
+
+<p>Some of the changes are really nice and much better that before. I am loving the REST support and resources. And you can now see the beginnings of the new 1.2 Manual at <a href="http://tempdocs.cakephp.org/">http://tempdocs.cakephp.org/</a>.</p>
+
+<p>So even though we are not quite at the Beta stage, things are still looking up, and I am hoping to see the first beta released some time in November - but don&#8217;t quote me on that! Hey, we might even see a release candidate by Christmas!</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2007/10/23/cakephp-12-pre-beta/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2007/10/21/is-cakephp-12-beta-on-the-horizon/">Is CakePHP 1.2 Beta on the Horizon?</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2007-10-21 00:00:00 +0100" pubdate  updated >Oct 21<span>st</span>, 2007</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>There has been a flurry of activity in the CakePHP Subversion repository these last few days, including a whole bunch of changes merged into the 1.2 trunk. So the question I am asking myself is, can we expect to see the appearance of a solid beta version sometime soon?  I certainly hope so! I&#8217;ll keep you posted.</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2007/10/21/is-cakephp-12-beta-on-the-horizon/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2007/10/14/are-you-any-good-at-php-and-cake/">Are You Any Good at PHP and Cake?</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2007-10-14 00:00:00 +0100" pubdate  updated >Oct 14<span>th</span>, 2007</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Over at ShermansTravel.com, we are desperate for help, and are looking to employ a few more quality tech&#8217;s. So if you meet the following requirements and want to work in the heart of Manhattan, as part of a great team, in a well established company, then please email me directly at jmoss [at] shermanstravel [dot] com</p>
+
+<p>Here are the job qualifications, we have a couple of spots open:</p>
+
+<ul>
+	<li>In-depth knowledge of front-end and back-end technologies.</li>
+	<li>Advanced understanding of PHP 5, object-oriented design principles, and
+database design.</li>
+	<li>Expert understanding of JavaScript, HTML, CSS, and the DOM (AJAX).</li>
+	<li>Experience with PHP frameworks (Cake) is a plus.</li>
+	<li>Experience with Ruby on Rails is a plus.</li>
+	<li>Experience with test driven development is a plus.</li>
+	<li>Love of open source development and standards-based development.</li>
+	<li>Strong communication skills and attention to detail.</li>
+	<li>Able to multi-task and project manage well.</li>
+</ul>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2007/10/14/are-you-any-good-at-php-and-cake/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2007/10/05/integrating-subversion-into-basecamp-and-campfire/">Integrating Subversion Into Basecamp and Campfire</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2007-10-05 00:00:00 +0100" pubdate  updated >Oct 5<span>th</span>, 2007</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For the last few days, I have been thinking about how me and the team around me can improve productivity and communications when developing. Currently, the system we use is a little disjointed, and utilizes several different systems and solutions. Fortunately one such solution is <a href="http://basecamphq.com">Basecamp</a>, which happens to be one of the best around and has been in use by the company for a while now. So after spending a little time with the web based application, I realised that it should be able to do, or at least manage everything we do.</p>
+
+<p>So last night I sat down and played with the <a href="http://developer.37signals.com/basecamp">Basecamp API</a>, to see what could be done with it. And I came up with a post-commit hook for <a href="http://subversion.tigris.org/">Subversion</a>, that posts a message for each subversion commit. This message tells me the change log, what files were changed, and who made the commit. So now we can all see and receive Basecamp notices for every single changeset.</p>
+
+<p>We have also started using <a href="http://www.campfirenow.com/">Campfire</a>, so I then had a little play with <a href="http://opensoul.org/2006/12/8/tinder-campfire-api">Tinder</a>; Campfire&#8217;s unofficial API, and added some more code to the Subversion hook. So as well as creating a message in Basecamp detailing each Changeset, the same changeset is also posted in the appropriate Campfire room. So we have a real time view of our development progress.</p>
+
+<p>So here is the code. It&#8217;s all in Ruby, as it was easy peasy. And it utilises the Basecamp API Wrapper.</p>
+
+<pre lang="ruby"><code>
+%w( rubygems tinder basecamp ).each { |f| require f }
+
+config = {
+:subdomain =&gt; 'My-Subdomain', # Campfire and Basecamp subdomain
+:email =&gt; 'user@mydomain.com', # Campfire email login
+:username =&gt; 'username', # Basecamp username
+:pass =&gt; 'password',
+:room =&gt; 'Development', # Campfire room
+:project_id =&gt; 12345, # Basecamp project id
+:category_id =&gt; 678910, # Basecamp message category ID
+:ssl =&gt; true
+}
+
+svnlook = '/usr/bin/svnlook' # full path to the svnlook command
+repo_path = ARGV[0]
+revision = ARGV[1]
+project = repo_path.split('/').last
+
+commit_author = `#{svnlook} author #{repo_path} -r #{revision}`.chop
+commit_log = `#{svnlook} log #{repo_path} -r #{revision}`
+commit_files = `#{svnlook} changed #{repo_path} -r #{revision}`
+
+# create a message in basecamp
+basecamp = Basecamp.new("#{config[:subdomain]}.projectpath.com", config[:username], config[:pass], true)
+basecamp.post_message config[:project_id], {
+:title =&gt; "Changeset ##{revision}",
+:body =&gt; "#{commit_author} just committed changeset ##{revision}...\n\n&lt;blockquote&gt;&lt;pre&gt;#{commit_log}\n#{commit_files}&lt;/pre&gt;&lt;/blockquote&gt;",
+:category_id =&gt; config[:category_id]
+}
+
+# create a message in campfire
+campfire = Tinder::Campfire.new(config[:subdomain], :ssl =&gt; config[:ssl])
+campfire.login config[:email], config[:pass]
+room = campfire.find_room_by_name config[:room]
+room.speak "#{commit_author} just committed changeset ##{revision}..."
+room.paste "#{commit_log}\n#{commit_files}"
+</code></pre>
+
+
+<p>Simply copy and paste this into a file called &#8216;post-commit.rb&#8217; and save that in your subversion repository&#8217;s hooks directory. Don&#8217;t forget to set its permissions as required (chmod 755 on linux/unix). Then create another file in your hooks directory and call it &#8216;post-commit&#8217; and do the same with the permissions. In the &#8216;post-commit&#8217; file, paste the following code:</p>
+
+<pre lang="sh"><code>#!/bin/sh
+
+REPOS="$1"
+REV="$2"
+
+ruby /Users/joelmoss/dev/src/testing/hooks/campfire.rb "$REPOS" "$REV"
+</code></pre>
+
+
+<p>If &#8216;post-commit&#8217; already exists, just append the last line above to the end of the file.</p>
+
+<p>You will then need to install a few Ruby Gems. Namely Tinder and XML-Simple. So just run the following command:</p>
+
+<pre><code>sudo gem install tinder xml-simple --include-dependencies
+</code></pre>
+
+
+<p>And finally, you will need the <a href="http://developer.37signals.com/basecamp/basecamp.rb">Basecamp API wrapper</a>. You can get that at <a href="http://developer.37signals.com/basecamp/basecamp.rb">http://www.basecamphq.com/api/basecamp.rb</a>. Save that in somewhere in your Ruby path. Ideally, that would be in your &#8216;site<em>ruby&#8217; directly. On my Mac, that is at &#8216;/usr/local/lib/ruby/site</em>ruby/1.8/&#8217;.</p>
+
+<p>And now you should be good to go. As long as you have enabled the API in your Basecamp and your settings are correct, whenever anyone makes a commit to Subversion, you will all be able to see it in Basecamp and Campfire.</p>
+
+<p>I plan to do more with this, as we will need a better bug management system, as Bugzilla is just so damn ugly. But I will leave that to another post.</p>
+
+<p>Enjoy!</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2007/10/05/integrating-subversion-into-basecamp-and-campfire/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+<nav role="pagination">
+  <div>
+    
+      <a class="prev" href="/articles/page/12/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/articles/page/10/">Newer &rarr;</a>
+    
+  </div>
+</nav>
+
+<script type="text/javascript">
+    var disqus_shortname = 'dws';
+    (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+</div>
+<aside role=sidebar>
+  
+    <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header><section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>

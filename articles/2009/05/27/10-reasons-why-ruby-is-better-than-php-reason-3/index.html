@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style: 10 Reasons why Ruby is better than PHP - Reason #3</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/articles/2009/05/27/10-reasons-why-ruby-is-better-than-php-reason-3/"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/DevelopingWithStyle" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/DevelopingWithStyle" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="">Home</a></li>
+  <li><a href="/articles">Blog</a></li>
+  <li><a href="http://twitter.com/joelmoss">Twitter</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header>
+      <div>
+<article class="hentry">
+  
+  <header>
+    
+      <h1 class="entry-title">10 Reasons Why Ruby Is Better Than PHP - Reason #3</h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2009-05-27 00:00:00 +0100" pubdate  updated >May 27<span>th</span>, 2009</time>
+
+
+</p>
+    
+  </header>
+
+
+<div class="entry-content"><p>So onwards and upwards! It appears that I still have a little work to do to convince you non-believers, so lets try again&#8230;</p>
+
+
+
+
+<p>As <a href="http://developingwithstyle.com/articles/2009/05/21/10-reasons-why-ruby-is-better-than-php-reason-2.html">previously mentioned</a>, Ruby has some features that simply cannot be found in many other languages, let alone PHP. So here I introduce yet another one, and this is a biggie. But, please be warned that this one is a little harder to explain, so please be bear with me as I attempt to enlighten you.</p>
+
+
+
+
+<p>Some of you may have heard of a language feature known in computer science as <em>closures</em>. If you have done any Javascript development, you should be familiar with closures, but may not know them by name. Ruby uses closures extensively, but refers to them simply as <em>blocks</em>. Which is actually easier to understand.</p>
+
+
+
+
+<p>Many developers seem to think that blocks are somewhat of an obscure language feature, as they are pretty hard to find an equivalent in other languages. PHP is not the only language without support for blocks, but you should understand them, as they can be very useful, and quite powerful.</p>
+
+
+
+
+<p>Although there is no direct translation of blocks in PHP, we can make some analogies to PHP that will help us understand and become familiar with blocks, and how they are useful. Lets use PHP to start a family:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>function start_family($num) {
+</div><div class='line'>  echo "There are now $num kids in my family"
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>for ($kids = 99; $kids &gt; 0; $kids--) {
+</div><div class='line'>  start_family($kids);
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>When the above code is executed, PHP evaluates the condition in the for loop, which calls the <code>start_family</code> function on each iteration.</p>
+
+
+
+
+<p>The <code>for</code> and <code>function</code> keywords are built-in constructs of PHP, in the same way that semi-colons and curly braces are built-in. But there are very few control constructs in PHP that allow code to be attached to them within the curly braces. It&#8217;s not actually possible to add or create new control constructs in PHP, unless of course you fancy whipping up a PHP extension in C. (eurghh!)</p>
+
+
+
+
+<p>To be fair, we could condense the above into the following, as there really would be no need to use a function within the for loop.</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>for ($num = 99; $num &gt; 0; $num--) {
+</div><div class='line'>  echo "There are now $num kids in my family"
+</div><div class='line'>}</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>So now lets do the same thing in Ruby:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>99.downto(1) { |num| puts "There are now #{$num} kids in my family" }</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Slightly unfamilar syntax, but that&#8217;s nothing new when comparing Ruby with PHP. But the above is actually quite declarative. Lets break this down a little.</p>
+
+
+
+
+<p>Hopefully, if you read <a href="http://developingwithstyle.com/articles/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1.html">reason #1</a> you will now know that <code>99</code> is an object, which has a method called <code>downto</code>. It&#8217;s pretty obvious that this method simply counts down from 99 to 1, and iterates through each number. It serves roughly the same purpose as the <code>for</code> construct in our PHP example. The odd looking bit between the curly braces, with the goalposts, is the block.</p>
+
+
+
+
+<p>There are many similarities between the Ruby block and the PHP <code>for</code> loop. This is because the Ruby block is actually just a function in another form. A block is a function without a name, or an anonymous function. Yes I know PHP 5.3 will include some sort of support for anonymous functions, but again, it&#8217;s an afterthought.</p>
+
+
+
+
+<p>A Ruby block can receive parameters in much the same way a method or PHP function can, but they are placed within the goalposts of the block. In our case, we place the number (<code>num</code>) of kids between the goal posts, and this becomes our one and only parameter. We can pass more parameters to the block, by simply separating them with a comma. If we don&#8217;t want to pass any parameters, then we leave off the goalposts completely. The rest of the block is executable code, just like any other Ruby method.</p>
+
+
+
+
+<p>Every method in Ruby, whether it be a built-in one, or one that you create, can be passed a block. And that one simple fact is what makes blocks so powerful. In fact, if the <code>downto</code> method were written in pure ruby, it could look something like this:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>class Integer
+</div><div class='line'>  def downto(value, &block)
+</div><div class='line'>    n = self
+</div><div class='line'>    while n >= value
+</div><div class='line'>      block.call n
+</div><div class='line'>      n -= 1
+</div><div class='line'>    end
+</div><div class='line'>    return self
+</div><div class='line'>  end
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>So we <a href="http://developingwithstyle.com/articles/2009/05/21/10-reasons-why-ruby-is-better-than-php-reason-2.html">reopen</a> the <code>Integer</code> class, and redeclare the <code>downto</code> method. We then pass two parameters to that method. Pay particular attention to the second parameter: <code>&block</code>, as it is very important.</p>
+
+
+
+
+<p>When a block is passed to a Ruby method, it can be captured in a variable. In fact, the code that we pass within the block to <code>downto</code> is converted into an object, and then stored inside a variable. The ampersand <code>&block</code> tells Ruby to store this block in a variable called <code>block</code>. The keyword <code>self</code> in this example refers to the object itself, which in this case is the integer <code>99</code>.</p>
+
+
+
+
+<p>Still with me? Good! Lets take our earlier example again, and apply it to the <code>downto</code> method that we just created:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>99.downto(1) do |num|
+</div><div class='line'>  puts "There are now #{$num} kids in my family"
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Hold a second, the above code is different to our first example isn&#8217;t it? Yes it is, well spotted! Just as in everything in Ruby, you don&#8217;t need the curly braces. The use of the <code>do</code> keyword is usually used for larger blocks, that need to span multiple lines. But it does exactly the same thing.</p>
+
+
+
+
+<p>When the <code>downto</code> method is called, it receives two parameters: <code>value</code> contains the number of kids we have, and <code>block</code> contains the block of code that will be run on each iteration.</p>
+
+
+
+
+<p>The inside of our <code>downto</code> method should look familiar to you, as it is effectively doing the same thing as our PHP <code>for</code> loop. It just counts down from 99 to 1, using a <code>while</code> loop. Then on each iteration of the <code>while</code> loop, it yields control to the code that is passed in the <code>block</code> variable, by calling the <code>block.call</code> method. Any parameters passed to <code>block.call</code>, are passed in the same way to the goalposts in the block.</p>
+
+
+
+
+<p>A little confusing I know, but I really wanted to explain how blocks work as well as I could, as they are becoming ever more useful to me, the more that I develop with Ruby.</p>
+
+
+
+
+<p>To finish off, I really want to show you an awesome way that Ruby&#8217;s blocks are used. I won&#8217;t go into it too much though, as it leads on to another of my reasons. There is a Ruby library (Gem) called <em><a href="http://www.thoughtbot.com/projects/shoulda/">Shoulda</a></em> which improves the <em>Test:Unit</em> unit testing library that is supported as standard in Ruby on Rails. Shoulda improves the language of your unit tests, and turns them into an almost human readable form. So here we have a test:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>context "a User instance" do
+</div><div class='line'>  should "return its full name"
+</div><div class='line'>    assert_equal 'John Doe', user.full_name
+</div><div class='line'>  end
+</div><div class='line'>end</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Now start from the beginning of that code and just read it out load. It may end up something like this &#8221;<em>a User instance should return its full name</em>&#8221;. Of course there is more in between, but what I am trying to convey is how expressive and readable the above code is. And that is because of the power of blocks.</p>
+
+
+
+
+<p>Hope that helps a little. Keep the comments coming guys, and thanks for reading.</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joel Moss</span></span>
+
+      
+
+
+
+
+<time datetime="2009-05-27 00:00:00 +0100" pubdate  updated >May 27<span>th</span>, 2009</time>
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/articles/categories/articles/'>articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://developwithstyle.com/articles/2009/05/27/10-reasons-why-ruby-is-better-than-php-reason-3/" data-via="joelmoss" data-counturl="http://developwithstyle.com/articles/2009/05/27/10-reasons-why-ruby-is-better-than-php-reason-3/" >Tweet</a>
+  
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread"><div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'dws';
+  var disqus_identifier = 'http://developwithstyle.com/articles/2009/05/27/10-reasons-why-ruby-is-better-than-php-reason-3/';
+  var disqus_url = 'http://developwithstyle.com/articles/2009/05/27/10-reasons-why-ruby-is-better-than-php-reason-3/';
+  //var disqus_developer = 1;
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside role=sidebar>
+  
+    <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header><section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>

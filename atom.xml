@@ -4,7 +4,7 @@
   <title>Develop With Style</title>
   <link href="http://developwithstyle.com/atom.xml" rel="self"/>
   <link href="http://developwithstyle.com/"/>
-  <updated>2011-08-18T00:53:38+01:00</updated>
+  <updated>2011-08-18T10:53:34+01:00</updated>
   <id>http://developwithstyle.com/</id>
   <author>
     <name>Joel Moss</name>
@@ -14,9 +14,9 @@
   
   <entry>
     <title>The Right Way to Create an API</title>
-    <link href="http://developwithstyle.com/blog/2011/07/12/the-right-way-to-create-an-api/"/>
+    <link href="http://developwithstyle.com/articles/2011/07/12/the-right-way-to-create-an-api/"/>
     <updated>2011-07-12T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/blog/2011/07/12/the-right-way-to-create-an-api</id>
+    <id>http://developwithstyle.com/articles/2011/07/12/the-right-way-to-create-an-api</id>
     <content type="html">&lt;p&gt;I know, I know, it's been tooooo long. But whatever!&lt;/p&gt;
 
 &lt;p&gt;At &lt;a href=&quot;http:///www.shermanstravel.com&quot;&gt;Shermans&lt;/a&gt; we have begun a large project to rebuild the architecture around the travel deals system. And guess what? we chose to do it all in Ruby! Yay!&lt;/p&gt;
@@ -30,9 +30,9 @@
   
   <entry>
     <title>From Zero to Hero: How I built Twitious in Two Weeks</title>
-    <link href="http://developwithstyle.com/blog/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/"/>
+    <link href="http://developwithstyle.com/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/"/>
     <updated>2010-10-28T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/blog/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks</id>
+    <id>http://developwithstyle.com/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks</id>
     <content type="html">&lt;p&gt;... and that wasn't even part time!&lt;/p&gt;
 
 &lt;p&gt;I've been using &lt;a href=&quot;http://twitter.com/joelmoss&quot;&gt;Twitter&lt;/a&gt; for quite a while now, and I have quickly found that every time I come across a site or web page of interest - I will tweet it.  And quite often, I have found myself either forgetting to add these links to my bookmarks in Firefox, or just not bothering. But that's not good, as also quite often, I remember I tweeted a link that I need to refer back to, but just can't remember the damn thing.&lt;/p&gt;
@@ -50,9 +50,9 @@
   
   <entry>
     <title>Dynamic Form and Dynamic Errors for Rails 3</title>
-    <link href="http://developwithstyle.com/blog/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/"/>
+    <link href="http://developwithstyle.com/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/"/>
     <updated>2010-08-09T09:00:00+01:00</updated>
-    <id>http://developwithstyle.com/blog/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3</id>
+    <id>http://developwithstyle.com/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3</id>
     <content type="html">&lt;p&gt;Rails 3 is awesome! &lt;strong&gt;BUT&lt;/strong&gt;...&lt;/p&gt;
 
 &lt;p&gt;For some unknown reason, the powers that be decided to remove the &lt;code&gt;error_message_on&lt;/code&gt; and &lt;code&gt;error_messages_for&lt;/code&gt; form helpers. I'm not sure about every one else, but I use these in pretty much every single form that I create, so I just have no idea why it was removed.&lt;/p&gt;
@@ -66,9 +66,9 @@
   
   <entry>
     <title>Handling Dates in MongoDB</title>
-    <link href="http://developwithstyle.com/blog/2010/07/09/handling-dates-in-mongodb/"/>
+    <link href="http://developwithstyle.com/articles/2010/07/09/handling-dates-in-mongodb/"/>
     <updated>2010-07-09T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/blog/2010/07/09/handling-dates-in-mongodb</id>
+    <id>http://developwithstyle.com/articles/2010/07/09/handling-dates-in-mongodb</id>
     <content type="html">&lt;p&gt;I've been using &lt;a href=&quot;http://www.mongodb.org/&quot;&gt;MongoDB&lt;/a&gt; quite a bit recently in several different projects, and it kicks ass. But the hardest thing to learn and to get used to with Mongo, is it's schemaless structure. With SQL databases like MySQL, you always have a defined and very rigid structure, which is of course the schema for each table you create. You create a table with a few columns; each column has a set type, a length, and a whole host of other variables.&lt;/p&gt;
 
 
@@ -194,9 +194,9 @@
   
   <entry>
     <title>Converting HTML Entities to Characters with Javascript</title>
-    <link href="http://developwithstyle.com/blog/2010/06/29/converting-html-entities-to-characters/"/>
+    <link href="http://developwithstyle.com/articles/2010/06/29/converting-html-entities-to-characters/"/>
     <updated>2010-06-29T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/blog/2010/06/29/converting-html-entities-to-characters</id>
+    <id>http://developwithstyle.com/articles/2010/06/29/converting-html-entities-to-characters</id>
     <content type="html">&lt;p&gt;So I use Ajax quite a bit in many of my projects. And why not? It kicks ass! I have one project which dynamically updates specific elements of an HTML page via Ajax. Something like this:&lt;/p&gt;
 
 
@@ -820,9 +820,9 @@
   
   <entry>
     <title>jQuery UI Autocomplete and Caching Query Results</title>
-    <link href="http://developwithstyle.com/blog/2010/05/14/jquery-ui-autocomplete-is-it-any-good/"/>
+    <link href="http://developwithstyle.com/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/"/>
     <updated>2010-05-14T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/blog/2010/05/14/jquery-ui-autocomplete-is-it-any-good</id>
+    <id>http://developwithstyle.com/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good</id>
     <content type="html">&lt;p&gt;I've never managed to find a really good jQuery based autocomplete plugins, especially one that is flexible and easily extensible. So when the jQuery UI team &lt;a href=&quot;http://blog.jqueryui.com/2010/03/jquery-ui-18/&quot;&gt;released 1.8&lt;/a&gt; back in March, I was intrigued to find that they included - amongst other new widgets - an &lt;a href=&quot;http://jqueryui.com/demos/autocomplete/&quot;&gt;autocomplete widget&lt;/a&gt;. And it turns out to be pretty damn good, and flexible to boot.&lt;/p&gt;
 
 
@@ -1046,9 +1046,9 @@
   
   <entry>
     <title>Trigger Javascript Events after Binding with jQuery</title>
-    <link href="http://developwithstyle.com/blog/2010/05/10/trigger-javascript-events-after-binding-with-jquery/"/>
+    <link href="http://developwithstyle.com/articles/2010/05/10/trigger-javascript-events-after-binding-with-jquery/"/>
     <updated>2010-05-10T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/blog/2010/05/10/trigger-javascript-events-after-binding-with-jquery</id>
+    <id>http://developwithstyle.com/articles/2010/05/10/trigger-javascript-events-after-binding-with-jquery</id>
     <content type="html">&lt;p&gt;I use jQuery - a lot! In fact, I wonder how I ever lived my developer life without it. And even though I've used for a good few years now, I am still learning. Not just it's API, but simple things like best practises. Here is a simple tip, that I seem to have overlooked in the past.&lt;/p&gt;
 
 
@@ -1156,9 +1156,9 @@
   
   <entry>
     <title>Tail your Logs with a Touch of Color</title>
-    <link href="http://developwithstyle.com/blog/2010/04/20/tail-your-logs-with-a-touch-of-color/"/>
+    <link href="http://developwithstyle.com/articles/2010/04/20/tail-your-logs-with-a-touch-of-color/"/>
     <updated>2010-04-20T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/blog/2010/04/20/tail-your-logs-with-a-touch-of-color</id>
+    <id>http://developwithstyle.com/articles/2010/04/20/tail-your-logs-with-a-touch-of-color</id>
     <content type="html">&lt;p&gt;&lt;a href=&quot;http://eric.lubow.org&quot;&gt;Eric Lubow&lt;/a&gt; (@elubow), a colleague of mine just released his first &lt;a href=&quot;http://eric.lubow.org/2010/ruby/colortail-gem/&quot;&gt;Ruby Gem&lt;/a&gt; and published it on &lt;a href=&quot;http://codaset.com/elubow/colortail&quot;&gt;Codaset&lt;/a&gt;, and I gotta say, it's a pretty damn useful one too.&lt;/p&gt;
 
 
@@ -1246,9 +1246,9 @@
   
   <entry>
     <title>Introducing [Baby] Mario: Content Management Made Easy</title>
-    <link href="http://developwithstyle.com/blog/2010/04/19/introducing-baby-mario-content-management-made-easy/"/>
+    <link href="http://developwithstyle.com/articles/2010/04/19/introducing-baby-mario-content-management-made-easy/"/>
     <updated>2010-04-19T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/blog/2010/04/19/introducing-baby-mario-content-management-made-easy</id>
+    <id>http://developwithstyle.com/articles/2010/04/19/introducing-baby-mario-content-management-made-easy</id>
     <content type="html">&lt;p&gt;So I started a new client project a week or so ago. They needed a content management system. So I had a look around at what was already available, and to be honest there are some good and there are some bad. But as usual, none really made me happy, and provided me with a CMS that did one thing well: manage content!&lt;/p&gt;
 
 &lt;p&gt;So I built my own of course! I would like to introduce you to &lt;a href=&quot;http://codaset.com/joelmoss/mario&quot;&gt;[Baby] Mario&lt;/a&gt;; a Rails based content management system that lets you manage content, and then gets out of your way.&lt;/p&gt;
@@ -1268,9 +1268,9 @@
   
   <entry>
     <title>Taking this Blog to a better Place.</title>
-    <link href="http://developwithstyle.com/blog/2010/04/11/taking-this-blog-to-a-better-place/"/>
+    <link href="http://developwithstyle.com/articles/2010/04/11/taking-this-blog-to-a-better-place/"/>
     <updated>2010-04-11T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/blog/2010/04/11/taking-this-blog-to-a-better-place</id>
+    <id>http://developwithstyle.com/articles/2010/04/11/taking-this-blog-to-a-better-place</id>
     <content type="html">&lt;p&gt;So...&lt;/p&gt;
 
 &lt;p&gt;Hold on a second. Why is it I always start a post with a &quot;So&quot;? I also seem to start my emails and tweets with the word. I think it may have something to do with the way I think. I tend to think of my blog posts, emails and tweets, as an extension or continuation of my thoughts. Which I suppose is no bad thing. But anyway, I digress.&lt;/p&gt;
@@ -1288,9 +1288,9 @@
   
   <entry>
     <title>Easily Manage your Local Hosts with Ghost</title>
-    <link href="http://developwithstyle.com/blog/2010/03/26/easily-manage-your-local-hosts-with-ghost/"/>
+    <link href="http://developwithstyle.com/articles/2010/03/26/easily-manage-your-local-hosts-with-ghost/"/>
     <updated>2010-03-26T00:00:00+00:00</updated>
-    <id>http://developwithstyle.com/blog/2010/03/26/easily-manage-your-local-hosts-with-ghost</id>
+    <id>http://developwithstyle.com/articles/2010/03/26/easily-manage-your-local-hosts-with-ghost</id>
     <content type="html">&lt;p&gt;I don't know about you, but I'm forever editing my local hosts file, when developing apps and sites. Hopefully, you already know that you can create your own custom, virtual domains, that can point to any IP address.&lt;/p&gt;
 
 &lt;p&gt;So for example, I've started building a new site and want to be able to access my local copy of the site via a domain, rather than local IP or via &lt;code&gt;localhost&lt;/code&gt;. So all I gotta do is open up the &lt;a href=&quot;http://macromates.com/&quot;&gt;one true text editor&lt;/a&gt; and edit my &lt;code&gt;/etc/hosts&lt;/code&gt; file. The location of this file will vary depending on your OS, but on a Mac, &lt;code&gt;/etc/hosts&lt;/code&gt; is where you will find it.&lt;/p&gt;
@@ -1381,9 +1381,9 @@ Usually I would add a new line at the bottom of this file, with my domain and th
   
   <entry>
     <title>I finally did it! My own Web Development Podcast</title>
-    <link href="http://developwithstyle.com/blog/2010/03/19/i-finally-did-it-My-own-web-development-podcast/"/>
+    <link href="http://developwithstyle.com/articles/2010/03/19/i-finally-did-it-My-own-web-development-podcast/"/>
     <updated>2010-03-19T00:00:00+00:00</updated>
-    <id>http://developwithstyle.com/blog/2010/03/19/i-finally-did-it-My-own-web-development-podcast</id>
+    <id>http://developwithstyle.com/articles/2010/03/19/i-finally-did-it-My-own-web-development-podcast</id>
     <content type="html">&lt;p&gt;I've been threatening to start producing some sort of podcast for ages now. Well I've only gone and bloody done it!&lt;/p&gt;
 
 &lt;p&gt;The &lt;a href=&quot;http://codaset.com/blog&quot;&gt;Codaset Video Podcast&lt;/a&gt; has already reached episode 2, and I'me getting great feedback from it. Each week, I will be talking about anything that takes my fancy really, but mostly the topics will be web development and design related.&lt;/p&gt;
@@ -1399,9 +1399,9 @@ Usually I would add a new line at the bottom of this file, with my domain and th
   
   <entry>
     <title>Follow your Passion Trail, not the Money Trail</title>
-    <link href="http://developwithstyle.com/blog/2010/02/17/follow-your-passion-trail-not-the-money-trail/"/>
+    <link href="http://developwithstyle.com/articles/2010/02/17/follow-your-passion-trail-not-the-money-trail/"/>
     <updated>2010-02-17T00:00:00+00:00</updated>
-    <id>http://developwithstyle.com/blog/2010/02/17/follow-your-passion-trail-not-the-money-trail</id>
+    <id>http://developwithstyle.com/articles/2010/02/17/follow-your-passion-trail-not-the-money-trail</id>
     <content type="html">&lt;p&gt;My brother-in-law, Adam popped round earlier today, and we got talking about work and business. I used to run a successful web hosting business with him a few years back, and we have always talked about business and work. While I've always been a hands-on kind of guy, Adam can be quite the opposite. However, we still both enjoy and love the thrill of running a business.&lt;/p&gt;
 
 &lt;p&gt;These days, I'm doing quite well as a freelance web developer, and building up Codaset into my next full time business. Adam is now a qualified financial advisor, and also doing well. We're both good at what we do.&lt;/p&gt;
@@ -1433,9 +1433,9 @@ Usually I would add a new line at the bottom of this file, with my domain and th
   
   <entry>
     <title>Exact Matching with Sphinx</title>
-    <link href="http://developwithstyle.com/blog/2010/02/10/exact-matching-with-sphinx/"/>
+    <link href="http://developwithstyle.com/articles/2010/02/10/exact-matching-with-sphinx/"/>
     <updated>2010-02-10T00:00:00+00:00</updated>
-    <id>http://developwithstyle.com/blog/2010/02/10/exact-matching-with-sphinx</id>
+    <id>http://developwithstyle.com/articles/2010/02/10/exact-matching-with-sphinx</id>
     <content type="html">&lt;p&gt;
   So I've been working with &lt;a href=&quot;http://sphinxsearch.com&quot;&gt;Sphinx&lt;/a&gt; a lot over the last few months for several different projects, including &lt;a href=&quot;http://codaset.com&quot;&gt;Codaset&lt;/a&gt;. It's an amazing piece of software, and solves the myriad of problems when trying to implement any kind of full text or intensive searches.
 &lt;/p&gt;
@@ -1480,9 +1480,9 @@ Usually I would add a new line at the bottom of this file, with my domain and th
   
   <entry>
     <title>Reaching the Limits of Speed</title>
-    <link href="http://developwithstyle.com/blog/2010/01/19/reaching-the-limits-of-speed/"/>
+    <link href="http://developwithstyle.com/articles/2010/01/19/reaching-the-limits-of-speed/"/>
     <updated>2010-01-19T00:00:00+00:00</updated>
-    <id>http://developwithstyle.com/blog/2010/01/19/reaching-the-limits-of-speed</id>
+    <id>http://developwithstyle.com/articles/2010/01/19/reaching-the-limits-of-speed</id>
     <content type="html">&lt;p&gt;I'm sure most of you have already heard of Node.js, and have probably been blown away by what it can do, and it's possibilities. But do you really know how fast it can be?&lt;/p&gt;
 
 &lt;blockquote&gt;&lt;pre&gt;
@@ -1509,9 +1509,9 @@ technoweenie: hey that's a great way to start off a new web framework, simulate 
   
   <entry>
     <title>Goodbye Wordpress, Hello Jekyll</title>
-    <link href="http://developwithstyle.com/blog/2009/12/09/goodbye-wordpress-hello-jekyll/"/>
+    <link href="http://developwithstyle.com/articles/2009/12/09/goodbye-wordpress-hello-jekyll/"/>
     <updated>2009-12-09T00:00:00+00:00</updated>
-    <id>http://developwithstyle.com/blog/2009/12/09/goodbye-wordpress-hello-jekyll</id>
+    <id>http://developwithstyle.com/articles/2009/12/09/goodbye-wordpress-hello-jekyll</id>
     <content type="html">&lt;p&gt;A few months ago, I ditched my install of Wordpress and rebuilt this blog from the ground up using nothing but good old, raw HTML, with a little sprinkling of magic. At the time, I didn't really talk about it much, so in this post I will be talking about how my blog is built, maintained and published using that little sprinkling of magic that is called Jekyll and Codaset Pages.&lt;/p&gt;
 
 &lt;h3&gt;Goodbye Wordpress&lt;/h3&gt;
@@ -1539,9 +1539,9 @@ technoweenie: hey that's a great way to start off a new web framework, simulate 
   
   <entry>
     <title>Quick and easy emailing in Ruby with Pony</title>
-    <link href="http://developwithstyle.com/blog/2009/12/01/quick-and-easy-emailing-in-ruby-with-pony/"/>
+    <link href="http://developwithstyle.com/articles/2009/12/01/quick-and-easy-emailing-in-ruby-with-pony/"/>
     <updated>2009-12-01T00:00:00+00:00</updated>
-    <id>http://developwithstyle.com/blog/2009/12/01/quick-and-easy-emailing-in-ruby-with-pony</id>
+    <id>http://developwithstyle.com/articles/2009/12/01/quick-and-easy-emailing-in-ruby-with-pony</id>
     <content type="html">&lt;p&gt;I needed to send an email to all the users of Codaset, and wanted a quick and easy way to do so. So I just wrote a quick Rake task that will loop through all the users in the Codaset database, and send each one an email. However, when I was looking at how to send the emails, there didn't seem to be an easy way to do so without having to write several lines of code just to send one email. What I needed was something similar to &lt;a href=&quot;http://www.php.net/manual/en/function.mail.php&quot;&gt;PHP's mail() function&lt;/a&gt; which lets me send an email with one line of code:&lt;/p&gt;
 
 
@@ -1648,9 +1648,9 @@ technoweenie: hey that's a great way to start off a new web framework, simulate 
   
   <entry>
     <title>Concerned with Rails</title>
-    <link href="http://developwithstyle.com/blog/2009/10/13/concerned-with-rails/"/>
+    <link href="http://developwithstyle.com/articles/2009/10/13/concerned-with-rails/"/>
     <updated>2009-10-13T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/blog/2009/10/13/concerned-with-rails</id>
+    <id>http://developwithstyle.com/articles/2009/10/13/concerned-with-rails</id>
     <content type="html">&lt;p&gt;&lt;a href=&quot;http://codaset.com/joelmoss/rails-concerns&quot;&gt;Concerns&lt;/a&gt; is a simple Rails plugin that provides you with a simple way to organise your Controllers, Models and Mailers, and split them into smaller chunks of logic. It is especially useful when you have lengthly models, and get fed up with having to scroll through several hundred lines of code.&lt;/p&gt;
 
 
@@ -1757,9 +1757,9 @@ Need help?&lt;/p&gt;
   
   <entry>
     <title>Codaset Opens up its Beta to Everyone.</title>
-    <link href="http://developwithstyle.com/blog/2009/10/06/codaset-opens-up-its-beta-to-everyone/"/>
+    <link href="http://developwithstyle.com/articles/2009/10/06/codaset-opens-up-its-beta-to-everyone/"/>
     <updated>2009-10-06T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/blog/2009/10/06/codaset-opens-up-its-beta-to-everyone</id>
+    <id>http://developwithstyle.com/articles/2009/10/06/codaset-opens-up-its-beta-to-everyone</id>
     <content type="html">&lt;p&gt;This is a reprint of an announcement made a few minutes ago at &lt;a href=&quot;http://codaset.com&quot;&gt;Codaset.com&lt;/a&gt;...&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -1775,9 +1775,9 @@ Need help?&lt;/p&gt;
   
   <entry>
     <title>Railings: A full featured Ruby on Rails template</title>
-    <link href="http://developwithstyle.com/blog/2009/09/23/railings-a-full-featured-ruby-on-rails-template/"/>
+    <link href="http://developwithstyle.com/articles/2009/09/23/railings-a-full-featured-ruby-on-rails-template/"/>
     <updated>2009-09-23T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/blog/2009/09/23/railings-a-full-featured-ruby-on-rails-template</id>
+    <id>http://developwithstyle.com/articles/2009/09/23/railings-a-full-featured-ruby-on-rails-template</id>
     <content type="html">&lt;p&gt;I've found myself creating a number of new Rails apps as of late, and found it very cumbersome to set each one up with my favoured list of gems and plugins. So I created my own Rails Template.&lt;/p&gt;
 &lt;p&gt;Rails templates are single ruby scripts which contain a few commands that help you setup any new Rails app in a snap. So you can specify a list of Gems to have installed and part of your environment.rb, and also install a bunch of plugins, amongst other things.&lt;/p&gt;
 &lt;p&gt;You should take a look at &lt;a href=&quot;http://m.onkey.org/2008/12/4/rails-templates&quot;&gt;Pratik Naik's blog post&lt;/a&gt; for full details on what Rails templates can do.&lt;/p&gt;

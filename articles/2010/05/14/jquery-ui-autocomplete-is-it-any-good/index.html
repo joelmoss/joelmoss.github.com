@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style: jQuery UI Autocomplete and Caching Query Results</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/DevelopingWithStyle" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/DevelopingWithStyle" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="">Home</a></li>
+  <li><a href="/articles">Blog</a></li>
+  <li><a href="http://twitter.com/joelmoss">Twitter</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header>
+      <div>
+<article class="hentry">
+  
+  <header>
+    
+      <h1 class="entry-title">jQuery UI Autocomplete and Caching Query Results</h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2010-05-14 00:00:00 +0100" pubdate  updated >May 14<span>th</span>, 2010</time>
+
+
+</p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I&#8217;ve never managed to find a really good jQuery based autocomplete plugins, especially one that is flexible and easily extensible. So when the jQuery UI team <a href="http://blog.jqueryui.com/2010/03/jquery-ui-18/">released 1.8</a> back in March, I was intrigued to find that they included - amongst other new widgets - an <a href="http://jqueryui.com/demos/autocomplete/">autocomplete widget</a>. And it turns out to be pretty damn good, and flexible to boot.</p>
+
+
+
+
+<p>So when I had a need to add the ability for a local data source for the autocomplete plugin that we use on <a href="http://quicksearch.shermanstravel.com">ShermansTravel QuickSearch</a>, I gave the new jQuery UI widget a go.</p>
+
+
+
+
+<p>The jQuery UI Autocomplete widget can load in data in three ways&#8230; (examples taken straight from the jQuery UI docs)</p>
+
+
+
+
+<h5>In an array with local data:</h5>
+
+
+<p>Pass it an array with a list of strings, and it will use present a list of matching values based on your entered string.</p>
+
+
+
+
+<div><figure role=code><figcaption><span>javascript </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>$(function() {
+</div><div class='line'>    $("#tags").autocomplete({
+</div><div class='line'>        source: ["php", "javascript", "asp", "ruby", "python", "c", "scala", "groovy", "haskell", "perl"]
+</div><div class='line'>    });
+</div><div class='line'>});</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<h5>A string, specifying a URL to get the data:</h5>
+
+
+<p>Pass it a string of a relative URL, and it will make an ajax call to that URL, passing it the users entered string.</p>
+
+
+
+
+<div><figure role=code><figcaption><span>javascript </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>$(function() {
+</div><div class='line'>    $("#birds").autocomplete({
+</div><div class='line'>        source: "search.php",
+</div><div class='line'>        minLength: 3
+</div><div class='line'>    });
+</div><div class='line'>});</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<h5>Via a callback (function):</h5>
+
+
+<p>Pass it a callback and you can do pretty much anything you want. This example uses such a technique and caches the query results.</p>
+
+
+
+
+<div><figure role=code><figcaption><span>javascript </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+<span class='line'>12</span>
+<span class='line'>13</span>
+<span class='line'>14</span>
+<span class='line'>15</span>
+<span class='line'>16</span>
+<span class='line'>17</span>
+<span class='line'>18</span>
+<span class='line'>19</span>
+<span class='line'>20</span>
+<span class='line'>21</span>
+<span class='line'>22</span>
+<span class='line'>23</span>
+<span class='line'>24</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>var cache = {};
+</div><div class='line'>$("#birds").autocomplete({
+</div><div class='line'>    source: function(request, response) {
+</div><div class='line'>        if (cache.term == request.term && cache.content) {
+</div><div class='line'>            response(cache.content);
+</div><div class='line'>            return;
+</div><div class='line'>        }
+</div><div class='line'>        if (new RegExp(cache.term).test(request.term) && cache.content && cache.content.length &lt; 13) {
+</div><div class='line'>            response($.ui.autocomplete.filter(cache.content, request.term));
+</div><div class='line'>            return;
+</div><div class='line'>        }
+</div><div class='line'>        $.ajax({
+</div><div class='line'>            url: "search.php",
+</div><div class='line'>            dataType: "json",
+</div><div class='line'>            data: request,
+</div><div class='line'>            success: function(data) {
+</div><div class='line'>                cache.term = request.term;
+</div><div class='line'>                cache.content = data;
+</div><div class='line'>                response(data);
+</div><div class='line'>            }
+</div><div class='line'>        });
+</div><div class='line'>    },
+</div><div class='line'>    minLength: 2
+</div><div class='line'>});</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<h4>A Caching Autocomplete for Remote Data</h4>
+
+
+
+
+<p>What I really needed was a way to cache every single query when loading data in via an ajax call. The Autocomplete widget does not cache your returned query data at all, which means that an ajax call is made on every single key press. Even if you set the <code>minLength</code> to something like <code>3</code> - which will only trigger the autocomplete once the user has entered at least 3 characters - every character entered after that will trigger an ajax call.</p>
+
+
+
+
+<p>So I came up with a somewhat simple, but effective caching strategy using the callback method for loading data.</p>
+
+
+
+
+<div><figure role=code><figcaption><span>javascript </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+<span class='line'>8</span>
+<span class='line'>9</span>
+<span class='line'>10</span>
+<span class='line'>11</span>
+<span class='line'>12</span>
+<span class='line'>13</span>
+<span class='line'>14</span>
+<span class='line'>15</span>
+<span class='line'>16</span>
+<span class='line'>17</span>
+<span class='line'>18</span>
+<span class='line'>19</span>
+<span class='line'>20</span>
+<span class='line'>21</span>
+<span class='line'>22</span>
+<span class='line'>23</span>
+<span class='line'>24</span>
+<span class='line'>25</span>
+<span class='line'>26</span>
+<span class='line'>27</span>
+<span class='line'>28</span>
+<span class='line'>29</span>
+<span class='line'>30</span>
+<span class='line'>31</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>var cache = {};
+</div><div class='line'>$("#birds").autocomplete({
+</div><div class='line'>    source: function(request, response) {
+</div><div class='line'>      var term          = request.term.toLowerCase(),
+</div><div class='line'>          element       = this.element,
+</div><div class='line'>          cache         = this.element.data('autocompleteCache') || {},
+</div><div class='line'>          foundInCache  = false;
+</div><div class='line'>
+</div><div class='line'>      $.each(cache, function(key, data){
+</div><div class='line'>        if (term.indexOf(key) === 0 && data.length > 0) {
+</div><div class='line'>          response(data);
+</div><div class='line'>          foundInCache = true;
+</div><div class='line'>          return;
+</div><div class='line'>        }
+</div><div class='line'>      });
+</div><div class='line'>
+</div><div class='line'>        if (foundInCache) return;
+</div><div class='line'>        
+</div><div class='line'>        $.ajax({
+</div><div class='line'>            url: 'search.php',
+</div><div class='line'>            dataType: "json",
+</div><div class='line'>            data: request,
+</div><div class='line'>            success: function(data) {
+</div><div class='line'>                cache[term] = data;
+</div><div class='line'>                element.data('autocompleteCache', cache);
+</div><div class='line'>                response(data);
+</div><div class='line'>            }
+</div><div class='line'>        });
+</div><div class='line'>    },
+</div><div class='line'>    minLength: 2
+</div><div class='line'>});</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Here we are saving the cache as a hash in the corresponding element using jQuery&#8217;s data function. And we are doing this for every query performed. We first loop through each element of the cache, and check if any of the keys begin with the current search term. If we find something, then we call the passed <code>response</code> callback function, and return from the <code>each</code> loop.</p>
+
+
+
+
+<p>If no cache is found for the current term, then we call the ajax as usual. But if we do find a matching key in the cache, then we don&#8217;t call the ajax, and instead return the cached data.</p>
+
+
+
+
+<p>Simple, but works nicely.</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joel Moss</span></span>
+
+      
+
+
+
+
+<time datetime="2010-05-14 00:00:00 +0100" pubdate  updated >May 14<span>th</span>, 2010</time>
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/articles/categories/articles/'>articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://developwithstyle.com/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/" data-via="joelmoss" data-counturl="http://developwithstyle.com/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/" >Tweet</a>
+  
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread"><div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'dws';
+  var disqus_identifier = 'http://developwithstyle.com/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/';
+  var disqus_url = 'http://developwithstyle.com/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/';
+  //var disqus_developer = 1;
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside role=sidebar>
+  
+    <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header><section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>

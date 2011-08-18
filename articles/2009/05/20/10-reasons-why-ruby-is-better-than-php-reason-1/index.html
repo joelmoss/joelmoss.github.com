@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style: 10 Reasons why Ruby is better than PHP - Reason #1</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/articles/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1/"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/DevelopingWithStyle" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/DevelopingWithStyle" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="">Home</a></li>
+  <li><a href="/articles">Blog</a></li>
+  <li><a href="http://twitter.com/joelmoss">Twitter</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header>
+      <div>
+<article class="hentry">
+  
+  <header>
+    
+      <h1 class="entry-title">10 Reasons Why Ruby Is Better Than PHP - Reason #1</h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2009-05-20 00:00:00 +0100" pubdate  updated >May 20<span>th</span>, 2009</time>
+
+
+</p>
+    
+  </header>
+
+
+<div class="entry-content"><p>So it seems that I didn&#8217;t provide the best of examples in <a href="http://developingwithstyle.com/articles/2009/05/19/why-i-chose-ruby-on-rails-instead-of-cakephp-for-codaset.html">my last post</a>, when explaining <a href="http://developingwithstyle.com/articles/2009/05/19/why-i-chose-ruby-on-rails-instead-of-cakephp-for-codaset.html">why I chose Ruby on Rails instead of CakePHP</a> for developing <a href="http://codaset.com">Codaset</a>. So I decided that I will write 10 [solid] reasons, why Ruby is better than PHP. After all, that is why I chose it.</p>
+
+
+
+
+<p>I already explained a little bit about the aesthetics of Ruby, and how you can write a method without the need for any curly braces or even parenthesis. So I think I will leave the aesthetics alone for a little bit.</p>
+
+
+
+
+<h3>What a wonderful Objectified world!</h3>
+
+
+
+
+<p>I think one of the most significant differences between Ruby and PHP, and perhaps the basis for a lot of other features of Ruby, is that everything in Ruby is an object. Even though PHP supports Object Oriented Programming, OOP was not even thought of when PHP started out. OOP was simply hacked into the language, and so is not a pure object-oriented language. That is because it uses primitive types; things that are not objects. We use primitive types all the time in PHP. Things like integers, floats and strings are all primitive types. Pretty much all we can do with them, is store data in them and pass them around. On their own, they do very little.</p>
+
+
+
+
+<p>Ruby is a pure object-oriented language, and it was built like that from the start.</p>
+
+
+
+
+<p>So why should I care? I hear you say. Well, because everything in Ruby is an object, everything accepts method calls, even <code>nil</code>. (<code>nil</code> is Ruby&#8217;s equivalent to PHP&#8217;s <code>null</code>.)  In PHP, a string isn&#8217;t smart enough to do anything on its own. If we want to get the length of a string, we would have to call a separate function, and pass the string to it:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>$my_string = 'Just another string';
+</div><div class='line'>echo strlen($my_string);</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>With Ruby, we can ask the string directly, to tell us its length:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>my_string = "Just another string"
+</div><div class='line'>puts my_string.length</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>FYI: PHP variables always start with a dollar sign <code>$</code>, but Ruby doesn&#8217;t have this requirement. Yet another keystroke saved. Yay! You also may have noticed that we also don&#8217;t need to type the semi-colon <code>;</code> at the end of each line in Ruby. You can, but you don&#8217;t have to, unless of course the above two lines are placed on the same line. In which case, the semi-colon will be needed to separate the two.</p>
+
+
+
+
+<p>We could also write the above ruby code like this:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>puts "Just another string".length</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<h3>Chicken or Egg?</h3>
+
+
+
+
+<p>One of the biggest frustrations for me when it comes to coding in PHP, is the need to memorise the order of arguments to the language&#8217;s many global functions. I&#8217;ve been coding in PHP for over 10 years now, and I still have trouble remembering which argument comes first in a function call. Was it the chicken or was it the egg?</p>
+
+
+
+
+<p>For example, let&#8217;s take the <code>in_array</code> function:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>in_array($chicken, $egg);</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>And then lets compare that with the <code>array_push</code> function, which takes its arguments in the reverse order:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>php </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>array_push($egg, $chicken);</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Most of PHP&#8217;s array functions take an array as the first argument, but there are a few exceptions. Inconsistencies such as this can get very frustrating, and PHP is riddled with them. When you don&#8217;t know any differently, you tend to overlook these. But ever since I started working with Ruby, these little annoyances actually become big annoyances.</p>
+
+
+
+
+<p>But this is the nature of PHP and it&#8217;s procedural programming design. Fortunately, Ruby solves this problem with object orientation. Lets look at Ruby&#8217;s equivalents to <code>in_array</code> and <code>array_push</code>.</p>
+
+
+
+
+<p>First we create an array and assign it to the <code>fruit</code> variable:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>fruit = ['apple', 'orange']</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>Then we check to see if <code>'banana'</code> is in the fruit array. This is the same as PHP&#8217;s <code>in_array</code> function:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>fruit.include? 'banana'</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>So the above obviously returns <code>false</code>, as <code>'banana'</code> does not exist, or is not included in the <code>fruit</code> array. So lets push it in:</p>
+
+
+
+
+<div><figure role=code><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>fruit.push 'banana'</div></code></pre></td></tr></table></div></figure></div>
+
+
+
+
+<p>And now <code>fruit</code> equals <code>['apple', 'orange', 'banana']</code></p>
+
+
+
+
+<p>In Ruby, an array is an object, so if we want to push a variable into the array, we simply take that array and just call <code>push</code>. It needs only one argument, since the method is attached to the object on which it will operate. And we now have no source of confusion.</p>
+
+
+
+
+<p>Not only does this help with remembering arguments, it also helps to organize the Ruby code space. Instead of having many procedural functions in a global space like PHP, Ruby packages all its methods nice and neatly into the objects that actually need them.</p>
+
+
+
+
+<p>Of course, there are many more reasons why objectifying everything can help you, but these are some of the most notable. But I hope you can see that Ruby&#8217;s object-oriented nature actually makes life simpler.</p>
+
+
+
+
+<p>In my next post where I explain reason #2 as to why Ruby is better than PHP, I will attempt to explain and show you one of the biggest differences, and the reason why developing plugins in Rails is so powerful.</p>
+
+
+
+
+<p>Thanks for tuning in guys, and don&#8217;t forget to leave your comments. I&#8217;d love to know your thoughts and opinions.</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joel Moss</span></span>
+
+      
+
+
+
+
+<time datetime="2009-05-20 00:00:00 +0100" pubdate  updated >May 20<span>th</span>, 2009</time>
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/articles/categories/articles/'>articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://developwithstyle.com/articles/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1/" data-via="joelmoss" data-counturl="http://developwithstyle.com/articles/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1/" >Tweet</a>
+  
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread"><div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'dws';
+  var disqus_identifier = 'http://developwithstyle.com/articles/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1/';
+  var disqus_url = 'http://developwithstyle.com/articles/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1/';
+  //var disqus_developer = 1;
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside role=sidebar>
+  
+    <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header><section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>

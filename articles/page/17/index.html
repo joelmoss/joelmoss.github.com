@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style</title>
+  <meta name="author" content="Joel Moss">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="canonical" href="http://developwithstyle.com/articles/page/17/index.html"/>
+  <link href="/favicon.png" rel="shortcut icon" />
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="http://s3.amazonaws.com/ender-js/jeesh.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/DevelopingWithStyle" rel="alternate" title="Develop With Style" type="application/atom+xml"/>
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body  >
+  <nav role=navigation><ul role=subscription data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/DevelopingWithStyle" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="site-search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul role=main-navigation>
+  <li><a href="">Home</a></li>
+  <li><a href="/articles">Blog</a></li>
+  <li><a href="http://twitter.com/joelmoss">Twitter</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header>
+      <div class="blog-index">
+
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2006/12/03/haml-into-phaml/">HAML Into PHAML?</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2006-12-03 00:00:00 +0000" pubdate  updated >Dec 3<span>rd</span>, 2006</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I discovered <a href="http://haml.hamptoncatlin.com/">HAML</a> several months ago and instantly fell in love with it. I can just see how it would increase any developers productivity and speed up development time. Not to mention actually producing nice, clean and great looking XHTML markup.</p>
+
+<p>This is your template:</p>
+
+<pre><code>!!!
+%html{ :xmlns =&gt; "http://www.w3.org/1999/xhtml", :lang =&gt; "en", 'xml:lang' =&gt; "en" }
+%head
+%title BoBlog
+%meta{ 'http-equiv' =&gt; 'Content-Type', :content =&gt; 'text/html; charset=utf-8' }/
+= stylesheet_link_tag 'main'
+%body
+#header
+%h1 BoBlog
+%h2 Bob's Blog
+#content
+- @entries.each do |entry|
+.entry
+%h3.title= entry.title
+%p.date= entry.posted.strftime("%A, %B %d, %Y")
+%p.body= entry.body
+#footer
+%p
+All content copyright</code></pre>
+
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2006/12/03/haml-into-phaml/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2006/12/01/using-separate-views-for-ajax/">Using Separate Views for Ajax</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2006-12-01 00:00:00 +0000" pubdate  updated >Dec 1<span>st</span>, 2006</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In my current project I needed to have separate views when an action is called via ajax. Even though Cake supports a separate layout for ajax calls by prepending ajax onto your URL&#8217;s, this not what I wanted. As each action needed its own view file due to the use of JSON in the app.</p>
+
+<p>So I simply added the following method into my app_controller:</p>
+
+<pre><code>function beforeRender()
+{
+    if ($this-&gt;RequestHandler-&gt;isAjax())
+    {
+        $this-&gt;viewPath = $this-&gt;viewPath.'/ajax'; // change the view directory
+        # $this-&gt;ext = '.jhtml'; // or change the extension
+    }
+}
+</code></pre>
+
+
+<p>So now when an action is called by an ajax script, Cake sees this and changes the view path, and calls the following view <em>app/views/controller/ajax/action.thtml</em>.</p>
+
+<p>Alternatively you can have the extension of your view files changed. So all ajax calls would call views ending in .jhtml for example. Your choice!</p>
+
+<p>So now my ajax views are separated from my normal views.</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2006/12/01/using-separate-views-for-ajax/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2006/12/01/migrations-v223/">Migrations v2.2.3</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2006-12-01 00:00:00 +0000" pubdate  updated >Dec 1<span>st</span>, 2006</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Another bug fix release. Version 2.2.3 fixes a problem of default value not being set when the value is 0 or 0.0.</p>
+
+<p><a href="http://homepageuniverse.com/migrations.zip">Download the new version</a>.</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2006/12/01/migrations-v223/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2006/12/01/developing-faster-with-rails/">Developing Faster With Rails?</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2006-12-01 00:00:00 +0000" pubdate  updated >Dec 1<span>st</span>, 2006</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve lost track of the numerous amount of times that I have sat down and started to learn and build a web application with Ruby on Rails. I get excited about it just by reading any mention of the framework in a blog or tutorial and decide - again - that I want to learn it. But then I give up after a few hours because I figure that PHP can do the same thing, and I don&#8217;t even have to learn a new language.</p>
+
+<p>But I still keep coming back to the same question; <strong>is developing a web app in Rails faster that developing the same thing in PHP?</strong></p>
+
+<p><a href="http://www.thefutureoftheweb.com">Jesse Skinner</a> seems to think it is. He just switched from PHP and wrote an <a href="http://www.thefutureoftheweb.com/blog/2006/11/switch-from-php-to-ruby-on-rails">article on his blog about his experience</a>.</p>
+
+<blockquote>So I did it. I&#8217;ve been coding in Rails since the start of the month, and it&#8217;s been a great time. Sure, there was a learning curve. It took me some time to figure out how to do the simplest of things. But I read through the book, I experimented, I searched the web for answers, and now I&#8217;m cruising. I&#8217;m about 80% as good in Rails as I am in PHP, except <strong>with Rails everything takes half the time so in the end it&#8217;s actually faster.</strong></blockquote>
+
+<p>What struck me most about the above quote, is the part in bold. Is it really faster to work with? Can&#8217;t I achieve the same thing with PHP and a <a href="http://cakephp.org">good framework</a>?</p>
+
+<p>I have read a lot of info on Rails and what its advantages are, but I still don&#8217;t know these answers. So can anyone help me out here?</p>
+
+<p>Shall I switch to Rails and why?</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2006/12/01/developing-faster-with-rails/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2006/11/30/migrations-v222/">Migrations v2.2.2</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2006-11-30 00:00:00 +0000" pubdate  updated >Nov 30<span>th</span>, 2006</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Man I think I gotta test my scripts more thoroughly!</p>
+
+<p>Just one small bug fix here. The <em>notnull</em> parameter was not working. Hey, but it is now! ;)</p>
+
+<p><a href="http://homepageuniverse.com/migrations.zip">Download again for the latest</a>.</p>
+</div>
+  <footer>
+    <a rel="full-article" href="/articles/2006/11/30/migrations-v222/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2006/11/30/migrations-v221/">Migrations v2.2.1</a></h1>
+    
+    
+      <p class="meta">
+
+
+
+
+<time datetime="2006-11-30 00:00:00 +0000" pubdate  updated >Nov 30<span>th</span>, 2006</time>
+
+
+</p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Just pushed out another release, but this time with just a few minor bug fixes and improvements.</p>
+
+<p>Thanks go to amigenius.</p>
+
+<p>Changes:
+<ul>
+	<li>primary_key changed to primary</li>
+	<li>can prevent created and modified from being created with the use of &#8216;no_dates&#8217;</li>
+	<li>Multiple primary keys now supported</li>
+	<li>One or two minor bug fixes</li>
+</ul>
+</p></div>
+  <footer>
+    <a rel="full-article" href="/articles/2006/11/30/migrations-v221/">Read on &rarr;</a>
+  </footer>
+
+
+  </article>
+
+<nav role="pagination">
+  <div>
+    
+      <a class="prev" href="/articles/page/18/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/articles/page/16/">Newer &rarr;</a>
+    
+  </div>
+</nav>
+
+<script type="text/javascript">
+    var disqus_shortname = 'dws';
+    (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+</div>
+<aside role=sidebar>
+  
+    <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header><section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer><p>
+  Copyright &copy; 2011 - Joel Moss -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+</body>
+</html>
