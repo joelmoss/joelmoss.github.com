@@ -1,2 +1,13 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+
+.heading {
+  font: {
+    weight: 100;
+    family: "Actor", Helvetica, Arial, sans-serif;
+  }
+}
+.sans, .serif {
+  font-family: "Quattrocento Sans", Helvetica, sans-serif;
+}
+
