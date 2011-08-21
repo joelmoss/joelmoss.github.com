@@ -6,6 +6,8 @@ categories: articles
 
 <p>I use jQuery - a lot! In fact, I wonder how I ever lived my developer life without it. And even though I've used for a good few years now, I am still learning. Not just it's API, but simple things like best practises. Here is a simple tip, that I seem to have overlooked in the past.</p>
 
+<!--more-->
+
 <p>When binding an event on an element; for example if I want to trigger some sort of action when the user makes a change to a select element in a form, I would use this piece of code:</p>
 
 {% codeblock javascript %}

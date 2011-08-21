@@ -14,6 +14,8 @@ $.get('/travel_guide/Paris', function(data){
 
 <p>The problem I have, is that sometimes that data can include HTML entities like <code>&amp;amp;</code> and <code>&amp;gt;</code>, and for reasons I don't want to bore you with, I cannot do anything about it on the server side. When inserting a block of text that contain HTML entities into the DOM, those entities are not parsed as such, and get printed exactly as they are.</p>
 
+<!--more-->
+
 <p>What I need is a Javascript function that can take a string and parse it for any HTML entities, then replace each one with their HTML character. And this is what I came up with...</p>
 
 {% codeblock javascript %}

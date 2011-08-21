@@ -1,42 +1,65 @@
 ---
-layout: default
+layout: home
 ---
 
-<div class="blog-index">
-{% assign index = true %}
-{% for post in paginator.posts %}
-{% assign content = post.content %}
-  <article>
-    {% include article.html %}
+<h1>we build apps that make the web tick...</h1>
+
+<section id="middle">
+  {% for post in site.posts limit: 1 %}
+    <article id="latest-post">
+      <div>
+        <img src="/images/home/pocoyo_avatar.png" width="68" height="68" />
+        <div>
+          <h4>{{ post.title }}</h4>
+          <p>{{ post.content | strip_html | truncate: 230 }}</p>
+        </div>
+      </div>
+      <footer>
+        <section>
+          {% if post.author %}
+            {% assign author = post.author %}
+          {% elsif page.author %}
+            {% assign author = page.author %}
+          {% else %}
+            {% assign author = site.author %}
+          {% endif %}
+          <p id="name">{{ author }}</p>
+          <time datetime="{{ post.date | datetime }}">{{ post.date | ordinalize }}</time>
+        </section>
+        <section>
+          <a href="{{ root_url }}{{ post.url }}">view</a>
+        </section>
+      </footer>
+    </article>
+  {% endfor %}
+  
+  <article id="about">
+    <p>
+      <strong>Develop With Style</strong> is exactly what we do! Founded and led by Joel Moss; a developer with over 13 years experience on the web, we focus on developing and designing web applications for you. We <strong>love</strong> what we do, and that is why we are the <strong>best</strong>, and continue to produce quality work and on-time delivery.
+    </p>
+    <h4>
+      So <a href="#contact">get in touch</a>, we would love to hear from you.
+    </h4>
   </article>
-{% endfor %}
-<nav role="pagination">
-  <div>
-    {% if paginator.next_page %}
-      <a class="prev" href="{{paginator.next_page}}">&larr; Older</a>
-    {% endif %}
-    <a href="/blog/archives">Blog Archives</a>
-    {% if paginator.previous_page %}
-    <a class="next" href="{{paginator.previous_page}}">Newer &rarr;</a>
-    {% endif %}
-  </div>
-</nav>
-{% if site.disqus_short_name %}
-<script type="text/javascript">
-    var disqus_shortname = '{{ site.disqus_short_name }}';
-    (function () {
-      var s = document.createElement('script'); s.async = true;
-      s.type = 'text/javascript';
-      s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-{% endif %}
-</div>
+</section>
+
+<section id="hireus">
+  Want your project Developed with Style? <a href="#contact">Contact us...</a>
+</section>
+
+<section id="contact">
+  <h2>Joel can be contacted through any of the following ways...</h2>
+  
+  <ul> 
+    <li>Email: <a href="mailto:joel@developwithstyle.com">joel@developwithstyle.com</a></li> 
+    <li>Twitter: <a href="http://twitter.com/joelmoss">@joelmoss</a></li> 
+    <li>AIM: <a href="aim:joelkmoss">joelkmoss</a></li> 
+    <li>MSN: joel@joelmoss.info</li> 
+    <li>Skype: <a href="callto://joelmoss.info/">joelmoss.info</a></li> 
+  </ul> 
+  
+</section>
+
 <aside role=sidebar>
-  {% if site.blog_index_asides.size %}
-    {% include_array blog_index_asides %}
-  {% else %}
-    {% include_array default_asides %}
-  {% endif %}
+  {% include asides/twitter.html %}
 </aside>

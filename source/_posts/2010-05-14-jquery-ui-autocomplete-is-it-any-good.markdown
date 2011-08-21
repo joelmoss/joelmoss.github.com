@@ -8,6 +8,8 @@ categories: articles
 
 <p>So when I had a need to add the ability for a local data source for the autocomplete plugin that we use on <a href="http://quicksearch.shermanstravel.com">ShermansTravel QuickSearch</a>, I gave the new jQuery UI widget a go.</p>
 
+<!--more-->
+
 <p>The jQuery UI Autocomplete widget can load in data in three ways... (examples taken straight from the jQuery UI docs)</p>
 
 <h5>In an array with local data:</h5>

@@ -14,6 +14,8 @@ categories: articles
 
 <p>It's somewhat of a steep learning curve, but well worth sticking with. I'm still leaning the best ways to structure certain data types, and dates is one that I think I've nailed.</p>
 
+<!--more-->
+
 <p>Nearly all your collections will no doubt contain some sort of date or time stamp. While Mongo does have it's own native <code>Date()</code> object, it's only really useful within the Mongo shell. I need to use it within PHP and Ruby and other languages. Up until recently, I've been saving <code>datetime</code> as "<code>2010-07-09 13:56:31</code>". This works fine most of the time, but when you start needing to gather your data in more advanced ways, it starts to fall apart.</p>
 
 <p>For example, I'm currently using Mongo and the equally awesome <a href="http://code.google.com/p/redis/">Redis</a> for logging data for <a href="http://quicksearch.shermanstravel.com">ShermansTravel.com</a>. I needed to log a bunch of data each time a user clicks one of our paying ads. I ended up with collection records like this: (in PHP, as that is what this project calls for unfortunately)</p>
