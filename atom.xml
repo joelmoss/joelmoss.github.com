@@ -4,7 +4,7 @@
   <title>Develop With Style</title>
   <link href="http://developwithstyle.com/atom.xml" rel="self"/>
   <link href="http://developwithstyle.com/"/>
-  <updated>2011-08-18T10:53:34+01:00</updated>
+  <updated>2011-08-22T00:27:14+01:00</updated>
   <id>http://developwithstyle.com/</id>
   <author>
     <name>Joel Moss</name>
@@ -90,6 +90,11 @@
 
 
 &lt;p&gt;It's somewhat of a steep learning curve, but well worth sticking with. I'm still leaning the best ways to structure certain data types, and dates is one that I think I've nailed.&lt;/p&gt;
+
+
+
+
+&lt;!--more--&gt;
 
 
 
@@ -214,6 +219,11 @@
 
 
 &lt;p&gt;The problem I have, is that sometimes that data can include HTML entities like &lt;code&gt;&amp;amp;amp;&lt;/code&gt; and &lt;code&gt;&amp;amp;gt;&lt;/code&gt;, and for reasons I don't want to bore you with, I cannot do anything about it on the server side. When inserting a block of text that contain HTML entities into the DOM, those entities are not parsed as such, and get printed exactly as they are.&lt;/p&gt;
+
+
+
+
+&lt;!--more--&gt;
 
 
 
@@ -833,6 +843,11 @@
 
 
 
+&lt;!--more--&gt;
+
+
+
+
 &lt;p&gt;The jQuery UI Autocomplete widget can load in data in three ways... (examples taken straight from the jQuery UI docs)&lt;/p&gt;
 
 
@@ -1050,6 +1065,11 @@
     <updated>2010-05-10T00:00:00+01:00</updated>
     <id>http://developwithstyle.com/articles/2010/05/10/trigger-javascript-events-after-binding-with-jquery</id>
     <content type="html">&lt;p&gt;I use jQuery - a lot! In fact, I wonder how I ever lived my developer life without it. And even though I've used for a good few years now, I am still learning. Not just it's API, but simple things like best practises. Here is a simple tip, that I seem to have overlooked in the past.&lt;/p&gt;
+
+
+
+
+&lt;!--more--&gt;
 
 
 

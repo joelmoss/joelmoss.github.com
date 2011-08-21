@@ -774,35 +774,35 @@
         <loc>
             http://developwithstyle.com/articles/2010/05/10/trigger-javascript-events-after-binding-with-jquery/
         </loc>
-        <lastmod>2011-08-18T10:35:44+01:00</lastmod>
+        <lastmod>2011-08-20T20:09:23+01:00</lastmod>
     </url>
     <url>
         <loc>
             http://developwithstyle.com/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/
         </loc>
-        <lastmod>2011-08-18T10:35:44+01:00</lastmod>
+        <lastmod>2011-08-20T20:09:05+01:00</lastmod>
     </url>
     <url>
         <loc>
             http://developwithstyle.com/articles/2010/06/29/converting-html-entities-to-characters/
         </loc>
-        <lastmod>2011-08-18T10:35:44+01:00</lastmod>
+        <lastmod>2011-08-20T20:08:46+01:00</lastmod>
     </url>
     <url>
         <loc>http://developwithstyle.com/articles/2010/07/09/handling-dates-in-mongodb/</loc>
-        <lastmod>2011-08-18T10:35:44+01:00</lastmod>
+        <lastmod>2011-08-20T20:11:18+01:00</lastmod>
     </url>
     <url>
         <loc>
             http://developwithstyle.com/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/
         </loc>
-        <lastmod>2011-08-18T10:35:44+01:00</lastmod>
+        <lastmod>2011-08-20T20:10:55+01:00</lastmod>
     </url>
     <url>
         <loc>
             http://developwithstyle.com/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/
         </loc>
-        <lastmod>2011-08-18T10:35:44+01:00</lastmod>
+        <lastmod>2011-08-20T20:10:52+01:00</lastmod>
     </url>
     <url>
         <loc>http://developwithstyle.com/articles/2011/07/12/the-right-way-to-create-an-api/</loc>
@@ -810,10 +810,14 @@
     </url>
     <url>
         <loc>http://developwithstyle.com/articles/archives/</loc>
-        <lastmod>2011-08-18T10:35:44+01:00</lastmod>
+        <lastmod>2011-08-20T20:11:18+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://developwithstyle.com/articles/</loc>
+        <lastmod>2011-08-21T12:33:28+01:00</lastmod>
     </url>
     <url>
         <loc>http://developwithstyle.com/</loc>
-        <lastmod>2011-08-18T10:35:44+01:00</lastmod>
+        <lastmod>2011-08-22T00:08:53+01:00</lastmod>
     </url>
 </urlset>

@@ -40,9 +40,7 @@
 
 
   <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
-<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
-
+<link href='http://fonts.googleapis.com/css?family=Actor|Quattrocento+Sans' rel='stylesheet' type='text/css'>
 </head>
 
 <body  >
@@ -57,7 +55,8 @@
   </fieldset>
 </form>
 <ul role=main-navigation>
-  <li><a href="">Home</a></li>
+  <li><a href="/">Home</a></li>
+  <li><a href="/#contact">Contact</a></li>
   <li><a href="/articles">Blog</a></li>
   <li><a href="http://twitter.com/joelmoss">Twitter</a></li>
 </ul>
@@ -98,103 +97,6 @@
 
 
 
-
-<p>When binding an event on an element; for example if I want to trigger some sort of action when the user makes a change to a select element in a form, I would use this piece of code:</p>
-
-
-
-
-<div><figure role=code><figcaption><span>javascript </span></figcaption>
-<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
-<span class='line'>2</span>
-<span class='line'>3</span>
-<span class='line'>4</span>
-<span class='line'>5</span>
-<span class='line'>6</span>
-<span class='line'>7</span>
-</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>$(function(){
-</div><div class='line'>    $('#mySelect').change(function(){
-</div><div class='line'>      // do something here that is really cool, and it will occur
-</div><div class='line'>      // each time a user changes the value of 'myLink' which is a
-</div><div class='line'>      // select form element
-</div><div class='line'>    });
-</div><div class='line'>  });</div></code></pre></td></tr></table></div></figure></div>
-
-
-
-
-<p>But sometimes, I also need to trigger that change event on page load. As the user may be editing the data in the form, and I need to be sure that what the user sees on the page reflects the form value of the select element.</p>
-
-
-
-
-<p>Previously, I did this:</p>
-
-
-
-
-<div><figure role=code><figcaption><span>javascript </span></figcaption>
-<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
-<span class='line'>2</span>
-<span class='line'>3</span>
-<span class='line'>4</span>
-<span class='line'>5</span>
-<span class='line'>6</span>
-<span class='line'>7</span>
-<span class='line'>8</span>
-<span class='line'>9</span>
-<span class='line'>10</span>
-<span class='line'>11</span>
-</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>$(function(){
-</div><div class='line'>    function mySelectFunction(){
-</div><div class='line'>      // do something here that is really cool, and it will occur
-</div><div class='line'>      // each time a user changes the value of 'myLink' which is a
-</div><div class='line'>      // select form element
-</div><div class='line'>    }
-</div><div class='line'>    
-</div><div class='line'>    $('#mySelect').change(mySelectFunction);
-</div><div class='line'>    
-</div><div class='line'>    mySelectFunction();
-</div><div class='line'>  });</div></code></pre></td></tr></table></div></figure></div>
-
-
-
-
-<p>So I define a function that performs the action that should take place when user changes the select element, then I pass that function to the jQuery <code>change</code> event. But then I also call the function on it&#8217;s own, so that it is called on page load.</p>
-
-
-
-
-<p>Yes I know!! It&#8217;s pretty damn obvious, and to be honest a pretty big oversight on my part. What I should have been doing from the start, and what I now do all the time, is this:</p>
-
-
-
-
-<div><figure role=code><figcaption><span>javascript </span></figcaption>
-<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
-<span class='line'>2</span>
-<span class='line'>3</span>
-<span class='line'>4</span>
-<span class='line'>5</span>
-<span class='line'>6</span>
-<span class='line'>7</span>
-</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>$(function(){
-</div><div class='line'>    $('#mySelect').change(function(){
-</div><div class='line'>      // do something here that is really cool, and it will occur
-</div><div class='line'>      // each time a user changes the value of 'myLink' which is a
-</div><div class='line'>      // select form element
-</div><div class='line'>    }).change();
-</div><div class='line'>  });</div></code></pre></td></tr></table></div></figure></div>
-
-
-
-
-<p>See what I did there? I simply added a few characters; <code>.change()</code> to the jQuery chain. But that extra call to the <code>change()</code> event, will trigger the event that I bound earlier in the chain.</p>
-
-
-
-
-<p>So all I am doing is binding the event to my desired action, then triggering it. Luurrvely!</p>
 
 </div>
   <footer>
@@ -557,9 +459,9 @@ Usually I would add a new line at the bottom of this file, with my domain and th
     
       <a class="prev" href="/articles/page/3/">&larr; Older</a>
     
-    <a href="/blog/archives">Blog Archives</a>
+    <a href="/articles/archives">Blog Archives</a>
     
-    <a class="next" href="/">Newer &rarr;</a>
+    <a class="next" href="/articles/">Newer &rarr;</a>
     
   </div>
 </nav>
