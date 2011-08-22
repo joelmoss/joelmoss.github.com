@@ -131,7 +131,42 @@
 
 <p>But based on my experience building the <a href="http://codaset.com">Codaset</a> <a href="http://api.codaset.com">API</a>, I knew I wanted a better way to expose the &#8220;views&#8221; for the API. For example, I don&#8217;t want all attributes of my model to be exposed, and Rails doesn&#8217;t provide a simple way to do that. Enter <a href="https://github.com/nesquena/rabl">RABL</a>!</p>
 
-<p>RABL bills itself as an API templating language, but all it really is, is a way to expose and define your API attributes from within the view itself, which is exactly the way it should be done, as it is only the view that has any concern with this. Exposing or defining the attributes for the API is not the responsibility of the model or even the controller.</p></div>
+<p>RABL bills itself as an API templating language, but all it really is, is a way to expose and define your API attributes from within the view itself, which is exactly the way it should be done, as it is only the view that has any concern with this. Exposing or defining the attributes for the API is not the responsibility of the model or even the controller.</p>
+
+<p>Let&#8217;s say our controller assigns the <code>@posts</code> instance variable, which is thusly available in our view, and our view looks like this:</p>
+
+<div><figure role=code><figcaption><span>lang:ruby </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>collection @posts
+</div><div class='line'>attributes :id, :title, :price
+</div><div class='line'>child(:user) { attributes :full_name }
+</div><div class='line'>node(:read) { |post| post.read_by?(@user) }</div></code></pre></td></tr></table></div></figure></div>
+
+
+<p>Which would look like this as JSON:</p>
+
+<div><figure role=code><figcaption><span>lang:javascript </span></figcaption>
+<div class="highlight"><table cellpadding="0" cellspacing="0"><tr><td class="gutter"><pre class="line-numbers"><span class='line'>1</span>
+<span class='line'>2</span>
+<span class='line'>3</span>
+<span class='line'>4</span>
+<span class='line'>5</span>
+<span class='line'>6</span>
+<span class='line'>7</span>
+</pre></td><td class='code' width='100%'><pre><code class=''><div class='line'>[{  post :
+</div><div class='line'>  {
+</div><div class='line'>    id : 5, title: "...", subject: "...",
+</div><div class='line'>    user : { full_name : "..." },
+</div><div class='line'>    read : true
+</div><div class='line'>  }
+</div><div class='line'>}]</div></code></pre></td></tr></table></div></figure></div>
+
+
+<p>This means you don&#8217;t have to dirty your controller with code that should be in your view.</p>
+</div>
   <footer>
     <a rel="full-article" href="/articles/2011/07/12/the-right-way-to-create-an-api/">Read on &rarr;</a>
   </footer>

@@ -4,7 +4,7 @@
   <title>Develop With Style</title>
   <link href="http://developwithstyle.com/atom.xml" rel="self"/>
   <link href="http://developwithstyle.com/"/>
-  <updated>2011-08-22T19:11:10+01:00</updated>
+  <updated>2011-08-22T19:35:44+01:00</updated>
   <id>http://developwithstyle.com/</id>
   <author>
     <name>Joel Moss</name>
@@ -25,7 +25,42 @@
 
 &lt;p&gt;But based on my experience building the &lt;a href=&quot;http://codaset.com&quot;&gt;Codaset&lt;/a&gt; &lt;a href=&quot;http://api.codaset.com&quot;&gt;API&lt;/a&gt;, I knew I wanted a better way to expose the &quot;views&quot; for the API. For example, I don't want all attributes of my model to be exposed, and Rails doesn't provide a simple way to do that. Enter &lt;a href=&quot;https://github.com/nesquena/rabl&quot;&gt;RABL&lt;/a&gt;!&lt;/p&gt;
 
-&lt;p&gt;RABL bills itself as an API templating language, but all it really is, is a way to expose and define your API attributes from within the view itself, which is exactly the way it should be done, as it is only the view that has any concern with this. Exposing or defining the attributes for the API is not the responsibility of the model or even the controller.&lt;/p&gt;</content>
+&lt;p&gt;RABL bills itself as an API templating language, but all it really is, is a way to expose and define your API attributes from within the view itself, which is exactly the way it should be done, as it is only the view that has any concern with this. Exposing or defining the attributes for the API is not the responsibility of the model or even the controller.&lt;/p&gt;
+
+&lt;p&gt;Let's say our controller assigns the &lt;code&gt;@posts&lt;/code&gt; instance variable, which is thusly available in our view, and our view looks like this:&lt;/p&gt;
+
+&lt;div&gt;&lt;figure role=code&gt;&lt;figcaption&gt;&lt;span&gt;lang:ruby &lt;/span&gt;&lt;/figcaption&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class='line'&gt;1&lt;/span&gt;
+&lt;span class='line'&gt;2&lt;/span&gt;
+&lt;span class='line'&gt;3&lt;/span&gt;
+&lt;span class='line'&gt;4&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class='code' width='100%'&gt;&lt;pre&gt;&lt;code class=''&gt;&lt;div class='line'&gt;collection @posts
+&lt;/div&gt;&lt;div class='line'&gt;attributes :id, :title, :price
+&lt;/div&gt;&lt;div class='line'&gt;child(:user) { attributes :full_name }
+&lt;/div&gt;&lt;div class='line'&gt;node(:read) { |post| post.read_by?(@user) }&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Which would look like this as JSON:&lt;/p&gt;
+
+&lt;div&gt;&lt;figure role=code&gt;&lt;figcaption&gt;&lt;span&gt;lang:javascript &lt;/span&gt;&lt;/figcaption&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class='line'&gt;1&lt;/span&gt;
+&lt;span class='line'&gt;2&lt;/span&gt;
+&lt;span class='line'&gt;3&lt;/span&gt;
+&lt;span class='line'&gt;4&lt;/span&gt;
+&lt;span class='line'&gt;5&lt;/span&gt;
+&lt;span class='line'&gt;6&lt;/span&gt;
+&lt;span class='line'&gt;7&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class='code' width='100%'&gt;&lt;pre&gt;&lt;code class=''&gt;&lt;div class='line'&gt;[{  post :
+&lt;/div&gt;&lt;div class='line'&gt;  {
+&lt;/div&gt;&lt;div class='line'&gt;    id : 5, title: &quot;...&quot;, subject: &quot;...&quot;,
+&lt;/div&gt;&lt;div class='line'&gt;    user : { full_name : &quot;...&quot; },
+&lt;/div&gt;&lt;div class='line'&gt;    read : true
+&lt;/div&gt;&lt;div class='line'&gt;  }
+&lt;/div&gt;&lt;div class='line'&gt;}]&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This means you don't have to dirty your controller with code that should be in your view.&lt;/p&gt;
+</content>
   </entry>
   
   <entry>
