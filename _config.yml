@@ -27,7 +27,7 @@ plugins: plugins
 code_dir: downloads/code
 category_dir: articles/categories
 markdown: rdiscount
-pygments: false # default python pygments have been replaced by pygments.rb
+pygments: true # default python pygments have been replaced by pygments.rb
 
 paginate: 6          # Posts per page on the blog index
 pagination_dir: articles  # Directory base for pagination URLs eg. /blog/page/2/
