@@ -1,0 +1,21 @@
+---
+layout: post
+title: "Introducing [Baby] Mario: Content Management Made Easy"
+categories: articles
+---
+
+<p>So I started a new client project a week or so ago. They needed a content management system. So I had a look around at what was already available, and to be honest there are some good and there are some bad. But as usual, none really made me happy, and provided me with a CMS that did one thing well: manage content!</p>
+
+<p>So I built my own of course! I would like to introduce you to <a href="http://codaset.com/joelmoss/mario">[Baby] Mario</a>; a Rails based content management system that lets you manage content, and then gets out of your way.</p>
+
+<p>Mario stores all its content and data in the database, so no need for creating and editing hundreds of files. And that means your entire site can be managed anytime, anywhere.</p>
+
+<p>It support layouts, pages and nested pages. Just create a page with or without a layout, then make it a child of any one of your other pages. It lets you write full HTML, but also provides a simple templating system provided by <a href="http://mustache.github.com/">Mustache</a>.</p>
+
+<p>Your stylesheets and javascript are also stored in the database, so no more file editing. And you can upload your images and other downloadable assets quickly and easily. Mario uses <a href="http://github.com/jnicklas/carrierwave">CarrierWave</a>, so has support for storing your images on your server, on S3, MongoDB and others.</p>
+
+<p>Caching is provided [and enabled by default in production] for all pages, stylesheets and javascript assets.</p>
+
+<p>Mario is very young right now, hence the [Baby] prefix, so please be gentle. But that also means that his future lays in your hands, as well as mine. I have plenty more requirements for the current client, that I will be adding to Mario, so Mario will be growing up quite a bit over the next few weeks. I welcome any contributions and thoughts about what direction his future should take. So please <a href="http://codaset.com/joelmoss/mario">fork the project</a> and hack away.</p>
+
+<p>Enjoy, and let me know what you think.</p>

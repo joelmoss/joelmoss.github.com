@@ -1,0 +1,25 @@
+--- 
+layout: post
+title: Cake DB Migrations strikes back
+categories: articles
+---
+<p>I am proud to announce the immediate availability of Cake DB Migrations V2.0.</p>
+
+<p>This new version has been rewritten with portability in mind and now supports a list of database engines as long as your arm. The new features and changes are as follows:</p>
+<ul>
+	<li>Now supports mutiple database engines with the help of <a href="http://pear.php.net/package/MDB2">Pear's MDB2</a></li>
+	<li>Simplified YAML migration files</li>
+	<li>Fully supports adding/dropping and altering fields</li>
+	<li>Supports the following field types: text, integer, blob, boolean, float, date, time, timestamp(datetime)</li>
+	<li>Ability to create primary key and unique indexes on new and existing fields</li>
+	<li>Script moved to the main Cake Vendors directory, so no need to touch your Cake core</li>
+	<li>Supports multiple Cake applications in the same way as Bake.php does</li>
+	<li>Works out of the box</li>
+</ul>
+<h4>What is Cake DB Migrations</h4>
+<p>Cake DB Migrations is a port of the very useful Ruby on Rails Migrations functionaility. Cake Migrations allow you to use Cake to define changes to your database schema, making it possible to use a version control system to keep things synchronised with the actual code.</p>
+
+<p>This has many uses, including:</p>
+<ul>
+	<li>Teams of developers</li>
+</ul>

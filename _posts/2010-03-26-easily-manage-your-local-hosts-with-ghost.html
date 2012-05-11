@@ -1,0 +1,91 @@
+---
+layout: post
+title: Easily Manage your Local Hosts with Ghost
+categories: articles
+---
+<p>I don't know about you, but I'm forever editing my local hosts file, when developing apps and sites. Hopefully, you already know that you can create your own custom, virtual domains, that can point to any IP address.</p>
+
+<p>So for example, I've started building a new site and want to be able to access my local copy of the site via a domain, rather than local IP or via <code>localhost</code>. So all I gotta do is open up the <a href="http://macromates.com/">one true text editor</a> and edit my <code>/etc/hosts</code> file. The location of this file will vary depending on your OS, but on a Mac, <code>/etc/hosts</code> is where you will find it.</p>
+
+<p>The contents of the file should look something like this:</p>
+
+<code><pre>
+    ##
+    # Host Database
+    #
+    # localhost is used to configure the loopback interface
+    # when the system is booting.  Do not change this entry.
+    ##
+    127.0.0.1	localhost
+    255.255.255.255	broadcasthost
+    ::1             localhost 
+    fe80::1%lo0	localhost
+</pre></code>
+
+Usually I would add a new line at the bottom of this file, with my domain and the IP I want to point it to:
+
+<code><pre>
+    127.0.0.1 myfunkydomain.dev
+</pre></code>
+
+<p>The domain can be absolutely anything you want, as long as it is a valid domain format. I usually end mine with <code>.dev</code>, so I know I use for development.</p>
+
+<h4>Enter the Ghost!</h4>
+
+<p>I found an even easier and funkier way to add and edit my local hosts. <a href="http://codaset.com/joelmoss/ghost">Ghost</a> is a Ruby gem (of course) that makes it really quick and easy to add, edit, list and remove local host names. To add a new domain, just run this from your command line:</p>
+
+<code><pre>
+    $ ghost add mynewfunkydevsite.dev
+    =>  [Adding] mynewfunkydevsite.dev -> 127.0.0.1
+</pre></code>
+
+<p>And the domain <code>mynewfunkydevsite.dev</code> is instantly ready and waiting to serve your needs. By default it will point to your local IP: <code>127.0.0.1</code>, but if you want to point it to a different IP, just add it on the end:</p>
+
+<code><pre>
+    $ ghost add mynewfunkydevsite.dev 123.123.123.123
+    =>  [Adding] mynewfunkydevsite.dev -> 123.123.123.123
+</pre></code>
+
+<p>Here are the other commands:</p>
+
+<code><pre>
+    $ ghost list
+    Listing 2 host(s):
+      mydevsite.local      -> 127.0.0.1
+      staging-server.local -> 67.207.136.164
+
+    $ ghost delete mydevsite.local
+      [Deleting] mydevsite.local
+
+    $ ghost delete_matching test
+      [Deleting] test2.local
+      [Deleting] test.local
+
+    $ ghost list
+    Listing 1 host(s):
+      staging-server.local -> 67.207.136.164
+
+    $ ghost modify staging-server.local 64.233.167.99
+      [Modifying] staging-server.local -> 64.233.167.99
+
+    $ ghost list
+    Listing 1 host(s):
+      staging-server.local -> 64.233.167.99
+
+    $ ghost export > some_file
+
+    $ ghost empty
+      [Emptying] Done.
+
+    $ ghost list
+    Listing 0 host(s):
+
+    $ ghost import some_file
+      [Adding] staging-server.local -> 64.233.167.99
+
+    $ ghost list
+    Listing 1 host(s):
+      staging-server.local -> 64.233.167.99
+</pre></code>
+
+<p>Give it a go. Your [developer] life depends on it!</p>
