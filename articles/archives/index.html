@@ -1,18 +1,2539 @@
----
-layout: page
-title: Blog Archive
-footer: false
----
 
-<div id="blog-archives">
-{% for post in site.posts reverse %}
-{% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-{% unless year == this_year %}
-  {% assign year = this_year %}
-  <h2>{{ year }}</h2>
-{% endunless %}
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Blog Archive - Develop With Style</title>
+  <meta name="author" content="Joel Moss">
+
+  
+  <meta name="description" content="Blog Archive 2011 The Right Way to Create an API
+Jul 12 2011 posted in articles 2010 From Zero to Hero: How I built Twitious in Two Weeks
+Oct 28 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://developwithstyle.com/articles/archives">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/DevelopingWithStyle" rel="alternate" title="Develop With Style" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Actor|Quattrocento+Sans' rel='stylesheet' type='text/css'>
+
+<style type="text/css" media="screen">
+  .carbonad {
+    width: 265px !important;
+    height: 98px !important;
+  }
+  .carbonad-text {
+    width: 136px !important;
+    padding-top: 8px !important;
+  }
+  .carbonad-image img {
+    width: 110px !important;
+    height: 80px !important;
+  }
+  .carbonad-tag {
+    width: 136px !important;
+  }
+</style>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9843082-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <nav role=navigation><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/DevelopingWithStyle" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Home</a></li>
+  <li><a href="/#contact">Contact</a></li>
+  <li><a href="/articles">Blog</a></li>
+  <li><a href="http://github.com/joelmoss">Github</a></li>
+  <li><a href="http://twitter.com/joelmoss">Twitter</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header>
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Blog Archive</h1>
+    
+  </header>
+  
+  <div id="blog-archives">
+
+
+
+  
+  <h2>2011</h2>
+
 <article>
-  {% include archive_post.html %}
+  
+<h1><a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a></h1>
+<time datetime="2011-07-12T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>12</span> <span class='year'>2011</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
 </article>
-{% endfor %}
+
+
+
+  
+  <h2>2010</h2>
+
+<article>
+  
+<h1><a href="/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a></h1>
+<time datetime="2010-10-28T00:00:00+01:00" pubdate><span class='month'>Oct</span> <span class='day'>28</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a></h1>
+<time datetime="2010-08-09T09:00:00+01:00" pubdate><span class='month'>Aug</span> <span class='day'>09</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a></h1>
+<time datetime="2010-07-09T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>09</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a></h1>
+<time datetime="2010-06-29T00:00:00+01:00" pubdate><span class='month'>Jun</span> <span class='day'>29</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a></h1>
+<time datetime="2010-05-14T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>14</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2010/05/10/trigger-javascript-events-after-binding-with-jquery/">Trigger Javascript Events after Binding with jQuery</a></h1>
+<time datetime="2010-05-10T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>10</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2010/04/20/tail-your-logs-with-a-touch-of-color/">Tail your Logs with a Touch of Color</a></h1>
+<time datetime="2010-04-20T00:00:00+01:00" pubdate><span class='month'>Apr</span> <span class='day'>20</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2010/04/19/introducing-baby-mario-content-management-made-easy/">Introducing [Baby] Mario: Content Management Made Easy</a></h1>
+<time datetime="2010-04-19T00:00:00+01:00" pubdate><span class='month'>Apr</span> <span class='day'>19</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2010/04/11/taking-this-blog-to-a-better-place/">Taking this Blog to a better Place.</a></h1>
+<time datetime="2010-04-11T00:00:00+01:00" pubdate><span class='month'>Apr</span> <span class='day'>11</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2010/03/26/easily-manage-your-local-hosts-with-ghost/">Easily Manage your Local Hosts with Ghost</a></h1>
+<time datetime="2010-03-26T00:00:00+00:00" pubdate><span class='month'>Mar</span> <span class='day'>26</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2010/03/19/i-finally-did-it-My-own-web-development-podcast/">I finally did it! My own Web Development Podcast</a></h1>
+<time datetime="2010-03-19T00:00:00+00:00" pubdate><span class='month'>Mar</span> <span class='day'>19</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2010/02/17/follow-your-passion-trail-not-the-money-trail/">Follow your Passion Trail, not the Money Trail</a></h1>
+<time datetime="2010-02-17T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>17</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2010/02/10/exact-matching-with-sphinx/">Exact Matching with Sphinx</a></h1>
+<time datetime="2010-02-10T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>10</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2010/01/19/reaching-the-limits-of-speed/">Reaching the Limits of Speed</a></h1>
+<time datetime="2010-01-19T00:00:00+00:00" pubdate><span class='month'>Jan</span> <span class='day'>19</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+  
+  <h2>2009</h2>
+
+<article>
+  
+<h1><a href="/articles/2009/12/09/goodbye-wordpress-hello-jekyll/">Goodbye Wordpress, Hello Jekyll</a></h1>
+<time datetime="2009-12-09T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>09</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/12/01/quick-and-easy-emailing-in-ruby-with-pony/">Quick and easy emailing in Ruby with Pony</a></h1>
+<time datetime="2009-12-01T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>01</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/10/13/concerned-with-rails/">Concerned with Rails</a></h1>
+<time datetime="2009-10-13T00:00:00+01:00" pubdate><span class='month'>Oct</span> <span class='day'>13</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/10/06/codaset-opens-up-its-beta-to-everyone/">Codaset Opens up its Beta to Everyone.</a></h1>
+<time datetime="2009-10-06T00:00:00+01:00" pubdate><span class='month'>Oct</span> <span class='day'>06</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/09/23/railings-a-full-featured-ruby-on-rails-template/">Railings: A full featured Ruby on Rails template</a></h1>
+<time datetime="2009-09-23T00:00:00+01:00" pubdate><span class='month'>Sep</span> <span class='day'>23</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/09/16/css-pick-and-mix-classes/">CSS Pick and Mix Classes</a></h1>
+<time datetime="2009-09-16T00:00:00+01:00" pubdate><span class='month'>Sep</span> <span class='day'>16</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/08/19/a-sexy-ajax-based-jquery-dialog-window-with-a-one-track-mind/">A sexy, ajax based jQuery dialog window, with a one track mind.</a></h1>
+<time datetime="2009-08-19T00:00:00+01:00" pubdate><span class='month'>Aug</span> <span class='day'>19</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/07/19/codaset-is-alive/">Codaset is alive!</a></h1>
+<time datetime="2009-07-19T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>19</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/06/09/10-reasons-why-ruby-is-better-than-php-reason-5/">10 Reasons why Ruby is better than PHP - Reason #5</a></h1>
+<time datetime="2009-06-09T00:00:00+01:00" pubdate><span class='month'>Jun</span> <span class='day'>09</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/06/01/10-reasons-why-ruby-is-better-than-php-reason-4/">10 Reasons why Ruby is better than PHP - Reason #4</a></h1>
+<time datetime="2009-06-01T00:00:00+01:00" pubdate><span class='month'>Jun</span> <span class='day'>01</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/05/27/10-reasons-why-ruby-is-better-than-php-reason-3/">10 Reasons why Ruby is better than PHP - Reason #3</a></h1>
+<time datetime="2009-05-27T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>27</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/05/21/10-reasons-why-ruby-is-better-than-php-reason-2/">10 Reasons why Ruby is better than PHP - Reason #2</a></h1>
+<time datetime="2009-05-21T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>21</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/05/20/10-reasons-why-ruby-is-better-than-php-reason-1/">10 Reasons why Ruby is better than PHP - Reason #1</a></h1>
+<time datetime="2009-05-20T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>20</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/05/19/why-i-chose-ruby-on-rails-instead-of-cakephp-for-codaset/">Why I chose Ruby on Rails instead of CakePHP for Codaset</a></h1>
+<time datetime="2009-05-19T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>19</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/05/13/so-what-the-hell-is-codaset/">So what the hell is Codaset?</a></h1>
+<time datetime="2009-05-13T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>13</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/03/23/enhanced-controller-callbacks-for-cakephp/">Enhanced Controller Callbacks for CakePHP</a></h1>
+<time datetime="2009-03-23T00:00:00+00:00" pubdate><span class='month'>Mar</span> <span class='day'>23</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2009/02/09/cake-nibbles-4/">Cake Nibbles #4</a></h1>
+<time datetime="2009-02-09T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>09</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+  
+  <h2>2008</h2>
+
+<article>
+  
+<h1><a href="/articles/2008/12/27/and-finally-cakephp-12-is-stable-and-final/">And finally&#8230; CakePHP 1.2 is stable and final!</a></h1>
+<time datetime="2008-12-27T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>27</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/12/19/cake-nibbles-3/">Cake Nibbles #3</a></h1>
+<time datetime="2008-12-19T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>19</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/12/04/cakephp-plugins-that-love-git/">CakePHP plugins that love Git</a></h1>
+<time datetime="2008-12-04T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>04</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/11/26/cake-nibbles-2/">Cake Nibbles #2</a></h1>
+<time datetime="2008-11-26T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>26</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/11/20/namedscope-for-cakephp/">NamedScope for CakePHP</a></h1>
+<time datetime="2008-11-20T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>20</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/11/13/the-power-of-plugins/">The power of plugins</a></h1>
+<time datetime="2008-11-13T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>13</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/11/05/keeping-your-corephp-dry/">Keeping your core.php DRY</a></h1>
+<time datetime="2008-11-05T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>05</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/11/02/db-migrations-moves-home/">DB Migrations moves home</a></h1>
+<time datetime="2008-11-02T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>02</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/10/23/cake-nibbles-phpshop-debug-toolbar-and-google-no1/">Cake Nibbles: PHPShop, Debug Toolbar and Google No.1</a></h1>
+<time datetime="2008-10-23T00:00:00+01:00" pubdate><span class='month'>Oct</span> <span class='day'>23</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/10/07/cakephp-db-migrations-v40-is-now-stable/">CakePHP DB Migrations v4.0 is now Stable</a></h1>
+<time datetime="2008-10-07T00:00:00+01:00" pubdate><span class='month'>Oct</span> <span class='day'>07</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/10/02/cakephp-12-rc3-is-released/">CakePHP 1.2 RC3 is Released</a></h1>
+<time datetime="2008-10-02T00:00:00+01:00" pubdate><span class='month'>Oct</span> <span class='day'>02</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/09/06/modelbaker-a-desktop-application-for-building-cakephp-applications/">ModelBaker: A desktop application for building CakePHP applications</a></h1>
+<time datetime="2008-09-06T00:00:00+01:00" pubdate><span class='month'>Sep</span> <span class='day'>06</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/08/18/cakephp-now-available-at-github/">CakePHP now available at Github</a></h1>
+<time datetime="2008-08-18T00:00:00+01:00" pubdate><span class='month'>Aug</span> <span class='day'>18</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/07/17/cakes-first-english-language-books/">Cake&#8217;s first english language Books</a></h1>
+<time datetime="2008-07-17T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>17</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/06/05/it-cost-over-14-million-to-develop-cakephp/">It cost over $1.4 million to develop CakePHP</a></h1>
+<time datetime="2008-06-05T00:00:00+01:00" pubdate><span class='month'>Jun</span> <span class='day'>05</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/06/05/cakephp-rc1/">CakePHP RC1</a></h1>
+<time datetime="2008-06-05T00:00:00+01:00" pubdate><span class='month'>Jun</span> <span class='day'>05</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/05/27/let-google-host-your-javascript/">Let Google host your Javascript</a></h1>
+<time datetime="2008-05-27T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>27</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/05/25/cakephp-migrations-v40-release-candidate/">CakePHP Migrations v4.0 Release Candidate</a></h1>
+<time datetime="2008-05-25T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>25</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/05/20/cakephp-migrations-v40-beta/">CakePHP Migrations v4.0 Beta</a></h1>
+<time datetime="2008-05-20T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>20</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/05/13/stable-release-of-cakephp-12-is-very-very-near/">Stable release of CakePHP 1.2 is very, very near</a></h1>
+<time datetime="2008-05-13T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>13</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/05/05/the-problem-with-migrations/">The problem with Migrations</a></h1>
+<time datetime="2008-05-05T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>05</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/04/22/cake-is-officially-moving-on-with-12-coming-very-soon/">Cake is officially moving on with 1.2 coming very soon!</a></h1>
+<time datetime="2008-04-22T00:00:00+01:00" pubdate><span class='month'>Apr</span> <span class='day'>22</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/04/20/look-ma-ive-moved-the-blog-and-given-it-a-new-name/">Look Ma! I&#8217;ve moved the blog and given it a new name</a></h1>
+<time datetime="2008-04-20T00:00:00+01:00" pubdate><span class='month'>Apr</span> <span class='day'>20</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/04/20/cakephp-goes-on-the-offensive/">CakePHP goes on the offensive</a></h1>
+<time datetime="2008-04-20T00:00:00+01:00" pubdate><span class='month'>Apr</span> <span class='day'>20</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/02/29/cake-migrations-37-and-fixtures-35/">Cake Migrations 3.7 and Fixtures 3.5</a></h1>
+<time datetime="2008-02-29T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>29</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/01/31/cake-migrations-36-and-project-home/">Cake Migrations 3.6 and Project home</a></h1>
+<time datetime="2008-01-31T00:00:00+00:00" pubdate><span class='month'>Jan</span> <span class='day'>31</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/01/22/i-will-be-presenting-at-cakefest/">I will be presenting at Cakefest</a></h1>
+<time datetime="2008-01-22T00:00:00+00:00" pubdate><span class='month'>Jan</span> <span class='day'>22</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2008/01/03/cakephp-official-beta-and-cakefest/">CakePHP Official Beta and CakeFest</a></h1>
+<time datetime="2008-01-03T00:00:00+00:00" pubdate><span class='month'>Jan</span> <span class='day'>03</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+  
+  <h2>2007</h2>
+
+<article>
+  
+<h1><a href="/articles/2007/12/26/my-first-accepted-cakephp-patch/">My first accepted CakePHP patch</a></h1>
+<time datetime="2007-12-26T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>26</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/12/09/cake-no-longer-uses-its-own-shortcuts/">Cake no longer uses its own shortcuts</a></h1>
+<time datetime="2007-12-09T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>09</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/10/23/cakephp-12-pre-beta/">CakePHP 1.2 Pre-Beta!?</a></h1>
+<time datetime="2007-10-23T00:00:00+01:00" pubdate><span class='month'>Oct</span> <span class='day'>23</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/10/21/is-cakephp-12-beta-on-the-horizon/">Is CakePHP 1.2 Beta on the horizon?</a></h1>
+<time datetime="2007-10-21T00:00:00+01:00" pubdate><span class='month'>Oct</span> <span class='day'>21</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/10/14/are-you-any-good-at-php-and-cake/">Are you any good at PHP and Cake?</a></h1>
+<time datetime="2007-10-14T00:00:00+01:00" pubdate><span class='month'>Oct</span> <span class='day'>14</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/10/05/integrating-subversion-into-basecamp-and-campfire/">Integrating Subversion into Basecamp and Campfire</a></h1>
+<time datetime="2007-10-05T00:00:00+01:00" pubdate><span class='month'>Oct</span> <span class='day'>05</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/10/03/alls-quiet-on-the-western-front/">All&#8217;s Quiet on the Western Front</a></h1>
+<time datetime="2007-10-03T00:00:00+01:00" pubdate><span class='month'>Oct</span> <span class='day'>03</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/08/26/is-cakephp-ruby-on-rails-biggest-fan/">Is CakePHP, Ruby on Rails&#8217; biggest fan?</a></h1>
+<time datetime="2007-08-26T00:00:00+01:00" pubdate><span class='month'>Aug</span> <span class='day'>26</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/08/21/whats-new-in-cake-12-routing-and-config/">Whats new in Cake 1.2: Routing and Config</a></h1>
+<time datetime="2007-08-21T00:00:00+01:00" pubdate><span class='month'>Aug</span> <span class='day'>21</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/07/29/migrations-v33/">Migrations v3.3</a></h1>
+<time datetime="2007-07-29T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>29</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/07/19/migrations-making-their-way-into-the-cakephp-core/">Migrations making their way into the CakePHP core</a></h1>
+<time datetime="2007-07-19T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>19</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/07/13/php4-is-dead-long-live-php5/">PHP4 is dead! Long live PHP5</a></h1>
+<time datetime="2007-07-13T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>13</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/07/12/screencast-how-to-use-cakephp-database-migrations/">Screencast: How to use CakePHP Database Migrations</a></h1>
+<time datetime="2007-07-12T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>12</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/07/04/screencast-hell/">Screencast hell!</a></h1>
+<time datetime="2007-07-04T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>04</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/06/25/contain-my-excitement/">Contain my excitement!</a></h1>
+<time datetime="2007-06-25T00:00:00+01:00" pubdate><span class='month'>Jun</span> <span class='day'>25</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/06/22/cake-migrations-32/">Cake Migrations 3.2</a></h1>
+<time datetime="2007-06-22T00:00:00+01:00" pubdate><span class='month'>Jun</span> <span class='day'>22</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/05/20/closer-to-greatness/">Closer to greatness!</a></h1>
+<time datetime="2007-05-20T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>20</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/05/04/you-want-me-you-need-me/">You want me! You need me!</a></h1>
+<time datetime="2007-05-04T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>04</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/05/03/backup-backup-backup/">Backup, backup, backup!!</a></h1>
+<time datetime="2007-05-03T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>03</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/04/20/indecisiveness/">Indecisiveness!</a></h1>
+<time datetime="2007-04-20T00:00:00+01:00" pubdate><span class='month'>Apr</span> <span class='day'>20</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/04/06/long-time-no-speak/">Long time no speak&#8230;</a></h1>
+<time datetime="2007-04-06T00:00:00+01:00" pubdate><span class='month'>Apr</span> <span class='day'>06</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/02/27/notes-task-for-cakephp/">Notes Task for CakePHP</a></h1>
+<time datetime="2007-02-27T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>27</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/02/23/new-in-cake-12-debugger-class/">New in Cake 1.2: Debugger class</a></h1>
+<time datetime="2007-02-23T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>23</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/02/22/switchboard-is-alive/">Switchboard is alive!</a></h1>
+<time datetime="2007-02-22T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>22</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/02/16/generate-task-for-cakephp-12/">Generate Task for CakePHP 1.2</a></h1>
+<time datetime="2007-02-16T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>16</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/02/16/fixture-task-for-cakephp-12/">Fixture Task for CakePHP 1.2</a></h1>
+<time datetime="2007-02-16T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>16</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/01/25/improve-your-email-productivity/">Improve your email productivity</a></h1>
+<time datetime="2007-01-25T00:00:00+00:00" pubdate><span class='month'>Jan</span> <span class='day'>25</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/01/25/enso-its-genius/">Enso: Its Genius!</a></h1>
+<time datetime="2007-01-25T00:00:00+00:00" pubdate><span class='month'>Jan</span> <span class='day'>25</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/01/16/whats-new-in-cakephp-asset-sharing/">Whats new in CakePHP: Asset Sharing</a></h1>
+<time datetime="2007-01-16T00:00:00+00:00" pubdate><span class='month'>Jan</span> <span class='day'>16</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/01/08/intype-a-windows-alternative-to-textmate/">inType: A Windows alternative to Textmate?</a></h1>
+<time datetime="2007-01-08T00:00:00+00:00" pubdate><span class='month'>Jan</span> <span class='day'>08</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/01/06/my-journey-on-rails/">My journey on Rails</a></h1>
+<time datetime="2007-01-06T00:00:00+00:00" pubdate><span class='month'>Jan</span> <span class='day'>06</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/01/03/replicating-rails-rjs-in-cakephp/">Replicating Rails RJS in CakePHP</a></h1>
+<time datetime="2007-01-03T00:00:00+00:00" pubdate><span class='month'>Jan</span> <span class='day'>03</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2007/01/03/new-in-cake-url-extensions/">New in Cake: URL Extensions</a></h1>
+<time datetime="2007-01-03T00:00:00+00:00" pubdate><span class='month'>Jan</span> <span class='day'>03</span> <span class='year'>2007</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+  
+  <h2>2006</h2>
+
+<article>
+  
+<h1><a href="/articles/2006/12/19/dear-php/">Dear PHP</a></h1>
+<time datetime="2006-12-19T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>19</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/12/09/ruby-for-phpers/">Ruby for PHPers</a></h1>
+<time datetime="2006-12-09T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>09</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/12/04/migrations-v224/">Migrations v2.2.4</a></h1>
+<time datetime="2006-12-04T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>04</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/12/03/haml-into-phaml/">HAML into PHAML?</a></h1>
+<time datetime="2006-12-03T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>03</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/12/01/using-separate-views-for-ajax/">Using separate views for ajax</a></h1>
+<time datetime="2006-12-01T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>01</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/12/01/migrations-v223/">Migrations v2.2.3</a></h1>
+<time datetime="2006-12-01T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>01</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/12/01/developing-faster-with-rails/">Developing faster with Rails?</a></h1>
+<time datetime="2006-12-01T00:00:00+00:00" pubdate><span class='month'>Dec</span> <span class='day'>01</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/11/30/migrations-v222/">Migrations v2.2.2</a></h1>
+<time datetime="2006-11-30T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>30</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/11/30/migrations-v221/">Migrations v2.2.1</a></h1>
+<time datetime="2006-11-30T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>30</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/11/29/migrations-v22/">Migrations v2.2</a></h1>
+<time datetime="2006-11-29T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>29</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/11/29/cakes-global-css-javascript-and-images/">Cake&#8217;s global CSS, Javascript and images</a></h1>
+<time datetime="2006-11-29T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>29</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/11/28/a-brief-history-of-pop-music-in-four-chords/">A brief history of pop music - in four chords!</a></h1>
+<time datetime="2006-11-28T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>28</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/11/25/migrations-v21-now-with-fixtures/">Migrations V2.1 - Now with Fixtures</a></h1>
+<time datetime="2006-11-25T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>25</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/11/23/rails-love/">Rails love</a></h1>
+<time datetime="2006-11-23T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>23</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/11/23/migrations-bug-fixes/">Migrations bug fixes</a></h1>
+<time datetime="2006-11-23T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>23</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/11/22/the-joy-of-cake-migrations-my-first-tutorial/">The Joy of Cake Migrations - my first tutorial</a></h1>
+<time datetime="2006-11-22T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>22</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/11/21/morphing-with-scriptaculous/">Morphing with Scriptaculous</a></h1>
+<time datetime="2006-11-21T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>21</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/11/21/cake-db-migrations-strikes-back/">Cake DB Migrations strikes back</a></h1>
+<time datetime="2006-11-21T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>21</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/11/16/cakes-easy-peasy-database-config/">Cake&#8217;s easy-peasy database config</a></h1>
+<time datetime="2006-11-16T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>16</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/11/16/caked-in-it/">Caked in it!</a></h1>
+<time datetime="2006-11-16T00:00:00+00:00" pubdate><span class='month'>Nov</span> <span class='day'>16</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/10/28/yahoo-bookmarks-uses-symfony-php-framework/">Yahoo Bookmarks uses Symfony PHP Framework</a></h1>
+<time datetime="2006-10-28T00:00:00+01:00" pubdate><span class='month'>Oct</span> <span class='day'>28</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/10/27/bouncing-bals-in-javascript/">Bouncing balls in javascript</a></h1>
+<time datetime="2006-10-27T00:00:00+01:00" pubdate><span class='month'>Oct</span> <span class='day'>27</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/09/27/the-pope-was-just-passing-on-a-message/">The Pope was just passing on a message</a></h1>
+<time datetime="2006-09-27T00:00:00+01:00" pubdate><span class='month'>Sep</span> <span class='day'>27</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/09/27/drumming-for-kids/">Drumming for kids</a></h1>
+<time datetime="2006-09-27T00:00:00+01:00" pubdate><span class='month'>Sep</span> <span class='day'>27</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/09/26/hamsters-recovery-by-clarkson/">Hamsters recovery by Clarkson</a></h1>
+<time datetime="2006-09-26T00:00:00+01:00" pubdate><span class='month'>Sep</span> <span class='day'>26</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/09/25/ajaxified-phpbb/">Ajaxified PHPBB</a></h1>
+<time datetime="2006-09-25T00:00:00+01:00" pubdate><span class='month'>Sep</span> <span class='day'>25</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/09/21/the-funniest-tv-i-have-ever-seen/">The funniest TV I have ever seen!</a></h1>
+<time datetime="2006-09-21T00:00:00+01:00" pubdate><span class='month'>Sep</span> <span class='day'>21</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/09/15/is-this-what-vista-can-do/">Is this what Vista can do?</a></h1>
+<time datetime="2006-09-15T00:00:00+01:00" pubdate><span class='month'>Sep</span> <span class='day'>15</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/09/12/ruby-gets-a-site-lift/">Ruby gets a site lift</a></h1>
+<time datetime="2006-09-12T00:00:00+01:00" pubdate><span class='month'>Sep</span> <span class='day'>12</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/09/08/tooum-switchboard-goes-live/">Tooum Switchboard goes live</a></h1>
+<time datetime="2006-09-08T00:00:00+01:00" pubdate><span class='month'>Sep</span> <span class='day'>08</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/09/06/something-a-little-more-sensitive/">Something a little more sensitive!</a></h1>
+<time datetime="2006-09-06T00:00:00+01:00" pubdate><span class='month'>Sep</span> <span class='day'>06</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/08/30/switchboard-delayed-by-a-few-days/">Switchboard delayed by a few days</a></h1>
+<time datetime="2006-08-30T00:00:00+01:00" pubdate><span class='month'>Aug</span> <span class='day'>30</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/08/14/darth-vadars-new-toy/">Darth Vadars New Toy</a></h1>
+<time datetime="2006-08-14T00:00:00+01:00" pubdate><span class='month'>Aug</span> <span class='day'>14</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/08/04/rebirth/">Rebirth</a></h1>
+<time datetime="2006-08-04T00:00:00+01:00" pubdate><span class='month'>Aug</span> <span class='day'>04</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/08/02/switchboard-goes-live-on-hpu/">Switchboard goes live on HPU</a></h1>
+<time datetime="2006-08-02T00:00:00+01:00" pubdate><span class='month'>Aug</span> <span class='day'>02</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/08/02/new-tooum-splash-page/">New Tooum splash page</a></h1>
+<time datetime="2006-08-02T00:00:00+01:00" pubdate><span class='month'>Aug</span> <span class='day'>02</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/07/14/switchboard-sneek-peak/">Switchboard sneek peak</a></h1>
+<time datetime="2006-07-14T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>14</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/07/14/mysql-stored-procedures-we-like/">MySQL Stored Procedures - We Like!</a></h1>
+<time datetime="2006-07-14T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>14</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/07/10/cake-news/">Cake News</a></h1>
+<time datetime="2006-07-10T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>10</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/07/07/record-sky-tv-by-sending-a-text-message/">Record Sky TV by sending a text message</a></h1>
+<time datetime="2006-07-07T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>07</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/07/07/carousel-display-with-yui/">Carousel display with YUI</a></h1>
+<time datetime="2006-07-07T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>07</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/07/07/cake-migrations-11/">Cake Migrations 1.1</a></h1>
+<time datetime="2006-07-07T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>07</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/07/04/ive-stumbled-upon-it-all/">Ive stumbled upon it all!</a></h1>
+<time datetime="2006-07-04T00:00:00+01:00" pubdate><span class='month'>Jul</span> <span class='day'>04</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/06/28/tooumcom-splash-page/">Tooum.com splash page</a></h1>
+<time datetime="2006-06-28T00:00:00+01:00" pubdate><span class='month'>Jun</span> <span class='day'>28</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/06/22/easy-peasy-table-sorting/">Easy Peasy Table sorting</a></h1>
+<time datetime="2006-06-22T00:00:00+01:00" pubdate><span class='month'>Jun</span> <span class='day'>22</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/06/20/javascript-world-cup/">Javascript World Cup</a></h1>
+<time datetime="2006-06-20T00:00:00+01:00" pubdate><span class='month'>Jun</span> <span class='day'>20</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/06/13/tooum-is-announced/">Tooum is announced</a></h1>
+<time datetime="2006-06-13T00:00:00+01:00" pubdate><span class='month'>Jun</span> <span class='day'>13</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/05/16/yahoo-and-their-ui/">Yahoo and their UI</a></h1>
+<time datetime="2006-05-16T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>16</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/05/16/final-release-v10-of-cake-migrations/">Final release (v1.0) of Cake Migrations</a></h1>
+<time datetime="2006-05-16T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>16</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/05/16/a-taste-of-vista-visual-task-tips/">A taste of Vista: Visual Task tips</a></h1>
+<time datetime="2006-05-16T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>16</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/05/15/cake-migrations/">Cake Migrations</a></h1>
+<time datetime="2006-05-15T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>15</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/05/14/dont-like-that-one/">Dont like that one!</a></h1>
+<time datetime="2006-05-14T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>14</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/05/13/if-it-aint-broke/">If it aint broke</a></h1>
+<time datetime="2006-05-13T00:00:00+01:00" pubdate><span class='month'>May</span> <span class='day'>13</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/04/27/colour-wheel/">Colour Wheel</a></h1>
+<time datetime="2006-04-27T00:00:00+01:00" pubdate><span class='month'>Apr</span> <span class='day'>27</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/04/19/custom-ajax-effects-with-scriptaculous/">Custom Ajax effects with Scriptaculous</a></h1>
+<time datetime="2006-04-19T00:00:00+01:00" pubdate><span class='month'>Apr</span> <span class='day'>19</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/03/30/lightbox-v20/">Lightbox v2.0</a></h1>
+<time datetime="2006-03-30T00:00:00+01:00" pubdate><span class='month'>Mar</span> <span class='day'>30</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/03/18/dabbledb-screencast/">DabbleDB Screencast</a></h1>
+<time datetime="2006-03-18T00:00:00+00:00" pubdate><span class='month'>Mar</span> <span class='day'>18</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/03/09/heat-mapping/">Heat Mapping</a></h1>
+<time datetime="2006-03-09T00:00:00+00:00" pubdate><span class='month'>Mar</span> <span class='day'>09</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/03/08/farcry-mollio/">FarCry - Mollio</a></h1>
+<time datetime="2006-03-08T00:00:00+00:00" pubdate><span class='month'>Mar</span> <span class='day'>08</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/03/07/firefox-made-72m-last-year/">Firefox made $72M last year?!</a></h1>
+<time datetime="2006-03-07T00:00:00+00:00" pubdate><span class='month'>Mar</span> <span class='day'>07</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/03/03/teenage-ignorance/">Teenage ignorance</a></h1>
+<time datetime="2006-03-03T00:00:00+00:00" pubdate><span class='month'>Mar</span> <span class='day'>03</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/03/02/getting-real-the-smarter-faster-easier-way-to-build-a-successful-web-application/">Getting Real: The smarter, faster, easier way to build a successful web application</a></h1>
+<time datetime="2006-03-02T00:00:00+00:00" pubdate><span class='month'>Mar</span> <span class='day'>02</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/03/02/deal-done-on-com-domain-future/">Deal done on .com domain future</a></h1>
+<time datetime="2006-03-02T00:00:00+00:00" pubdate><span class='month'>Mar</span> <span class='day'>02</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/02/20/prototype-cheat-sheet/">Prototype cheat sheet</a></h1>
+<time datetime="2006-02-20T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>20</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/02/13/mochikit-meltdown/">Mochikit meltdown</a></h1>
+<time datetime="2006-02-13T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>13</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/02/08/lists-of-resources-with-listible/">Lists of resources with Listible</a></h1>
+<time datetime="2006-02-08T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>08</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/02/08/css-page-generator/">CSS Page Generator</a></h1>
+<time datetime="2006-02-08T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>08</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/02/07/web-20-on-one-page/">Web 2.0 on one page</a></h1>
+<time datetime="2006-02-07T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>07</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/02/07/rss-in-internet-explorer-7/">RSS in Internet Explorer 7</a></h1>
+<time datetime="2006-02-07T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>07</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/02/07/lightbox-gone-wild/">Lightbox gone wild!</a></h1>
+<time datetime="2006-02-07T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>07</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/02/07/js-usage-just-gets-smarter/">JS Usage just gets smarter!</a></h1>
+<time datetime="2006-02-07T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>07</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/02/07/gadgets-lets-park/">Gadgets: Lets park</a></h1>
+<time datetime="2006-02-07T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>07</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/02/07/fluxiom-now-that-is-impressive/">Fluxiom: now THAT is impressive!</a></h1>
+<time datetime="2006-02-07T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>07</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/articles/2006/02/06/the-beginning/">The beginning</a></h1>
+<time datetime="2006-02-06T00:00:00+00:00" pubdate><span class='month'>Feb</span> <span class='day'>06</span> <span class='year'>2006</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/articles/categories/articles/'>articles</a></span>
+</footer>
+
+
+</article>
+
 </div>
+
+  
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header><section>
+  <h1>About Me</h1>
+  <p>This site contains the musings of Joel Moss, a web developer of some 13 years; living in Manchester, England. But some say I'm physically plugged into, and live IN the internet! They may actually be right!</p>
+  <p><a href="/">Tell me more...</a></p>
+</section>
+<div id="carbonads-container"><div class="carbonad"><div id="carbon"></div><script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/12107/carbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div> <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Developed with Style - &copy; 2012 - Joel Moss
+</p>
+
+</footer>
+</body>
+</html>

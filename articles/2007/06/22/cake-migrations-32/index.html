@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Cake Migrations 3.2 - Develop With Style</title>
+  <meta name="author" content="Joel Moss">
+
+  
+  <meta name="description" content="Cake DB Migrations has now been updated to work with the very latest version of CakePHP 1.2 and the new (hopefully final) console/shells system. I &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://developwithstyle.com/articles/2007/06/22/cake-migrations-32">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/DevelopingWithStyle" rel="alternate" title="Develop With Style" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Actor|Quattrocento+Sans' rel='stylesheet' type='text/css'>
+
+<style type="text/css" media="screen">
+  .carbonad {
+    width: 265px !important;
+    height: 98px !important;
+  }
+  .carbonad-text {
+    width: 136px !important;
+    padding-top: 8px !important;
+  }
+  .carbonad-image img {
+    width: 110px !important;
+    height: 80px !important;
+  }
+  .carbonad-tag {
+    width: 136px !important;
+  }
+</style>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9843082-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <nav role=navigation><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/DevelopingWithStyle" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Home</a></li>
+  <li><a href="/#contact">Contact</a></li>
+  <li><a href="/articles">Blog</a></li>
+  <li><a href="http://github.com/joelmoss">Github</a></li>
+  <li><a href="http://twitter.com/joelmoss">Twitter</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header>
+      <div>
+<article class="hentry">
+  
+  <header>
+    
+      <h1 class="entry-title">Cake Migrations 3.2</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-06-22T00:00:00+01:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Cake DB Migrations has now been updated to work with the very latest version of CakePHP 1.2 and the new (hopefully final) console/shells system. I have also added a few extra goodies to make life a little easier.</p>
+
+<p>The new features and changes are as follows:</p>
+
+<ul>
+    <li>You can now specify a column without the need to specify the column type. Type is set to string, which is simply a varchar(255) column.</li>
+    <li>Ability to add user definable foreign keys by simply specifying the &#8216;fkey&#8217; as a column name, followed by the name(s) of the foreign key(s).</li>
+    <li>You can now include PHP code within the YAML migration files</li>
+</ul>
+
+
+<p>Because the console system in Cake 1.2 has changed a bit, you now have to place the below script in a slightly different place. Within your main &#8216;vendors&#8217; directory above your app and cake core directories, paste the below code into a file called &#8216;migrate.php&#8217; and place that file in a directory called &#8216;shells&#8217;.</p>
+
+<p>Now just bring up your favourite command line tool and cd into your cake applications root directory and run the following:</p>
+
+<pre><code>./cake migrate</code></pre>
+
+
+<p>And that is it! That will migrate to the lastest version. You can specify the version like this:</p>
+
+<pre><code>./cake migrate -v 3</code></pre>
+
+
+<p>As promised, I hope to create a screencast going through all aspects of migrations and how they can save your life.</p>
+
+<p>You can find the script in <a href="http://cakeforge.org/snippet/detail.php?type=snippet&amp;id=165">CakeForge</a>, aswell as new versions of the <a href="http://cakeforge.org/snippet/detail.php?type=snippet&amp;id=166">Fixtures</a> and <a href="http://cakeforge.org/snippet/detail.php?type=snippet&amp;id=167">Generator</a> shells.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joel Moss</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/articles/categories/articles/'>articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://developwithstyle.com/articles/2007/06/22/cake-migrations-32/" data-via="joelmoss" data-counturl="http://developwithstyle.com/articles/2007/06/22/cake-migrations-32/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside role=sidebar>
+  
+    <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header><section>
+  <h1>About Me</h1>
+  <p>This site contains the musings of Joel Moss, a web developer of some 13 years; living in Manchester, England. But some say I'm physically plugged into, and live IN the internet! They may actually be right!</p>
+  <p><a href="/">Tell me more...</a></p>
+</section>
+<div id="carbonads-container"><div class="carbonad"><div id="carbon"></div><script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/12107/carbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div> <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Developed with Style - &copy; 2012 - Joel Moss
+</p>
+
+</footer>
+</body>
+</html>

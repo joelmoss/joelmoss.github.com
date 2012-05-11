@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Goodbye Wordpress, Hello Jekyll - Develop With Style</title>
+  <meta name="author" content="Joel Moss">
+
+  
+  <meta name="description" content="A few months ago, I ditched my install of Wordpress and rebuilt this blog from the ground up using nothing but good old, raw HTML, with a little &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://developwithstyle.com/articles/2009/12/09/goodbye-wordpress-hello-jekyll">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/DevelopingWithStyle" rel="alternate" title="Develop With Style" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Actor|Quattrocento+Sans' rel='stylesheet' type='text/css'>
+
+<style type="text/css" media="screen">
+  .carbonad {
+    width: 265px !important;
+    height: 98px !important;
+  }
+  .carbonad-text {
+    width: 136px !important;
+    padding-top: 8px !important;
+  }
+  .carbonad-image img {
+    width: 110px !important;
+    height: 80px !important;
+  }
+  .carbonad-tag {
+    width: 136px !important;
+  }
+</style>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9843082-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <nav role=navigation><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/DevelopingWithStyle" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Home</a></li>
+  <li><a href="/#contact">Contact</a></li>
+  <li><a href="/articles">Blog</a></li>
+  <li><a href="http://github.com/joelmoss">Github</a></li>
+  <li><a href="http://twitter.com/joelmoss">Twitter</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header>
+      <div>
+<article class="hentry">
+  
+  <header>
+    
+      <h1 class="entry-title">Goodbye Wordpress, Hello Jekyll</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-09T00:00:00+00:00" pubdate data-updated="true">Dec 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>A few months ago, I ditched my install of Wordpress and rebuilt this blog from the ground up using nothing but good old, raw HTML, with a little sprinkling of magic. At the time, I didn&#8217;t really talk about it much, so in this post I will be talking about how my blog is built, maintained and published using that little sprinkling of magic that is called Jekyll and Codaset Pages.</p>
+
+<h3>Goodbye Wordpress</h3>
+
+<p>Now don&#8217;t get me wrong here, but Wordpress is great at what it does. It&#8217;s probably the best blog engine available, and the fact that it has a huge community around it, makes it somewhat of a rock star in the open source community. But&#8230; what it tries to do is everything! It tries to answer all your blogging conundrums, which unfortunately actually places some restrictions on what you can or cannot do with your blog. Yes I can install a plugin, or even write one myself, but have you ever written a Wordpress plugin? Don&#8217;t! </p>
+
+<p>What I am trying to say, is that blogging with Wordpress or any other automated blogging engine is not fun anymore. I know the point of a blogging engine is to allow you to publish without the need to write code, but you know what? I like writing code! I like having full control over what my blog does and what it looks like. And that is why I ditched Wordpress.</p>
+
+<h3>Hello Jekyll</h3>
+
+<p>What I didn&#8217;t want to do was to write my own blogging engine. In fact, I don&#8217;t want to use a blogging engine at all, at least not in the traditional sense. I just want a simple, unrestricted method of blogging. So I turned to <a href="http://tom.preston-werner.com/jekyll/">Jekyll</a>. Jekyll is a blog aware, static site generator written in Ruby, and in use by <a href="http://codaset.com">Codaset</a> and <a href="http://github.com">Github</a> for their pages feature. It lets you write raw HTML, or your template language of choice (Textile, Markdown), and even lets you create layouts. It then takes these templates and layouts and spits out a complete website or blog in a completely static form.</p>
+
+<h3>And Hello Codaset Pages</h3>
+
+<p><a href="http://pages.codaset.com">Codaset Pages</a> are a brilliantly simple way to host any static content, and works perfectly with Jekyll. Just create a new project under your Codaset account, then every time you &#8216;git push&#8217; to it, your site or blog is instantly updated. So I have a project called &#8217;<a href="http://codaset.com/joelmoss/joelmoss_pages">joelmoss_pages</a>&#8217;, which can be seen at <a href="http://joelmoss.codaset.com">http://joelmoss.codaset.com</a>. And that is this very blog.</p>
+
+<p>You can see exactly how my blog is structured and have access to all the source code at <a href="http://codaset.com/joelmoss/joelmoss_pages">Codaset</a>, so I won&#8217;t go into too much detail. Just look at the <a href="http://codaset.com/joelmoss/joelmoss_pages">source</a> yourself. But what I will quickly do is show you how I wrote this blog post.</p>
+
+<p>You can find the actual source file for this blog post <a href="http://codaset.com/joelmoss/joelmoss_pages/source/master/blob/articles/_posts/2009-12-09-goodbye-wordpress-hello-jekyll.html">right here</a>. Nothing special right? Wrong! The top four lines contain what we call &#8216;YAML front matter&#8217;, and they tell Jekyll which layout to use and the pages title. You can find the <a href="http://codaset.com/joelmoss/joelmoss_pages/source/master/blob/_layouts/post.html">layout here</a> and can see on line 66 where we include this blog post file.</p>
+
+<p>Now I just load up my command line and cd to my &#8216;joelmoss_pages&#8217; working directory, and then &#8216;git push&#8217;. Codaset will then run Jekyll against my new blog post when I push it to the server. Which means that my blog post is published almost as soon as I push to my Git repository. There&#8217;s just something so bloody wicked about that!</p>
+
+<p>And that, my friends is it! I have full control over what my blog post looks like, as I can edit the html directly and with very little effort. And I can very easily create any other pages of content just as quickly. I don&#8217;t have to mess about with the restrictions of a blog engine such as Wordpress, and there are no version upgrades to mess around with. I also don&#8217;t have to look at the messiest, spaghettiest codebase in the open source community, every time I want to add some sort of plugin.</p></div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joel Moss</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/articles/categories/articles/'>articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://developwithstyle.com/articles/2009/12/09/goodbye-wordpress-hello-jekyll/" data-via="joelmoss" data-counturl="http://developwithstyle.com/articles/2009/12/09/goodbye-wordpress-hello-jekyll/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside role=sidebar>
+  
+    <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header><section>
+  <h1>About Me</h1>
+  <p>This site contains the musings of Joel Moss, a web developer of some 13 years; living in Manchester, England. But some say I'm physically plugged into, and live IN the internet! They may actually be right!</p>
+  <p><a href="/">Tell me more...</a></p>
+</section>
+<div id="carbonads-container"><div class="carbonad"><div id="carbon"></div><script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/12107/carbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div> <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Developed with Style - &copy; 2012 - Joel Moss
+</p>
+
+</footer>
+</body>
+</html>

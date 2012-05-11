@@ -1,0 +1,650 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Develop With Style</title>
+  <meta name="author" content="Joel Moss">
+
+  
+  <meta name="description" content="Another day, another Migrations release. Version 2.2 is now available for download. This release fixes a few more bugs aswell as the following two &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://developwithstyle.com/articles/page/18">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/DevelopingWithStyle" rel="alternate" title="Develop With Style" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Actor|Quattrocento+Sans' rel='stylesheet' type='text/css'>
+
+<style type="text/css" media="screen">
+  .carbonad {
+    width: 265px !important;
+    height: 98px !important;
+  }
+  .carbonad-text {
+    width: 136px !important;
+    padding-top: 8px !important;
+  }
+  .carbonad-image img {
+    width: 110px !important;
+    height: 80px !important;
+  }
+  .carbonad-tag {
+    width: 136px !important;
+  }
+</style>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9843082-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <nav role=navigation><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/DevelopingWithStyle" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Home</a></li>
+  <li><a href="/#contact">Contact</a></li>
+  <li><a href="/articles">Blog</a></li>
+  <li><a href="http://github.com/joelmoss">Github</a></li>
+  <li><a href="http://twitter.com/joelmoss">Twitter</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header>
+      <div class="blog-index">
+
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2006/11/29/migrations-v22/">Migrations v2.2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-29T00:00:00+00:00" pubdate data-updated="true">Nov 29<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Another day, another Migrations release. Version 2.2 is now available for <a href="http://homepageuniverse.com/migrations.zip">download</a>.</p>
+
+<p>This release fixes a few more bugs aswell as the following two minor - but nice - changes:</p>
+
+<h4>&#8216;created&#8217; &amp; &#8216;modified&#8217; fields now optional</h4>
+
+
+<p>Creation of <em>created</em> and <em>modified</em> fields can now be prevented. Example:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>UP:
+</span><span class='line'>  create_table:
+</span><span class='line'>    users:
+</span><span class='line'>      first_name:
+</span><span class='line'>        type: text
+</span><span class='line'>        length: 64
+</span><span class='line'>        notnull: true
+</span><span class='line'>        index: true
+</span><span class='line'>      last_name:
+</span><span class='line'>        type: text
+</span><span class='line'>        length: 64
+</span><span class='line'>      created: false
+</span><span class='line'>      modified: false</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note the last two lines. Leave these lines out completely and &#8216;created&#8217; and &#8216;modified&#8217; fields will be created for you.</p>
+
+<h4>Instant operation</h4>
+
+
+<p>Thanks to a comment from <a href="http://cakebaker.42dh.com">Daniel Hofstetter</a>, you can now run migrations and fixtures with one command and bypassing all prompts. This makes the whole process very fast and save a bundle of time.</p>
+
+<p>Just do the following to run your latest migrations:</p>
+
+<figure class='code'><figcaption><span>vendors/migrations/migrate.php -migrate latest&#8220;`</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">or specify the migration version:</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>php vendors/migrations/migrate.php -migrate 4&#8220;`</p>
+
+<p>You can also run any specified fixture in the same way:</p>
+
+<pre><code>php vendors/migrations/migrate.php -fixture users
+</code></pre>
+
+
+<p><strong>BE WARNED</strong> that running the above commands will not prompt you at all, or ask you to confirm the action. So if you mistype a version number of fixture name, and delete all your work, I will not be held responsible.</p>
+
+<p>As usual, play nicely and post away if you have anything to say or request.</p>
+</div>
+  
+  
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2006/11/29/cakes-global-css-javascript-and-images/">Cake&#8217;s Global CSS, Javascript and Images</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-29T00:00:00+00:00" pubdate data-updated="true">Nov 29<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Just perusing through cake&#8217;s webroot, I noticed a PHP file in the <em>js</em> directory called <em>vendors.php</em>. It seems its idea is to allow you to keep a global repository of javascript files in cake&#8217;s main vendors directory. This is a great idea for those of us who develop multiple apps with one cake install.</p>
+
+<p>So I had a little think and realised I could do the same thing with my CSS files and images. So I set to work modifying this vendors.php file. So now if I want to include a link to a global javascript file located in cake&#8217;s <em>vendors</em> directory, I simply do this in my view:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$javascript->link('vendors/myjs');</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Adding <em>vendors/</em> before the filename simply tells the javascript helper that it should look in the global vendors directory for the file. Of course it works normally if <em>vendors/</em> is not prepended and includes files from your webroot.</p>
+
+<p>I can do the same thing with CSS:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$html->css('vendors/mycss');</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h4>So how did I do this?</h4>
+
+
+<p>Simply edit the vendors.php file in your <em>webroot/js</em> directory (or create it if it doesn&#8217;t exist) and add the following code:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/**
+</span><span class='line'> * This file includes js vendor-files from /vendor/ directory if they need to
+</span><span class='line'> * be accessible to the public.
+</span><span class='line'> */
+</span><span class='line'>$file = $_GET['file'];
+</span><span class='line'>if(is_file('../../../../vendors/js/'.$file))
+</span><span class='line'>{
+</span><span class='line'>    readfile('../../../../vendors/js/'.$file);
+</span><span class='line'>}
+</span><span class='line'>else
+</span><span class='line'>{
+</span><span class='line'>    header('HTTP/1.1 404 Not Found');
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you just need to create an .htaccess file in your <em>webroot/js</em> directory with the following content:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;ifmodule>
+</span><span class='line'>    RewriteEngine On
+</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-d
+</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-f
+</span><span class='line'>    RewriteRule ^vendors/(.*)$ vendors.php?file=$1 [QSA,L]
+</span><span class='line'>&lt;/ifmodule></span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is required, so this whole thing will obviously only work if you have apache&#8217;s mod_rewrite enabled.</p>
+
+<p>Now just create a directory called <em>js</em> in your global <em>vendors</em> directory and place your javascript files into it. Now you can include your javascript files from a central repository shared by all your apps.</p>
+
+<p>Just rinse and repeat for your CSS and images directories. Not forgetting to edit the file paths, etc.</p>
+</div>
+  
+  
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2006/11/28/a-brief-history-of-pop-music-in-four-chords/">A Brief History of Pop Music - in Four Chords!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-28T00:00:00+00:00" pubdate data-updated="true">Nov 28<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><embed src="http://www.youtube.com/v/8s13sASS5F4" width="425" height="350" type="application/x-shockwave-flash"></embed></p>
+</div>
+  
+  
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2006/11/25/migrations-v21-now-with-fixtures/">Migrations V2.1 - Now With Fixtures</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-25T00:00:00+00:00" pubdate data-updated="true">Nov 25<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have just pushed out a new version of Cake Migrations available for <a href="http://homepageuniverse.com/migrations.zip">download</a> right now. Version 2.1 fixes a few bugs here and there, but more significantly, Migrations now come with Fixtures.</p>
+
+<p>Following is a quick rundown of what&#8217;s new in this release.</p>
+
+<h4>Fixtures</h4>
+
+
+<p>Fixtures are pretty much the same thing as migrations, but are only used for inserting test data into your development database. So after you run your migrations, simply create a fixture for each of your tables, which will fill them up with test data you can use to test your apps. Coz if you think about it, it&#8217;s a bit pointless testing without actual data.</p>
+
+<p>So now when you run the migrate script, you get to choose whether you want to work with your migrations or your fixtures. Select fixtures and presuming you have some tables in your DB, it will ask you which table you want to create fixtures for. Selecting a table will then create a blank fixture file in <em>app/config/fixtures</em> which you should then place your fixtures into.</p>
+
+<p>Something like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#
+</span><span class='line'># Fixture YAML file
+</span><span class='line'>#
+</span><span class='line'>-
+</span><span class='line'> name: bob1
+</span><span class='line'> username: bobby1
+</span><span class='line'> password: mypass
+</span><span class='line'> created: NOW
+</span><span class='line'>-
+</span><span class='line'> name: bob2
+</span><span class='line'> username: bobby2
+</span><span class='line'> password: mypass
+</span><span class='line'> created: NOW
+</span><span class='line'> modified: NOW
+</span><span class='line'>-
+</span><span class='line'> name: bob3
+</span><span class='line'> username: bobby3
+</span><span class='line'> password: mypass
+</span><span class='line'> created: NOW
+</span><span class='line'>-
+</span><span class='line'> name: bob4
+</span><span class='line'> username: bobby4
+</span><span class='line'> password: mypass
+</span><span class='line'> created: NOW
+</span><span class='line'>-
+</span><span class='line'> name: bob5
+</span><span class='line'> username: bobby5
+</span><span class='line'> password: mypass
+</span><span class='line'> created: NOW
+</span><span class='line'>-
+</span><span class='line'> name: bob6
+</span><span class='line'> username: bobby6
+</span><span class='line'> password: mypass
+</span><span class='line'> created: NOW</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After each hyphen a fixture or table row is set. You simply set key:value pairs for the fields you want to fill. Don&#8217;t forget the hyphen before each fixture and of course the usual YAML indents, etc.</p>
+
+<p>You may notice that I have not specified a date in any of the <em>created</em> values. I used the <em>NOW</em> keyword instead, which basically inserts the current datetime for you (and in the right format).</p>
+
+<p>Now all you need to do is run migrate.php again, select fixtures and the table you want to run these fixtures for. It will detect this fixture file and insert your data. And voila! Instant test data for your app.</p>
+
+<h4>Created/Modified fields</h4>
+
+
+<p>Previously you had to specify that you wanted the <em>created</em> and <em>modified</em> fields created in your migrations. Not anymore! These two fields will be created for you in every table, so just leave them out completely.</p>
+
+<h4>Primary Key auto incremented</h4>
+
+
+<p>One thing that I left out in previous versions was to make the primary key field auto increment. This is now added.</p>
+
+<p>As you can see, not many changes there, but I thought it deserved a minor increment in version number because of the addition of Fixtures. Watch out for more changes, including the ability to generate migration files from the structure of an existing database. I also plan on making the Migrations script independant. So it will work with and without Cake.</p>
+
+<p>So as usual, please play around with it and let me if you find any bugs. It would also be great to hear what you all think about it all.</p>
+
+<p>Enjoy!</p>
+</div>
+  
+  
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2006/11/23/rails-love/">Rails Love</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-23T00:00:00+00:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Why is it that no matter how many times I decide to use something else and no matter how hard I try to stear away from Rails when developing a new app, I come across a really cool Rails feature or idiom that just blows me away. Today, DHH and pals just released the eagerly anticipated Ruby on Rails version 1.2 and it includes some extremely impressive updates.</p>
+
+<p>Things like REST support, respond_to and lots of little things that make life easier for a programmer are all included. It all looks so cool and so easy to use.</p>
+
+<p>So why don&#8217;t I use Rails then? Because it would mean me having to learn Ruby - a whole new language. And that is just time that I do not have.  But on the other hand, will it save me time to actually develop applications over something like PHP?</p>
+
+<p>Oh I just don&#8217;t know. Do I take the plunge and spend the next few weeks learning Ruby, or do I block it out of my mind for ever and stick with good PHP and Cake???</p>
+
+<p>HELP ME???</p>
+</div>
+  
+  
+
+
+  </article>
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2006/11/23/migrations-bug-fixes/">Migrations Bug Fixes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-23T00:00:00+00:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>With thanks to kabturek and dhofset in Cake IRC, we discovered a few bugs in Migrations. So I have updated it and released version 2.0.2. You can download it from <a href="http://homepageuniverse.com/migrations.zip">HomepageUniverse</a></p>
+
+<p>Please play around. Oh and don&#8217;t forget to check out the <a href="http://joelmoss.info/switchboard/blog/1997:The_Joy_of_Cake_Migrations__my_first_tutorial">tutorial</a>.</p>
+</div>
+  
+  
+
+
+  </article>
+
+<nav role="pagination">
+  <div>
+    
+      <a class="prev" href="/articles/page/19/">&larr; Older</a>
+    
+    <a href="/articles/archives">Blog Archives</a>
+    
+    <a class="next" href="/articles/page/17/">Newer &rarr;</a>
+    
+  </div>
+</nav>
+
+<script type="text/javascript">
+    var disqus_shortname = 'dws';
+    (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+</div>
+<aside role=sidebar>
+  
+    <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header><section>
+  <h1>About Me</h1>
+  <p>This site contains the musings of Joel Moss, a web developer of some 13 years; living in Manchester, England. But some say I&#8217;m physically plugged into, and live IN the internet! They may actually be right!</p>
+  <p><a href="/">Tell me more&#8230;</a></p>
+</section>
+<div id="carbonads-container"><div class="carbonad"><div id="carbon"></div><script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/12107/carbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div> <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer><p>
+  Developed with Style - &copy; 2012 - Joel Moss
+</p>
+
+</footer>
+</body>
+</html>

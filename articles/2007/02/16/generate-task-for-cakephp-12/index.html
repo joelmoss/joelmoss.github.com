@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Generate Task for CakePHP 1.2 - Develop With Style</title>
+  <meta name="author" content="Joel Moss">
+
+  
+  <meta name="description" content="Following on from my previous posts announcing CakePHP 1.2 compatible versions of Migrations and Fixtures, below you will find another bake2 task &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://developwithstyle.com/articles/2007/02/16/generate-task-for-cakephp-12">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/DevelopingWithStyle" rel="alternate" title="Develop With Style" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Actor|Quattrocento+Sans' rel='stylesheet' type='text/css'>
+
+<style type="text/css" media="screen">
+  .carbonad {
+    width: 265px !important;
+    height: 98px !important;
+  }
+  .carbonad-text {
+    width: 136px !important;
+    padding-top: 8px !important;
+  }
+  .carbonad-image img {
+    width: 110px !important;
+    height: 80px !important;
+  }
+  .carbonad-tag {
+    width: 136px !important;
+  }
+</style>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9843082-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <nav role=navigation><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/DevelopingWithStyle" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:developwithstyle.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Home</a></li>
+  <li><a href="/#contact">Contact</a></li>
+  <li><a href="/articles">Blog</a></li>
+  <li><a href="http://github.com/joelmoss">Github</a></li>
+  <li><a href="http://twitter.com/joelmoss">Twitter</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header>
+      <div>
+<article class="hentry">
+  
+  <header>
+    
+      <h1 class="entry-title">Generate Task for CakePHP 1.2</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-02-16T00:00:00+00:00" pubdate data-updated="true">Feb 16<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Following on from my previous posts announcing CakePHP 1.2 compatible versions of Migrations and Fixtures, below you will find another bake2 task that can very quickly generate your models, controllers, migrations and fixtures.</p>
+
+<p>To generate a model called &#8220;User&#8221; in your &#8220;app&#8221; application, simply run:</p>
+
+<pre><code>php bake2.php generate app model User</code></pre>
+
+
+<p>Use the exact same syntax to generate controllers and migrations.</p>
+
+<p>If you run &#8220;php bake2.php generate app fixtures&#8221;, a fixture will be created for every table in your database, unless of course fixtures already exists.</p>
+
+<pre><code>/**
+ * The GenerateTask generates various files as specified.
+ *
+ * PHP versions 4 and 5
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @copyright       Copyright 2006-2007, Joel Moss
+ * @link                http://joelmoss.info
+ * @package         cake
+ * @subpackage      cake.cake.scripts.bake
+ * @since           CakePHP(tm) v 1.2
+ * @version         $Version: 1.0 $
+ * @modifiedby      $LastChangedBy: joelmoss $
+ * @lastmodified    $Date: 2007-02-16 09:09:45 +0000 (Fri, 16 Feb 2007) $
+ * @license         http://www.opensource.org/licenses/mit-license.php The MIT License
+ */ 
+
+uses('file', 'folder', 'inflector');
+
+class GenerateTask extends BakeTask
+{
+
+    function execute($params)
+    {
+        $this-&gt;welcome();
+
+        if ($params[0] == 'help')
+        {
+            $this-&gt;help();
+            exit;
+        }
+
+        $this-&gt;initDatabase();
+        $this-&gt;initApp();
+
+        define('FIXTURES_PATH', APP_PATH .'config' .DS. 'fixtures');
+        define('MIGRATIONS_PATH', APP_PATH .'config' .DS. 'migrations');
+
+        if (count($params) &gt; 0)
+        {
+            if ($params[0] == 'fixtures')
+            {
+                $this-&gt;fixtures();
+                exit;
+            }
+            elseif ($params[0] == 'migration')
+            {
+                $this-&gt;migration($params[1]);
+                exit;
+            }
+            elseif ($params[0] == 'model')
+            {
+                $this-&gt;model($params[1]);
+                exit;
+            }
+            elseif ($params[0] == 'controller')
+            {
+                $this-&gt;controller($params[1]);
+                exit;
+            }
+        }
+
+        $this-&gt;help();
+    }
+
+    function controller($name)
+    {
+        if (empty($name)) $this-&gt;err('Controller name not specified.');
+        if (!preg_match("/^[a-zA-Z]+$/", $name))
+            $this-&gt;err('Controller name ('.$name.') is invalid. It must be CamelCased');
+
+        $filename = Inflector::underscore($name) . '_controller.php';
+        if (file_exists(CONTROLLERS . $filename)) $this-&gt;err('Controller ('.$name.') already exists.');
+
+        $data = "";
+        $file = new File(CONTROLLERS . $filename, true);
+        $file-&gt;write($data);
+
+        $this-&gt;out('');
+        $this-&gt;out('Generation of controller: ''.$name.'' completed.');
+        $this-&gt;out('Please edit ''.CONTROLLERS . $filename . '' to customise your controller.');
+
+        if (!file_exists(VIEWS.Inflector::underscore($name)))
+            new Folder(VIEWS.Inflector::underscore($name), true, 0777);
+
+        $this-&gt;hr();
+        exit;
+    }
+
+    function model($name)
+    {
+        if (empty($name)) $this-&gt;err('Model name not specified.');
+        if (!preg_match("/^[a-zA-Z]+$/", $name))
+            $this-&gt;err('Model name ('.$name.') is invalid. It must be CamelCased');
+
+        $filename = Inflector::underscore($name) . '.php';
+        if (file_exists(MODELS . $filename)) $this-&gt;err('Model ('.$name.') already exists.');
+
+        $data = "";
+        $file = new File(MODELS . $filename, true);
+        $file-&gt;write($data);
+
+        $this-&gt;out('');
+        $this-&gt;out('Generation of model: ''.$name.'' completed.');
+        $this-&gt;out('Please edit ''.MODELS . $filename . '' to customise your model.');
+
+        $this-&gt;migration('create_'.Inflector::tableize($name));
+        exit;
+    }
+
+    function migration($name)
+    {
+        if (empty($name)) $this-&gt;err('Migration name not specified.');
+        if (!preg_match("/^([a-z0-9]+|_)+$/", $name)) $this-&gt;err('Migration name ('.$name.') is invalid');
+
+        $this-&gt;getMigrations();
+        $new_migration_count = $this-&gt;migration_count+1;
+        $data = "#n# migration YAML filen#nUP: nullnDOWN: null";
+        $file = new File(MIGRATIONS_PATH . DS .$new_migration_count . '_' . $name . '.yml', true);
+        $file-&gt;write($data);
+
+        $this-&gt;out('');
+        $this-&gt;out('Generation of migration file: ''.$name.'' completed.');
+        $this-&gt;out('Please edit ''.MIGRATIONS_PATH . DS .$new_migration_count . '_' . $name . '.yml' to customise your migration.');
+        $this-&gt;hr();
+        exit;
+    }
+
+    function getMigrations()
+    {
+        $folder = new Folder(MIGRATIONS_PATH, true, 0777);
+        $this-&gt;migrations = $folder-&gt;find("[0-9]+_.+.yml");
+        usort($this-&gt;migrations, array('GenerateTask', '_upMigrations'));
+        $this-&gt;migration_count = count($this-&gt;migrations);
+    }
+
+    function _upMigrations($a, $b)
+    {
+        list($aStr) = explode('_', $a);
+        list($bStr) = explode('_', $b);
+        $aNum = (int)$aStr;
+        $bNum = (int)$bStr;
+        if ($aNum == $bNum) {
+            return 0;
+        }
+        return ($aNum &gt; $bNum) ? 1 : -1;
+    }
+
+    function fixtures()
+    {
+        $folder = new Folder(FIXTURES_PATH, true, 0777);
+        $tables = $this-&gt;_db-&gt;listTables();
+        if (!count($tables))
+            $this-&gt;err('Database contains no tables. Please generate and run your migrations before your fixtures.');
+
+        $this-&gt;out();
+        $data = "#n# Fixture YAML filen#n#n# Example:-n# -n#  first_name: Bobn#  last_name: Bonesn#n";
+        foreach ($tables as $i=&gt;$t)
+        {
+            if (!file_exists(FIXTURES_PATH .DS. $t . '.yml'))
+            {
+                $file = new File(FIXTURES_PATH .DS. $t . '.yml', true);
+                $file-&gt;write($data);
+                $this-&gt;out('  Generating fixture for '.$t.' ... DONE!');
+            }
+        }
+        $this-&gt;out('Generating complete!');
+        $this-&gt;hr();
+    }
+
+    function initApp()
+    {
+        $this-&gt;out("Application: '".APP_DIR."' (".APP_PATH.")");
+        $this-&gt;hr();
+    }
+
+    function initDatabase()
+    {
+        if (!@include_once('MDB2.php'))
+        {
+            $this-&gt;err('Task Error: Unable to include PEAR.php and MDB2.php');
+        }
+
+        if(!file_exists(APP_PATH.'config'.DS.'database.php'))
+        {
+            $this-&gt;out('** Checking for database configuration ... NOT FOUND! **');
+            $this-&gt;out();
+            $this-&gt;out('IMPORTANT!');
+            $this-&gt;out('Your database configuration ('.APP_PATH.'config'.DS.'database.php) was not found. Please');
+            $this-&gt;out('take a moment to create one by running the 'dbconfig' task:');
+            $this-&gt;out('');
+            $this-&gt;out('  php bake2.php dbconfig [...]');
+            $this-&gt;hr();
+            exit;
+        }
+
+        require_once (APP_PATH . 'config' .DS. 'database.php');
+
+        $ds = new DATABASE_CONFIG();
+        $config = $ds-&gt;default;
+        $dsn = array(
+            'phptype'   =&gt;  $config['driver'],
+            'username'  =&gt;  $config['login'],
+            'password'  =&gt;  $config['password'],
+            'hostspec'  =&gt;  $config['host'],
+            'database'  =&gt;  $config['database']
+        );
+        $options = array(
+            'debug'         =&gt;  DEBUG,
+            'portability'   =&gt;  DB_PORTABILITY_ALL
+        );
+        $this-&gt;_db = &amp;MDB2::connect($dsn, $options);
+        if (PEAR::isError($this-&gt;_db)) $this-&gt;err($this-&gt;_db-&gt;getDebugInfo());
+        $this-&gt;_db-&gt;setFetchMode(MDB2_FETCHMODE_ASSOC);
+        $this-&gt;_db-&gt;loadModule('Manager');
+        $this-&gt;_db-&gt;loadModule('Extended');
+        $this-&gt;_db-&gt;loadModule('Reverse');
+    }
+
+    function help()
+    {
+        echo "This task generates database migration and fixture files.n";
+        echo "Usage: bake2 generate app_alias fixtures|migration [migration_name]n";
+    }
+
+    function out($str='', $newline=true)
+    {
+        $nl = $newline ? "n" : "";
+        echo "  $str$nl";
+    }
+    function hr()
+    {
+        echo "n  ----------------------------------------------------------------------------n";
+    }
+    function err($str)
+    {
+        $this-&gt;out('');
+        $this-&gt;out('  ** '.$str.' **');
+        $this-&gt;hr();
+        exit;
+    }
+    function welcome()
+    {
+        $this-&gt;out('');
+        $this-&gt;hr();
+    $this-&gt;out(' __  __  _  _  __  __  _  _  __     __   __       __  __   __  ___  __   __ ');
+    $this-&gt;out('|   |__| |_/  |__ |__] |__| |__]   | _  |__ | | |__ |__] |__|  |  |  | |__]');
+    $this-&gt;out('|__ |  | | _ |__ |    |  | |      |__| |__ | | |__ |   |  |  |  |__| |  ');
+        $this-&gt;hr();
+        $this-&gt;out('');
+    }
+
+}
+</code></pre>
+
+
+<p>Its a great way to easily complete a few mudane tasks.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joel Moss</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+      
+
+<span class="categories">
+  
+    <a class='category' href='/articles/categories/articles/'>articles</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://developwithstyle.com/articles/2007/02/16/generate-task-for-cakephp-12/" data-via="joelmoss" data-counturl="http://developwithstyle.com/articles/2007/02/16/generate-task-for-cakephp-12/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside role=sidebar>
+  
+    <header><hgroup>
+  <h1><a href="/">Develop With Style</a></h1>
+</hgroup>
+
+</header><section>
+  <h1>About Me</h1>
+  <p>This site contains the musings of Joel Moss, a web developer of some 13 years; living in Manchester, England. But some say I'm physically plugged into, and live IN the internet! They may actually be right!</p>
+  <p><a href="/">Tell me more...</a></p>
+</section>
+<div id="carbonads-container"><div class="carbonad"><div id="carbon"></div><script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/12107/carbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div> <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/10/28/from-zero-to-hero-how-i-built-twitious-in-two-weeks/">From Zero to Hero: How I built Twitious in Two Weeks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/08/09/dynamic-form-and-dynamic-errors-for-rails-3/">Dynamic Form and Dynamic Errors for Rails 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("joelmoss", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/joelmoss" class="twitter-follow-button" data-show-count="true">Follow @joelmoss</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer><p>
+  Developed with Style - &copy; 2012 - Joel Moss
+</p>
+
+</footer>
+</body>
+</html>
