@@ -4,7 +4,7 @@
   <title>Develop With Style</title>
   <link href="http://developwithstyle.com/atom.xml" rel="self"/>
   <link href="http://developwithstyle.com/"/>
-  <updated>2012-05-23T14:42:34+01:00</updated>
+  <updated>2012-05-23T15:21:25+01:00</updated>
   <id>http://developwithstyle.com/</id>
   <author>
     <name>Joel Moss</name>
@@ -30,7 +30,7 @@
 
 &lt;p&gt;Rails is awesome&amp;#8230; for most things. But when you don&amp;#8217;t need any views or assets, or when you are not building a traditional web application, it&amp;#8217;s overkill. And you&amp;#8217;ll soon start finding that your app is slow. You have to remember that Rails is a full stack framework, but your API is most likely not.&lt;/p&gt;
 
-&lt;p&gt;If you really have to use a Framework, check out Jekyll, which has a much smaller footprint. Or peel it back even further, and create a bare bones Rack app. Which is a lot easier than you might think.&lt;/p&gt;
+&lt;p&gt;If you really have to use a Framework, check out Sinatra, which has a much smaller footprint. Or peel it back even further, and create a bare bones Rack app. Which is a lot easier than you might think.&lt;/p&gt;
 
 &lt;h3&gt;2. Don&amp;#8217;t use ActiveRecord&lt;/h3&gt;
 
