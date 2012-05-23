@@ -809,19 +809,25 @@
         <lastmod>2012-05-12T01:54:54+01:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://developwithstyle.com/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/
+        </loc>
+        <lastmod>2012-05-23T14:36:50+01:00</lastmod>
+    </url>
+    <url>
         <loc>http://developwithstyle.com/404.html</loc>
         <lastmod>2012-05-12T01:27:05+01:00</lastmod>
     </url>
     <url>
         <loc>http://developwithstyle.com/articles/archives/</loc>
-        <lastmod>2012-05-12T01:54:54+01:00</lastmod>
+        <lastmod>2012-05-23T14:36:50+01:00</lastmod>
     </url>
     <url>
         <loc>http://developwithstyle.com/articles/</loc>
-        <lastmod>2012-05-12T01:54:54+01:00</lastmod>
+        <lastmod>2012-05-23T14:36:50+01:00</lastmod>
     </url>
     <url>
         <loc>http://developwithstyle.com/</loc>
-        <lastmod>2012-05-12T01:27:05+01:00</lastmod>
+        <lastmod>2012-05-23T14:36:50+01:00</lastmod>
     </url>
 </urlset>

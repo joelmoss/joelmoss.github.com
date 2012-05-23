@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="A few weeks ago, I submitted a patch and test to the CakePHP trac, that added support for multiple resource routes. It was something I needed for my &hellip;">
+  <meta name="description" content="So it finally happenned! After a year of development, today marks the release of the very first Beta of CakePHP 1.2. While it is great to see, I just &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,46 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2008/01/03/cakephp-official-beta-and-cakefest/">CakePHP Official Beta and CakeFest</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-03T00:00:00+00:00" pubdate data-updated="true">Jan 3<span>rd</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So it finally happenned! After a year of development, today marks the release of the very first Beta of CakePHP 1.2. While it is great to see, I just can&#8217;t help thinking how many beta&#8217;s we will have to endure before we see a final production release.</p>
+
+<p>Also in the news, is the announcement that Florida will be hosting the first CakePHP conference. <a href="http://www.cakefest.org">CakeFest</a> will take place over three days between February 6th and 8th 2008, and will feature &#8220;tutorials, talks, and fun&#8221;. It sounds so good, I decided to take a shot at submitting a proposal to speak. My subject is obviously about Migrations, so who knows? It would be quite cool to be accepted.</p>
+
+<p>I&#8217;ll keep ya posted.</p>
+</div>
+  
+  
+
+
+  </article>
 
 
   <article>
@@ -309,115 +349,6 @@ database design.</li>
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2007/10/05/integrating-subversion-into-basecamp-and-campfire/">Integrating Subversion Into Basecamp and Campfire</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-10-05T00:00:00+01:00" pubdate data-updated="true">Oct 5<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>For the last few days, I have been thinking about how me and the team around me can improve productivity and communications when developing. Currently, the system we use is a little disjointed, and utilizes several different systems and solutions. Fortunately one such solution is <a href="http://basecamphq.com">Basecamp</a>, which happens to be one of the best around and has been in use by the company for a while now. So after spending a little time with the web based application, I realised that it should be able to do, or at least manage everything we do.</p>
-
-<p>So last night I sat down and played with the <a href="http://developer.37signals.com/basecamp">Basecamp API</a>, to see what could be done with it. And I came up with a post-commit hook for <a href="http://subversion.tigris.org/">Subversion</a>, that posts a message for each subversion commit. This message tells me the change log, what files were changed, and who made the commit. So now we can all see and receive Basecamp notices for every single changeset.</p>
-
-<p>We have also started using <a href="http://www.campfirenow.com/">Campfire</a>, so I then had a little play with <a href="http://opensoul.org/2006/12/8/tinder-campfire-api">Tinder</a>; Campfire&#8217;s unofficial API, and added some more code to the Subversion hook. So as well as creating a message in Basecamp detailing each Changeset, the same changeset is also posted in the appropriate Campfire room. So we have a real time view of our development progress.</p>
-
-<p>So here is the code. It&#8217;s all in Ruby, as it was easy peasy. And it utilises the Basecamp API Wrapper.</p>
-
-<pre lang="ruby"><code>
-%w( rubygems tinder basecamp ).each { |f| require f }
-
-config = {
-:subdomain =&gt; 'My-Subdomain', # Campfire and Basecamp subdomain
-:email =&gt; 'user@mydomain.com', # Campfire email login
-:username =&gt; 'username', # Basecamp username
-:pass =&gt; 'password',
-:room =&gt; 'Development', # Campfire room
-:project_id =&gt; 12345, # Basecamp project id
-:category_id =&gt; 678910, # Basecamp message category ID
-:ssl =&gt; true
-}
-
-svnlook = '/usr/bin/svnlook' # full path to the svnlook command
-repo_path = ARGV[0]
-revision = ARGV[1]
-project = repo_path.split('/').last
-
-commit_author = `#{svnlook} author #{repo_path} -r #{revision}`.chop
-commit_log = `#{svnlook} log #{repo_path} -r #{revision}`
-commit_files = `#{svnlook} changed #{repo_path} -r #{revision}`
-
-# create a message in basecamp
-basecamp = Basecamp.new("#{config[:subdomain]}.projectpath.com", config[:username], config[:pass], true)
-basecamp.post_message config[:project_id], {
-:title =&gt; "Changeset ##{revision}",
-:body =&gt; "#{commit_author} just committed changeset ##{revision}...\n\n&lt;blockquote&gt;&lt;pre&gt;#{commit_log}\n#{commit_files}&lt;/pre&gt;&lt;/blockquote&gt;",
-:category_id =&gt; config[:category_id]
-}
-
-# create a message in campfire
-campfire = Tinder::Campfire.new(config[:subdomain], :ssl =&gt; config[:ssl])
-campfire.login config[:email], config[:pass]
-room = campfire.find_room_by_name config[:room]
-room.speak "#{commit_author} just committed changeset ##{revision}..."
-room.paste "#{commit_log}\n#{commit_files}"
-</code></pre>
-
-
-<p>Simply copy and paste this into a file called &#8216;post-commit.rb&#8217; and save that in your subversion repository&#8217;s hooks directory. Don&#8217;t forget to set its permissions as required (chmod 755 on linux/unix). Then create another file in your hooks directory and call it &#8216;post-commit&#8217; and do the same with the permissions. In the &#8216;post-commit&#8217; file, paste the following code:</p>
-
-<pre lang="sh"><code>#!/bin/sh
-
-REPOS="$1"
-REV="$2"
-
-ruby /Users/joelmoss/dev/src/testing/hooks/campfire.rb "$REPOS" "$REV"
-</code></pre>
-
-
-<p>If &#8216;post-commit&#8217; already exists, just append the last line above to the end of the file.</p>
-
-<p>You will then need to install a few Ruby Gems. Namely Tinder and XML-Simple. So just run the following command:</p>
-
-<pre><code>sudo gem install tinder xml-simple --include-dependencies
-</code></pre>
-
-
-<p>And finally, you will need the <a href="http://developer.37signals.com/basecamp/basecamp.rb">Basecamp API wrapper</a>. You can get that at <a href="http://developer.37signals.com/basecamp/basecamp.rb">http://www.basecamphq.com/api/basecamp.rb</a>. Save that in somewhere in your Ruby path. Ideally, that would be in your &#8216;site<em>ruby&#8217; directly. On my Mac, that is at &#8216;/usr/local/lib/ruby/site</em>ruby/1.8/&#8217;.</p>
-
-<p>And now you should be good to go. As long as you have enabled the API in your Basecamp and your settings are correct, whenever anyone makes a commit to Subversion, you will all be able to see it in Basecamp and Campfire.</p>
-
-<p>I plan to do more with this, as we will need a better bug management system, as Bugzilla is just so damn ugly. But I will leave that to another post.</p>
-
-<p>Enjoy!</p>
-</div>
-  
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -457,6 +388,10 @@ ruby /Users/joelmoss/dev/src/testing/hooks/campfire.rb "$REPOS" "$REV"
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
       </li>
     
@@ -474,10 +409,6 @@ ruby /Users/joelmoss/dev/src/testing/hooks/campfire.rb "$REPOS" "$REV"
     
       <li class="post">
         <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
       </li>
     
   </ul>

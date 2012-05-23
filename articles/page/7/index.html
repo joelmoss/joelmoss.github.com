@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="I discovered the joys of NamedScope for Ruby on Rails quite a while ago now, and have always been an admirer. Its makes performing finds on models &hellip;">
+  <meta name="description" content="Welcome to the second edition of Cake Nibbles; where I tell you all about the latest goings-on in the world of CakePHP. Cook Book goes open source &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,58 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2008/11/26/cake-nibbles-2/">Cake Nibbles #2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-11-26T00:00:00+00:00" pubdate data-updated="true">Nov 26<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Welcome to the second edition of Cake Nibbles; where I tell you all about the latest goings-on in the world of CakePHP.</p>
+
+<p><strong>Cook Book goes open source</strong></p>
+
+<p>First up is the news that the <a href="http://book.cakephp.org/">Cake Cook Book</a> has been <a href="http://thechaw.com/cakebook">open sourced</a>. The best part of this news is that it uses Git and not Subversion for its source control. This is great news for the Cake community, and what is even greater is mentioned next&#8230;</p>
+
+<p><strong>Chew on The Chaw</strong></p>
+
+<p>I was a little puzzled at that one as well, and to be honest I still am. But as you may have noticed, the CookBook was released on a new service called <a href="http://thechaw.com/">The Chaw</a>. The Chaw is similar to <a href="http://github.com">GitHub</a>, in that it lets you host your Git repositories, and manage them online. But what sets The Chaw apart from Github, is that it also provides a ticketing/issue management system, which is something that Github sorely lacks. So apart from the name (what the hell is a Chaw?), this is great news.</p>
+
+<p><strong>CakeFest #2</strong></p>
+
+<p>December 2nd, will see the start of <a href="http://cakefest.org/">CakeFest #2</a>. The second official CakePHP conference will take place in Buenos Aires, Argentina between December 2nd and 5th, and is looking every bit as promising as the first CakeFest was in Orlando earlier this year.</p>
+
+<p><strong>New release of ModelBaker and appearance at MacWorld</strong></p>
+
+<p>A few months ago I <a href="http://developingwithstyle.com/articles/2008/09/06/modelbaker-a-desktop-application-for-building-cakephp-applications.html">blogged</a> about a promising new Mac application called <a href="http://www.widgetpress.com/">ModelBaker</a>. Well, a new release has just been announced, as well as news that ModelBaker will be in attendance at MacWorld Conference in January. Of course, it is still in closed Beta, but I do have access to that, and still intend to provide a short review and more info on that as soon as I can.</p>
+</div>
+  
+  
+
+
+  </article>
 
 
   <article>
@@ -490,69 +542,6 @@
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2008/10/07/cakephp-db-migrations-v40-is-now-stable/">CakePHP DB Migrations v4.0 Is Now Stable</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-10-07T00:00:00+01:00" pubdate data-updated="true">Oct 7<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After months and months of delays due to work constraints, and other crap, I decided that I needed to get my head down and release v4.0 of CakePHP DB Migrations. So that is exactly what I just did!</p>
-
-<p>v4.0 is now available in all its glory at the Google Code repo at <a href="http://code.google.com/p/cakephp-migrations">http://code.google.com/p/cakephp-migrations</a> so get it while it is hot.</p>
-
-<p>You can <a href="http://code.google.com/p/cakephp-migrations/downloads/list">download it here</a>.</p>
-
-<p>I plan on creating a new screencast soon(ish), that will include all the updated features and shortcuts, and will also be easier to hear me and will hopefully be a little shorter and concise. But until then, please play around and let me know if you have any questions at all.</p>
-
-<p>Here&#8217;s the changes taken directly from the changelog:</p>
-
-<p><code>
-[<em>] errr... lots of fixes
-[</em>] Fixed bug with old style version numbers
-[<em>] Fixed bug where fkeys were trying to be created with auto_increment
-[+] Can now specify whether to use Cake's UUID for the ID column within migration files. Example: "id: uuid"
-[+] Can now pass "id: false" within migration file, and no ID column will be created.
-[-] Deprecated "no_id: true" in favour of "id: false"
-[</em>] ID column is now correctly set as Primary Key when using UUID type.
-[+] Added support for MySQL specific table options (comments, engine/type, collate and charset)
-[+] Version numbers now use timestamps so as to minimize conflicts
-[+] Now supports interleaved migrations;
-when migrating up, will run migrations that have not yet been run, and will ignore any non-run migrations when running down.
-[+] Added info option (cake migrate info), which shows information on migrations
-[+] Can now specify version number when running up/down, thus allowing you to only run the up/down block of a specific migration
-[+] Schema table name is now customizable
-[+] Now supports PHP arrays in migration files</code></p>
-
-<p>I hope to write more about these when I don&#8217;t have so much decorating on the house to do.</p>
-</div>
-  
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -592,6 +581,10 @@ when migrating up, will run migrations that have not yet been run, and will igno
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
       </li>
     
@@ -609,10 +602,6 @@ when migrating up, will run migrations that have not yet been run, and will igno
     
       <li class="post">
         <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
       </li>
     
   </ul>

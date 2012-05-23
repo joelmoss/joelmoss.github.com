@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="My brother-in-law, Adam popped round earlier today, and we got talking about work and business. I used to run a successful web hosting business with &hellip;">
+  <meta name="description" content="I&#8217;ve been threatening to start producing some sort of podcast for ages now. Well I&#8217;ve only gone and bloody done it! The Codaset Video &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,51 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2010/03/19/i-finally-did-it-My-own-web-development-podcast/">I Finally Did It! My Own Web Development Podcast</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-19T00:00:00+00:00" pubdate data-updated="true">Mar 19<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been threatening to start producing some sort of podcast for ages now. Well I&#8217;ve only gone and bloody done it!</p>
+
+<p>The <a href="http://codaset.com/blog">Codaset Video Podcast</a> has already reached episode 2, and I&#8217;me getting great feedback from it. Each week, I will be talking about anything that takes my fancy really, but mostly the topics will be web development and design related.</p>
+
+<p>The first two episodes talk about a few cool jQuery plugins; show of a very cool Ambilight effect video with HTML5; talk about CoffeeScript, and loads of other stuff. The style of the videos are meant to be a little rough at the edges, and I never do more than one take for each one, and perform no editing or cuts. Of course that may change if I see the need, but I want to keep it raw and untamed.</p>
+
+<p>The best place to find the Video Podcasts are on the <a href="http://codaset.com/blog">Codaset blog</a>, but I also publish them on <a href="http://codaset.blip.tv">Blip.TV</a> which offers a few subscription options. And of course you can subscribe to the podcast on <a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=361456135 ">iTunes</a>.</p>
+
+<p>To get you started, here is episode 2. Enjoy, and I welcome your thoughts, comments and feedback.</p>
+
+<embed src="http://blip.tv/play/ha5Agc3dfAI%2Em4v" type="application/x-shockwave-flash" width="580" height="340" allowscriptaccess="always" allowfullscreen="true"></embed></div>
+  
+  
+
+
+  </article>
 
 
   <article>
@@ -477,142 +522,6 @@ technoweenie: hey that's a great way to start off a new web framework, simulate 
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2009/10/13/concerned-with-rails/">Concerned With Rails</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-13T00:00:00+01:00" pubdate data-updated="true">Oct 13<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://codaset.com/joelmoss/rails-concerns">Concerns</a> is a simple Rails plugin that provides you with a simple way to organise your Controllers, Models and Mailers, and split them into smaller chunks of logic. It is especially useful when you have lengthly models, and get fed up with having to scroll through several hundred lines of code.</p>
-
-
-
-
-<h3>How does it work?</h3>
-
-
-
-
-<p>So let&#8217;s say we have a Post model (doesn&#8217;t everyone?!) which is getting a bit lengthy, and frankly not very nice to look at. With the Concerns plugin, we can split it up into nice little chunks. Because we have lots of validations, let&#8217;s start by pulling them out and placing them within a concern file.</p>
-
-
-
-
-<h3>Let&#8217;s get going then&#8230;</h3>
-
-
-
-
-<p>First of all, install the plugin:</p>
-
-
-
-
-<div class="highlight"><pre>
-script/plugin install git://codaset.com/joelmoss/rails-concerns.git
-</pre></div>
-
-
-
-
-<p>Then, create a new directory in your app/models drectory and call it &#8220;post&#8221;, which is the same name as your model.</p>
-
-
-
-
-<p>Within this new directory, create a new file at app/models/post/validations.rb. Now all this should do is reopen your Post model, and define your validations like this:</p>
-
-
-
-
-<figure class='code'><figcaption><span>ruby </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>class Post &lt; ActiveRecord::Base
-</span><span class='line'>  validates_presence_of :title, :body
-</span><span class='line'>  validates_uniqueness_of :title, :scope => :project_id, :case_sensitive => false
-</span><span class='line'>  validates_exclusion_of :title, :in => %w(edit new blog delete destroy create update post posts)
-</span><span class='line'>  validates_inclusion_of :markup_language, :in => %w( markdown textile wikitext ), :allow_nil => true
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>It&#8217;s just like writing your model again.</p>
-
-
-
-
-<p>Now within your main Post model; right at the top, we simply call:</p>
-
-
-
-
-<figure class='code'><figcaption><span>ruby </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>concerned_with :validations</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>Multiple concerns can be called like so:</p>
-
-
-
-
-<figure class='code'><figcaption><span>ruby </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>concerned_with :validations, :class_methods</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>And we&#8217;re done!</p>
-
-
-
-
-<p>You can do this as many times as you wish, and with as many concerns as you want. And it works with models, controllers and mailers.
-Need help?</p>
-
-
-
-
-<p>Grab and/or fork the code from the <a href="http://codaset.com/joelmoss/rails-concerns">Codaset project</a></p>
-
-</div>
-  
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -652,6 +561,10 @@ Need help?</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
       </li>
     
@@ -669,10 +582,6 @@ Need help?</p>
     
       <li class="post">
         <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
       </li>
     
   </ul>

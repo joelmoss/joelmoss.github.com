@@ -4,13 +4,181 @@
   <title>Develop With Style</title>
   <link href="http://developwithstyle.com/atom.xml" rel="self"/>
   <link href="http://developwithstyle.com/"/>
-  <updated>2012-05-12T01:59:18+01:00</updated>
+  <updated>2012-05-23T14:42:34+01:00</updated>
   <id>http://developwithstyle.com/</id>
   <author>
     <name>Joel Moss</name>
     
   </author>
 
+  
+  <entry>
+    <title>Lessons learnt from building a REST API</title>
+    <link href="http://developwithstyle.com/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/"/>
+    <updated>2012-05-23T00:00:00+01:00</updated>
+    <id>http://developwithstyle.com/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api</id>
+    <content type="html">&lt;p&gt;Late last year, I built a REST based API for &lt;a href=&quot;http://www.shermanstravel.com&quot;&gt;ShermansTravel&lt;/a&gt; using Rails and &lt;a href=&quot;https://github.com/fabrik42/acts_as_api&quot;&gt;ActsAsAPI&lt;/a&gt;. The API allowed us to tag and/or geotag any object, and was backed with &lt;a href=&quot;http://mongodb.org&quot;&gt;MongoDB&lt;/a&gt; and a little MySQL for authentication. The API itself was - and still is - sound, but unfortunately it turned out to be very slow. This was amplified even further due to its use by another REST based API.&lt;/p&gt;
+
+&lt;p&gt;These last few weeks have allowed me to revisit the application, and to make changes to speed things up, often-times resulting in a 400% speed increase, not to mention increased concurrency. This post will briefly detail the lessons learnt building a high trafficked API, and what changes I have made.&lt;/p&gt;
+
+&lt;!&#8211; more &#8211;&gt;
+
+
+&lt;p&gt;Please note, that this post is very Ruby-centric, so only considers what is available to the Rubyist.&lt;/p&gt;
+
+&lt;h3&gt;1. Don&amp;#8217;t use Rails&lt;/h3&gt;
+
+&lt;p&gt;Rails is awesome&amp;#8230; for most things. But when you don&amp;#8217;t need any views or assets, or when you are not building a traditional web application, it&amp;#8217;s overkill. And you&amp;#8217;ll soon start finding that your app is slow. You have to remember that Rails is a full stack framework, but your API is most likely not.&lt;/p&gt;
+
+&lt;p&gt;If you really have to use a Framework, check out Jekyll, which has a much smaller footprint. Or peel it back even further, and create a bare bones Rack app. Which is a lot easier than you might think.&lt;/p&gt;
+
+&lt;h3&gt;2. Don&amp;#8217;t use ActiveRecord&lt;/h3&gt;
+
+&lt;p&gt;I hate to say this, but ActiveRecord is slow! In fact, most ORM&amp;#8217;s are usually much, much slower than using raw SQL. However, if your API uses MySQL heavily, you may not want to write the SQL yourself, and enjoy the huge conveniance that AR gives you. But you may be surprised how you can build yourself a little code that emulates a little of the AR API.&lt;/p&gt;
+
+&lt;p&gt;For example, in my API rewrite, I can still do this:&lt;/p&gt;
+
+&lt;figure class=&#8217;code&#8217;&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&#8217;line-number&#8217;&gt;1&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;2&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;3&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;&lt;code class=&#8217;ruby&#8217;&gt;&lt;span class=&#8217;line&#8217;&gt;&lt;span class=&quot;n&quot;&gt;deal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Deal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;&lt;span class=&quot;n&quot;&gt;deal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;category = &amp;#39;hotel&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;created_at DESC&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;&lt;span class=&quot;n&quot;&gt;deal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_query&lt;/span&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;
+
+
+&lt;p&gt;And this is my &lt;code&gt;Deal&lt;/code&gt; model:&lt;/p&gt;
+
+&lt;figure class=&#8217;code&#8217;&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&#8217;line-number&#8217;&gt;1&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;2&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;3&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;4&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;5&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;6&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;7&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;8&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;9&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;10&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;11&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;12&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;13&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;14&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;15&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;16&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;17&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;18&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;19&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;20&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;21&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;22&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;23&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;24&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;25&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;26&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;27&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;28&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;29&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;30&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;31&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;32&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;33&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;34&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;35&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;36&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;37&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;38&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;39&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;40&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;41&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;42&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;43&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;44&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;45&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;46&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;47&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;48&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;49&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;50&lt;/span&gt;
+&lt;span class=&#8217;line-number&#8217;&gt;51&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;&lt;code class=&#8217;ruby&#8217;&gt;&lt;span class=&#8217;line&#8217;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Deal&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;vi&quot;&gt;@where_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;vi&quot;&gt;@where_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;vi&quot;&gt;@select_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;vi&quot;&gt;@select_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;joins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;vi&quot;&gt;@joins_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;vi&quot;&gt;@joins_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;vi&quot;&gt;@order_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;vi&quot;&gt;@order_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;  &lt;span class=&quot;c1&quot;&gt;# Run the SQL query.&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_query&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build_sql&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;  &lt;span class=&quot;kp&quot;&gt;private&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;c1&quot;&gt;# Builds the full SQL query.&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;c1&quot;&gt;# Returns the SQL statement as a String.&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;build_sql&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;      &lt;span class=&quot;n&quot;&gt;_select&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@select_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;      &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;SELECT &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_select&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;, &amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; FROM `places` &amp;quot;&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;      &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@joins_array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@joins_array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;blank?&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;      &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot; WHERE &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@where_array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39; AND &amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@where_array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;blank?&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;      &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot; ORDER BY &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@order_array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@order_array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;blank?&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;      &lt;span class=&quot;n&quot;&gt;unset_sql_variables&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;      &lt;span class=&quot;n&quot;&gt;sql&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;unset_sql_variables&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;      &lt;span class=&quot;vi&quot;&gt;@where_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@select_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@joins_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@order_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;nil&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;connection&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;      &lt;span class=&quot;c1&quot;&gt;# your database connection&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#8217;line&#8217;&gt;&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;
+
+
+&lt;p&gt;Very basic, but does the job nicely. My &lt;code&gt;connection&lt;/code&gt; method simply uses the &lt;a href=&quot;https://github.com/brianmario/mysql2&quot;&gt;MySQL2&lt;/a&gt; Ruby Gem, which has very little overhead.&lt;/p&gt;
+
+&lt;h3&gt;3. Increase concurrency and use EventMachine&lt;/h3&gt;
+
+&lt;p&gt;This one is a biggie, but an absolute must, and is the biggest performance boost I have received so far.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://rubyeventmachine.com/&quot;&gt;EventMachine&lt;/a&gt; is a fast, simple event-processing library in a similar vein to Node.JS. But it&amp;#8217;s all Ruby! It allows you to take advantage of threaded network programming, thus increasing concurrency, scalability and performance.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, it has also involved some considerable rewriting, to ensure that my code is thread-safe, and that I take advantage of EventMachine as much as I can. However, the benefits have far exceeded this small cost. In fact, I now have a much smaller footprint all over my code, which also helps.&lt;/p&gt;
+
+&lt;p&gt;Not to get too specific, but my rewritten API uses the excellent &lt;a href=&quot;http://postrank-labs.github.com/goliath/&quot;&gt;Goliath&lt;/a&gt; Ruby web server, along with the em-synchrony, em-http-request and em-mongo gems to help me make my API asynchronous. And fast!&lt;/p&gt;
+
+&lt;h3&gt;4. Use JSON&amp;#8230; everywhere!&lt;/h3&gt;
+
+&lt;p&gt;There is a reason why JSON is now almost the data format of the web. It&amp;#8217;s lightweight, simple and fast. And Ruby support for it is top-notch. Just add the &lt;a href=&quot;https://github.com/intridea/multi_json&quot;&gt;MultiJson&lt;/a&gt; and &lt;a href=&quot;https://github.com/ohler55/oj&quot;&gt;OJ&lt;/a&gt; gems to your Gemfile, and you won&amp;#8217;t get much faster.&lt;/p&gt;
+
+&lt;p&gt;Unless you have a real need to use XML or another data format, all you need is JSON.&lt;/p&gt;
+
+&lt;h4&gt;In Conclusion&amp;#8230;&lt;/h4&gt;
+
+&lt;p&gt;There are obviously smaller things to think about when building an API, but the above four were the biggest changes I made to the API, and so far they have made a huge improvement.&lt;/p&gt;
+
+&lt;p&gt;Keep it mean, keep it lean, keep it kean!&lt;/p&gt;
+</content>
+  </entry>
   
   <entry>
     <title>The Right Way to Create an API</title>
@@ -1831,59 +1999,6 @@ Need help?&lt;/p&gt;
 
 &lt;p&gt;You can see Codaset&amp;#8217;s tickets at &lt;a href=&quot;http://codaset.com/tickets&quot;&gt;http://codaset.com/tickets&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</content>
-  </entry>
-  
-  <entry>
-    <title>Railings: A full featured Ruby on Rails template</title>
-    <link href="http://developwithstyle.com/articles/2009/09/23/railings-a-full-featured-ruby-on-rails-template/"/>
-    <updated>2009-09-23T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/articles/2009/09/23/railings-a-full-featured-ruby-on-rails-template</id>
-    <content type="html">&lt;p&gt;I&amp;#8217;ve found myself creating a number of new Rails apps as of late, and found it very cumbersome to set each one up with my favoured list of gems and plugins. So I created my own Rails Template.&lt;/p&gt;
-&lt;p&gt;Rails templates are single ruby scripts which contain a few commands that help you setup any new Rails app in a snap. So you can specify a list of Gems to have installed and part of your environment.rb, and also install a bunch of plugins, amongst other things.&lt;/p&gt;
-&lt;p&gt;You should take a look at &lt;a href=&quot;http://m.onkey.org/2008/12/4/rails-templates&quot;&gt;Pratik Naik&amp;#8217;s blog post&lt;/a&gt; for full details on what Rails templates can do.&lt;/p&gt;
-&lt;p&gt;So my default Rails template is called &lt;a href=&quot;http://codaset.com/joelmoss/railings&quot;&gt;Railings&lt;/a&gt;, and is available now on &lt;a href=&quot;http://codaset.com/joelmoss/railings&quot;&gt;Codaset&lt;/a&gt;. It is sure to grow by the day, but for now, this is what you get:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;jQuery 1.3.2&lt;/li&gt;
-  &lt;li&gt;Blueprint CSS Framework&lt;/li&gt;
-  &lt;li&gt;Initializes as a Git repo and creates .gitignore&lt;/li&gt;
-  &lt;li&gt;Creates staging environment&lt;/li&gt;
-  &lt;li&gt;Creates application layout&lt;/li&gt;
-  &lt;li&gt;A default database.yml, and a modified database.example.yml which is ued with the &amp;#8216;Wheres my database.yml dude?&amp;#8217; rake task&lt;/li&gt;
-  &lt;li&gt;Creates Vlad the Deployer deploy.rb config file&lt;/li&gt;
-  &lt;li&gt;Time formats initializer&lt;/li&gt;
-  &lt;li&gt;The following gems:
-    &lt;ul&gt;
-      &lt;li&gt;thoughtbot-factory_girl&lt;/li&gt;
-      &lt;li&gt;rubyist-aasm&lt;/li&gt;
-      &lt;li&gt;mislav-will_paginate&lt;/li&gt;
-      &lt;li&gt;hpricot&lt;/li&gt;
-      &lt;li&gt;RedCloth&lt;/li&gt;
-      &lt;li&gt;emk-safe_erb&lt;/li&gt;
-      &lt;li&gt;settingslogic&lt;/li&gt;
-      &lt;li&gt;vlad&lt;/li&gt;
-      &lt;li&gt;vlad-git&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;The following plugins setup as Git submodules:
-    &lt;ul&gt;
-      &lt;li&gt;limerick_rake&lt;/li&gt;
-      &lt;li&gt;mile_marker&lt;/li&gt;
-      &lt;li&gt;squirrel&lt;/li&gt;
-      &lt;li&gt;rspec&lt;/li&gt;
-      &lt;li&gt;rspec-rails&lt;/li&gt;
-      &lt;li&gt;exception_notifier&lt;/li&gt;
-      &lt;li&gt;monkey-magic&lt;/li&gt;
-      &lt;li&gt;gravatar&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So the next time you start a new rails app, run this command and you will have the world at your fingertips:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;
-rails -m http://codaset.com/joelmoss/railings/source/master/raw/railings.rb /path/to/mynewapp
-&lt;/pre&gt;&lt;/div&gt;</content>
   </entry>
   
 </feed>

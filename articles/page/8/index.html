@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="Just woke up to find I missed two exciting events in CakePHP land. First and most important is the release of Release Candidate 3 for 1.2. This &hellip;">
+  <meta name="description" content="After months and months of delays due to work constraints, and other crap, I decided that I needed to get my head down and release v4.0 of CakePHP DB &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,69 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2008/10/07/cakephp-db-migrations-v40-is-now-stable/">CakePHP DB Migrations v4.0 Is Now Stable</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-07T00:00:00+01:00" pubdate data-updated="true">Oct 7<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After months and months of delays due to work constraints, and other crap, I decided that I needed to get my head down and release v4.0 of CakePHP DB Migrations. So that is exactly what I just did!</p>
+
+<p>v4.0 is now available in all its glory at the Google Code repo at <a href="http://code.google.com/p/cakephp-migrations">http://code.google.com/p/cakephp-migrations</a> so get it while it is hot.</p>
+
+<p>You can <a href="http://code.google.com/p/cakephp-migrations/downloads/list">download it here</a>.</p>
+
+<p>I plan on creating a new screencast soon(ish), that will include all the updated features and shortcuts, and will also be easier to hear me and will hopefully be a little shorter and concise. But until then, please play around and let me know if you have any questions at all.</p>
+
+<p>Here&#8217;s the changes taken directly from the changelog:</p>
+
+<p><code>
+[<em>] errr... lots of fixes
+[</em>] Fixed bug with old style version numbers
+[<em>] Fixed bug where fkeys were trying to be created with auto_increment
+[+] Can now specify whether to use Cake's UUID for the ID column within migration files. Example: "id: uuid"
+[+] Can now pass "id: false" within migration file, and no ID column will be created.
+[-] Deprecated "no_id: true" in favour of "id: false"
+[</em>] ID column is now correctly set as Primary Key when using UUID type.
+[+] Added support for MySQL specific table options (comments, engine/type, collate and charset)
+[+] Version numbers now use timestamps so as to minimize conflicts
+[+] Now supports interleaved migrations;
+when migrating up, will run migrations that have not yet been run, and will ignore any non-run migrations when running down.
+[+] Added info option (cake migrate info), which shows information on migrations
+[+] Can now specify version number when running up/down, thus allowing you to only run the up/down block of a specific migration
+[+] Schema table name is now customizable
+[+] Now supports PHP arrays in migration files</code></p>
+
+<p>I hope to write more about these when I don&#8217;t have so much decorating on the house to do.</p>
+</div>
+  
+  
+
+
+  </article>
 
 
   <article>
@@ -329,46 +392,6 @@
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2008/06/05/cakephp-rc1/">CakePHP RC1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-06-05T00:00:00+01:00" pubdate data-updated="true">Jun 5<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Today marks the <a href="http://bakery.cakephp.org/articles/view/release-pure-cake-power-in-rc1">release</a> of the long awaited first release candidate of CakePHP. Hopefully this will mean a final release will be close behind.</p>
-
-<p>Congrats to all involved. Keep up the hard work.</p>
-
-<p>On a side note, Cake now has an <a href="http://cakephp.org/jobs">official jobs board</a>. Nothing on there right now, but hopefully we will see more activity on there soon. So if you are looking for bakers, please post on there.</p>
-</div>
-  
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -408,6 +431,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
       </li>
     
@@ -425,10 +452,6 @@
     
       <li class="post">
         <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
       </li>
     
   </ul>

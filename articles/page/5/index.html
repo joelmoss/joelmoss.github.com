@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="I bet you thought I&#8217;d never get any more reasons out did ya? Well, today, I&#8217;m going to tell you all about IRB and the Rails command line &hellip;">
+  <meta name="description" content="It&#8217;s been a while I know, and I am aware that some of you are chomping at the bit to read reason #5. Apologies for the wait, but some of us &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,255 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2009/06/09/10-reasons-why-ruby-is-better-than-php-reason-5/">10 Reasons Why Ruby Is Better Than PHP - Reason #5</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-09T00:00:00+01:00" pubdate data-updated="true">Jun 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It&#8217;s been a while I know, and I am aware that some of you are chomping at the bit to read reason #5. Apologies for the wait, but some of us have work to do, and a <a href="http://codaset.com">mammoth side project</a> to complete, which by the way, is coming along nicely.</p>
+
+
+
+
+<p>Before I start on reason #5, I want to mention a couple of posts in a similar vein to my series.</p>
+
+
+
+
+<p>Andy Jeffries &#8221;<a href="http://andyjeffries.co.uk/articles/4-reasons-why-ruby-syntax-is-better-than-phps-">4 Reasons why Ruby syntax is better than PHP&#8217;s</a>&#8221; is a straight to the point article all about the strengths of Ruby&#8217;s syntax over PHP. If after reading his post, you still think syntax doesn&#8217;t matter, then you are a lost cause, and beyond help of any kind!</p>
+
+
+
+
+<p>Another post I actually read a while ago, but forgot all about until I was <a href="http://twitter.com/m3nt0r/status/2091044381">pleasantly reminded of</a>, is Bitcetera&#8217;s &#8221;<a href="http://www.bitcetera.com/en/techblog/2009/04/07/10-reasons-why-php-is-still-better-than-ruby-/">10 Reasons why PHP is still better than Ruby</a>&#8221;. Read it carefully all the way through, as it is a great read.</p>
+
+
+
+
+<p>Now, we get to Modules in Ruby, again, a feature that has no direct equivalent in PHP. Modules are very similar to classes, in fact they are written in much the same way:</p>
+
+
+
+
+<figure class='code'><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>module Animal
+</span><span class='line'>  def name
+</span><span class='line'>    "Dog"
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>So what are they used for? Well, modules are generally used for two purposes; creating namespaces and mixins. I&#8217;m sure (and I hope) that you all know what namespaces are. But you probably have no idea what a mixin is. Well I&#8217;ll get to that in a bit. Let&#8217;s quickly talk about how Ruby uses namespaces.</p>
+
+
+
+
+<p>Let us imagine that we have been charged with cleaning up and re-organizing our code, and we have a lot of it. Normally in PHP you might simply stick this code in a file and include it wherever you need it, but what if you have two methods or constants that are named the same? Some developers have worked around this by separating different class package names with underscores. This solution solves the immediate problem and also works conveniently with autoloading in PHP. It can, however, leave us with some really long class names.</p>
+
+
+
+
+<p>Let&#8217;s imagine we have two classes that define a <code>Document</code> class. In PHP we would probably prefix each class name with the document type:</p>
+
+
+
+
+<figure class='code'><figcaption><span>php </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class XML_Document {
+</span><span class='line'>  public function __construct() {
+</span><span class='line'>    print "new xml document\n";
+</span><span class='line'>  }
+</span><span class='line'>}
+</span><span class='line'>class PDF_Document {
+</span><span class='line'>  public function __construct() {
+</span><span class='line'>    print "new pdf document\n";
+</span><span class='line'>  }
+</span><span class='line'>}
+</span><span class='line'>$xml = new XML_Document; 
+</span><span class='line'>$pdf = new PDF_Document;</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Ruby would achieve the same thing like this:</p>
+
+
+
+
+<figure class='code'><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>module XML 
+</span><span class='line'>  class Document 
+</span><span class='line'>    def initialize 
+</span><span class='line'>      puts 'new xml document' 
+</span><span class='line'>    end 
+</span><span class='line'>  end 
+</span><span class='line'>end 
+</span><span class='line'>module PDF 
+</span><span class='line'>  class Document 
+</span><span class='line'>    def initialize 
+</span><span class='line'>      puts 'new pdf document' 
+</span><span class='line'>    end 
+</span><span class='line'>  end 
+</span><span class='line'>end 
+</span><span class='line'>xml = XML::Document.new 
+</span><span class='line'>pdf = PDF::Document.new</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Now I know that the as-yet-to-be-released PHP 5.3 will introduce namespaces, but come on! <a href="http://php.net/manual/language.namespaces.rationale.php">Have you actually seen how PHP namespaces are created and written?!</a> WTF!? Using slashes just looks wrong! Slashes are used in directory paths, and that is where they should stay. And why should I have to declare my namespace at the very top of the file and no where else?</p>
+
+
+
+
+<p>But the best thing about Ruby&#8217;s modules, is the ability to mix them into my classes, as if it was part of the original class code. Think of it as inheritance, but better. Everyone knows that in PHP and Ruby, a class can only inherit from one class at a time. To inherit from another class would involve you having to create a complicated chain of inheritance. Mixins eliminate that need. Just create a class, inherit from another class, and then mixin as many modules as you want.</p>
+
+
+
+
+<figure class='code'><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>module Movement 
+</span><span class='line'>  def run 
+</span><span class='line'>    puts "I'm running!" 
+</span><span class='line'>  end 
+</span><span class='line'>  def walk 
+</span><span class='line'>    puts "I'm walking a bit briskly!" 
+</span><span class='line'>  end 
+</span><span class='line'>  def crawl 
+</span><span class='line'>    puts "I'm so slowwww!" 
+</span><span class='line'>  end 
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>class Man 
+</span><span class='line'>  include Movement 
+</span><span class='line'>  def jump 
+</span><span class='line'>    puts "I'm bipedal and I can jump like a fool!" 
+</span><span class='line'>  end 
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>class Sloth 
+</span><span class='line'>  include Movement 
+</span><span class='line'>  def flop 
+</span><span class='line'>    puts "It's all a lie...all I can do is flop around." 
+</span><span class='line'>  end 
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>mister_man = Man.new 
+</span><span class='line'>mister_man.run 
+</span><span class='line'>?  I'm running!
+</span><span class='line'>
+</span><span class='line'>mister_slothy = Sloth.new 
+</span><span class='line'>mister_slothy.flop 
+</span><span class='line'>?  It's all a lie...all I can do is flop around.</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>As you can see, this mechanism is very similar to inheritance in that you can use all of the mixin&#8217;s code.  To use a mixin, simply define a module and then use the include keyword followed by the module&#8217;s name (note I said module; the include keyword has nothing to do with files or libraries like in PHP); from then on the class has access to all of that module&#8217;s constants and methods.</p>
+
+
+
+
+<p>The above example really doesn&#8217;t do mixins justice, but it&#8217;s a very simple example to help demonstrate how they work. Modules are a very versatile tool in Ruby and allow us to extract and share common behavior in objects, and are another reason why Ruby is better than PHP (in my opinion).</p>
+
+</div>
+  
+  
+
+
+  </article>
 
 
   <article>
@@ -1115,60 +1364,6 @@
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2009/05/13/so-what-the-hell-is-codaset/">So What the Hell Is Codaset?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-05-13T00:00:00+01:00" pubdate data-updated="true">May 13<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://codaset.com"><img class="alignleft size-full wp-image-343" title="Codaset Logo" src="/img/wpuploads/2009/05/00000002_r4_c2.jpg" alt="Codaset Logo" width="181" height="53" /></a>Ever since I began working for <a href="http://www.shermanstravel.com">ShermansTravel</a>, and in particular, since I became more involved with <a href="http://cakephp.org">CakePHP</a> and open source software, I&#8217;ve spent a LOT of time using <a href="http://trac.edgewall.org/">Trac</a> and <a href="http://github.com/joelmoss">Github</a>. Trac is somewhat of a defacto standard for managing software projects, and is what we use at work. Github is what I use for my personal and open source projects; and is also what I wish I could use at work. Both are great at what they do, but in most cases, each does something better than the other.</p>
-
-<p>Trac has a kickass issue tracking system, which is very customisable, and integrates very neatly with Subversion. Unfortunately it&#8217;s not especially user friendly, and doesn&#8217;t support Git. (there is a git plugin, but it&#8217;s alpha code). It&#8217;s also self hosted and written in Python, which means it&#8217;s not the easiest to get up and running.</p>
-
-<p>Github is so hot right now! And for good reason too. It&#8217;s built entirely around the excellent Git, and implements it&#8217;s features all around the ideal&#8217;s of Git. But that&#8217;s about all it does. Only up until recently has it been given an issue tracking system, and to be honest&#8230; that sucks!</p>
-
-<p>So basically, both Trac and Github have their strengths and their weaknesses. But each is missing a part or parts of the other.</p>
-
-<p>So that is why I am creating <a href="http://codaset.com">Codaset</a>. Codaset aims to be all that Trac and Github are good at, in one nice, neat package. It will be based on Git, allowing it to offer great social features, but it will also have a kickass issue tracking</p>
-
-<p>system that will integrate perfectly with your source control.</p>
-
-<p>But I don&#8217;t intend to make this a Github/Trac clone. It&#8217;s gonna be sooo much more&#8230; eventually! Things that you cannot find on any other web based software project management system.</p>
-
-<p><a href="/img/wpuploads/2009/05/picture-2.png"><img class="size-medium wp-image-335 alignleft" title="Git Tree screenshot" src="/img/wpuploads/2009/05/picture-2-300x229.png" alt="Git Tree screenshot" width="300" height="229" /></a></p>
-
-<p>So this was just a little teaser, and an <a href="http://codaset.com">invite</a> for you all to <a href="http://codaset.com">join in the private beta</a>, which I hope to start soon. Take a look over at <a href="http://codaset.com">Codaset.com</a>, and signup now. I&#8217;ll be posting more about what to expect as and when I can. In the meantime, here&#8217;s a quick screen shot to wet your appetite.</p>
-
-<p>Oh and don&#8217;t forget to <a href="http://twitter.com/joelmoss">follow me on Twitter</a>.</p>
-</div>
-  
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -1208,6 +1403,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
       </li>
     
@@ -1225,10 +1424,6 @@
     
       <li class="post">
         <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
       </li>
     
   </ul>

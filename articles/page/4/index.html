@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="This is a reprint of an announcement made a few minutes ago at Codaset.com&#8230; I am very pleased to announce that Codaset has ended it&#8217;s &hellip;">
+  <meta name="description" content="Concerns is a simple Rails plugin that provides you with a simple way to organise your Controllers, Models and Mailers, and split them into smaller &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,142 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2009/10/13/concerned-with-rails/">Concerned With Rails</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-13T00:00:00+01:00" pubdate data-updated="true">Oct 13<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://codaset.com/joelmoss/rails-concerns">Concerns</a> is a simple Rails plugin that provides you with a simple way to organise your Controllers, Models and Mailers, and split them into smaller chunks of logic. It is especially useful when you have lengthly models, and get fed up with having to scroll through several hundred lines of code.</p>
+
+
+
+
+<h3>How does it work?</h3>
+
+
+
+
+<p>So let&#8217;s say we have a Post model (doesn&#8217;t everyone?!) which is getting a bit lengthy, and frankly not very nice to look at. With the Concerns plugin, we can split it up into nice little chunks. Because we have lots of validations, let&#8217;s start by pulling them out and placing them within a concern file.</p>
+
+
+
+
+<h3>Let&#8217;s get going then&#8230;</h3>
+
+
+
+
+<p>First of all, install the plugin:</p>
+
+
+
+
+<div class="highlight"><pre>
+script/plugin install git://codaset.com/joelmoss/rails-concerns.git
+</pre></div>
+
+
+
+
+<p>Then, create a new directory in your app/models drectory and call it &#8220;post&#8221;, which is the same name as your model.</p>
+
+
+
+
+<p>Within this new directory, create a new file at app/models/post/validations.rb. Now all this should do is reopen your Post model, and define your validations like this:</p>
+
+
+
+
+<figure class='code'><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class Post &lt; ActiveRecord::Base
+</span><span class='line'>  validates_presence_of :title, :body
+</span><span class='line'>  validates_uniqueness_of :title, :scope => :project_id, :case_sensitive => false
+</span><span class='line'>  validates_exclusion_of :title, :in => %w(edit new blog delete destroy create update post posts)
+</span><span class='line'>  validates_inclusion_of :markup_language, :in => %w( markdown textile wikitext ), :allow_nil => true
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>It&#8217;s just like writing your model again.</p>
+
+
+
+
+<p>Now within your main Post model; right at the top, we simply call:</p>
+
+
+
+
+<figure class='code'><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>concerned_with :validations</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Multiple concerns can be called like so:</p>
+
+
+
+
+<figure class='code'><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>concerned_with :validations, :class_methods</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>And we&#8217;re done!</p>
+
+
+
+
+<p>You can do this as many times as you wish, and with as many concerns as you want. And it works with models, controllers and mailers.
+Need help?</p>
+
+
+
+
+<p>Grab and/or fork the code from the <a href="http://codaset.com/joelmoss/rails-concerns">Codaset project</a></p>
+
+</div>
+  
+  
+
+
+  </article>
 
 
   <article>
@@ -524,255 +660,6 @@ rails -m http://codaset.com/joelmoss/railings/source/master/raw/railings.rb /pat
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2009/06/09/10-reasons-why-ruby-is-better-than-php-reason-5/">10 Reasons Why Ruby Is Better Than PHP - Reason #5</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-09T00:00:00+01:00" pubdate data-updated="true">Jun 9<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>It&#8217;s been a while I know, and I am aware that some of you are chomping at the bit to read reason #5. Apologies for the wait, but some of us have work to do, and a <a href="http://codaset.com">mammoth side project</a> to complete, which by the way, is coming along nicely.</p>
-
-
-
-
-<p>Before I start on reason #5, I want to mention a couple of posts in a similar vein to my series.</p>
-
-
-
-
-<p>Andy Jeffries &#8221;<a href="http://andyjeffries.co.uk/articles/4-reasons-why-ruby-syntax-is-better-than-phps-">4 Reasons why Ruby syntax is better than PHP&#8217;s</a>&#8221; is a straight to the point article all about the strengths of Ruby&#8217;s syntax over PHP. If after reading his post, you still think syntax doesn&#8217;t matter, then you are a lost cause, and beyond help of any kind!</p>
-
-
-
-
-<p>Another post I actually read a while ago, but forgot all about until I was <a href="http://twitter.com/m3nt0r/status/2091044381">pleasantly reminded of</a>, is Bitcetera&#8217;s &#8221;<a href="http://www.bitcetera.com/en/techblog/2009/04/07/10-reasons-why-php-is-still-better-than-ruby-/">10 Reasons why PHP is still better than Ruby</a>&#8221;. Read it carefully all the way through, as it is a great read.</p>
-
-
-
-
-<p>Now, we get to Modules in Ruby, again, a feature that has no direct equivalent in PHP. Modules are very similar to classes, in fact they are written in much the same way:</p>
-
-
-
-
-<figure class='code'><figcaption><span>ruby </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>module Animal
-</span><span class='line'>  def name
-</span><span class='line'>    "Dog"
-</span><span class='line'>  end
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>So what are they used for? Well, modules are generally used for two purposes; creating namespaces and mixins. I&#8217;m sure (and I hope) that you all know what namespaces are. But you probably have no idea what a mixin is. Well I&#8217;ll get to that in a bit. Let&#8217;s quickly talk about how Ruby uses namespaces.</p>
-
-
-
-
-<p>Let us imagine that we have been charged with cleaning up and re-organizing our code, and we have a lot of it. Normally in PHP you might simply stick this code in a file and include it wherever you need it, but what if you have two methods or constants that are named the same? Some developers have worked around this by separating different class package names with underscores. This solution solves the immediate problem and also works conveniently with autoloading in PHP. It can, however, leave us with some really long class names.</p>
-
-
-
-
-<p>Let&#8217;s imagine we have two classes that define a <code>Document</code> class. In PHP we would probably prefix each class name with the document type:</p>
-
-
-
-
-<figure class='code'><figcaption><span>php </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>class XML_Document {
-</span><span class='line'>  public function __construct() {
-</span><span class='line'>    print "new xml document\n";
-</span><span class='line'>  }
-</span><span class='line'>}
-</span><span class='line'>class PDF_Document {
-</span><span class='line'>  public function __construct() {
-</span><span class='line'>    print "new pdf document\n";
-</span><span class='line'>  }
-</span><span class='line'>}
-</span><span class='line'>$xml = new XML_Document; 
-</span><span class='line'>$pdf = new PDF_Document;</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>Ruby would achieve the same thing like this:</p>
-
-
-
-
-<figure class='code'><figcaption><span>ruby </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>module XML 
-</span><span class='line'>  class Document 
-</span><span class='line'>    def initialize 
-</span><span class='line'>      puts 'new xml document' 
-</span><span class='line'>    end 
-</span><span class='line'>  end 
-</span><span class='line'>end 
-</span><span class='line'>module PDF 
-</span><span class='line'>  class Document 
-</span><span class='line'>    def initialize 
-</span><span class='line'>      puts 'new pdf document' 
-</span><span class='line'>    end 
-</span><span class='line'>  end 
-</span><span class='line'>end 
-</span><span class='line'>xml = XML::Document.new 
-</span><span class='line'>pdf = PDF::Document.new</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>Now I know that the as-yet-to-be-released PHP 5.3 will introduce namespaces, but come on! <a href="http://php.net/manual/language.namespaces.rationale.php">Have you actually seen how PHP namespaces are created and written?!</a> WTF!? Using slashes just looks wrong! Slashes are used in directory paths, and that is where they should stay. And why should I have to declare my namespace at the very top of the file and no where else?</p>
-
-
-
-
-<p>But the best thing about Ruby&#8217;s modules, is the ability to mix them into my classes, as if it was part of the original class code. Think of it as inheritance, but better. Everyone knows that in PHP and Ruby, a class can only inherit from one class at a time. To inherit from another class would involve you having to create a complicated chain of inheritance. Mixins eliminate that need. Just create a class, inherit from another class, and then mixin as many modules as you want.</p>
-
-
-
-
-<figure class='code'><figcaption><span>ruby </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>module Movement 
-</span><span class='line'>  def run 
-</span><span class='line'>    puts "I'm running!" 
-</span><span class='line'>  end 
-</span><span class='line'>  def walk 
-</span><span class='line'>    puts "I'm walking a bit briskly!" 
-</span><span class='line'>  end 
-</span><span class='line'>  def crawl 
-</span><span class='line'>    puts "I'm so slowwww!" 
-</span><span class='line'>  end 
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>class Man 
-</span><span class='line'>  include Movement 
-</span><span class='line'>  def jump 
-</span><span class='line'>    puts "I'm bipedal and I can jump like a fool!" 
-</span><span class='line'>  end 
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>class Sloth 
-</span><span class='line'>  include Movement 
-</span><span class='line'>  def flop 
-</span><span class='line'>    puts "It's all a lie...all I can do is flop around." 
-</span><span class='line'>  end 
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>mister_man = Man.new 
-</span><span class='line'>mister_man.run 
-</span><span class='line'>?  I'm running!
-</span><span class='line'>
-</span><span class='line'>mister_slothy = Sloth.new 
-</span><span class='line'>mister_slothy.flop 
-</span><span class='line'>?  It's all a lie...all I can do is flop around.</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>As you can see, this mechanism is very similar to inheritance in that you can use all of the mixin&#8217;s code.  To use a mixin, simply define a module and then use the include keyword followed by the module&#8217;s name (note I said module; the include keyword has nothing to do with files or libraries like in PHP); from then on the class has access to all of that module&#8217;s constants and methods.</p>
-
-
-
-
-<p>The above example really doesn&#8217;t do mixins justice, but it&#8217;s a very simple example to help demonstrate how they work. Modules are a very versatile tool in Ruby and allow us to extract and share common behavior in objects, and are another reason why Ruby is better than PHP (in my opinion).</p>
-
-</div>
-  
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -812,6 +699,10 @@ rails -m http://codaset.com/joelmoss/railings/source/master/raw/railings.rb /pat
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
       </li>
     
@@ -829,10 +720,6 @@ rails -m http://codaset.com/joelmoss/railings/source/master/raw/railings.rb /pat
     
       <li class="post">
         <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
       </li>
     
   </ul>

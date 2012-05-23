@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="I know, I know, it&#8217;s been tooooo long. But whatever! At Shermans we have begun a large project to rebuild the architecture around the travel &hellip;">
+  <meta name="description" content="Late last year, I built a REST based API for ShermansTravel using Rails and ActsAsAPI. The API allowed us to tag and/or geotag any object, and was &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,49 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons Learnt From Building a REST API</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-23T00:00:00+01:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Late last year, I built a REST based API for <a href="http://www.shermanstravel.com">ShermansTravel</a> using Rails and <a href="https://github.com/fabrik42/acts_as_api">ActsAsAPI</a>. The API allowed us to tag and/or geotag any object, and was backed with <a href="http://mongodb.org">MongoDB</a> and a little MySQL for authentication. The API itself was - and still is - sound, but unfortunately it turned out to be very slow. This was amplified even further due to its use by another REST based API.</p>
+
+<p>These last few weeks have allowed me to revisit the application, and to make changes to speed things up, often-times resulting in a 400% speed increase, not to mention increased concurrency. This post will briefly detail the lessons learnt building a high trafficked API, and what changes I have made.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Read on &rarr;</a>
+    </footer>
+  
+
+
+  </article>
 
 
   <article>
@@ -352,55 +395,6 @@
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-14T00:00:00+01:00" pubdate data-updated="true">May 14<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&#8217;ve never managed to find a really good jQuery based autocomplete plugins, especially one that is flexible and easily extensible. So when the jQuery UI team <a href="http://blog.jqueryui.com/2010/03/jquery-ui-18/">released 1.8</a> back in March, I was intrigued to find that they included - amongst other new widgets - an <a href="http://jqueryui.com/demos/autocomplete/">autocomplete widget</a>. And it turns out to be pretty damn good, and flexible to boot.</p>
-
-
-
-
-<p>So when I had a need to add the ability for a local data source for the autocomplete plugin that we use on <a href="http://quicksearch.shermanstravel.com">ShermansTravel QuickSearch</a>, I gave the new jQuery UI widget a go.</p>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">Read on &rarr;</a>
-    </footer>
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -438,6 +432,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2011/07/12/the-right-way-to-create-an-api/">The Right Way to Create an API</a>
       </li>
     
@@ -455,10 +453,6 @@
     
       <li class="post">
         <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/05/14/jquery-ui-autocomplete-is-it-any-good/">jQuery UI Autocomplete and Caching Query Results</a>
       </li>
     
   </ul>
