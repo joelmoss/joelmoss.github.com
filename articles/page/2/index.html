@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="I&#8217;ve never managed to find a really good jQuery based autocomplete plugins, especially one that is flexible and easily extensible. So when the &hellip;">
+  <meta name="description" content="So I use Ajax quite a bit in many of my projects. And why not? It kicks ass! I have one project which dynamically updates specific elements of an &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,66 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters With Javascript</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-29T00:00:00+01:00" pubdate data-updated="true">Jun 29<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So I use Ajax quite a bit in many of my projects. And why not? It kicks ass! I have one project which dynamically updates specific elements of an HTML page via Ajax. Something like this:</p>
+
+
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/travel_guide/Paris&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#advice&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>The problem I have, is that sometimes that data can include HTML entities like <code>&amp;amp;</code> and <code>&amp;gt;</code>, and for reasons I don&#8217;t want to bore you with, I cannot do anything about it on the server side. When inserting a block of text that contain HTML entities into the DOM, those entities are not parsed as such, and get printed exactly as they are.</p>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/articles/2010/06/29/converting-html-entities-to-characters/">Read on &rarr;</a>
+    </footer>
+  
+
+
+  </article>
 
 
   <article>
@@ -399,126 +459,6 @@
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2010/03/26/easily-manage-your-local-hosts-with-ghost/">Easily Manage Your Local Hosts With Ghost</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-26T00:00:00+00:00" pubdate data-updated="true">Mar 26<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I don&#8217;t know about you, but I&#8217;m forever editing my local hosts file, when developing apps and sites. Hopefully, you already know that you can create your own custom, virtual domains, that can point to any IP address.</p>
-
-<p>So for example, I&#8217;ve started building a new site and want to be able to access my local copy of the site via a domain, rather than local IP or via <code>localhost</code>. So all I gotta do is open up the <a href="http://macromates.com/">one true text editor</a> and edit my <code>/etc/hosts</code> file. The location of this file will vary depending on your OS, but on a Mac, <code>/etc/hosts</code> is where you will find it.</p>
-
-<p>The contents of the file should look something like this:</p>
-
-<code><pre>
-    ##
-    # Host Database
-    #
-    # localhost is used to configure the loopback interface
-    # when the system is booting.  Do not change this entry.
-    ##
-    127.0.0.1	localhost
-    255.255.255.255	broadcasthost
-    ::1             localhost 
-    fe80::1%lo0	localhost
-</pre></code>
-
-Usually I would add a new line at the bottom of this file, with my domain and the IP I want to point it to:
-
-<code><pre>
-    127.0.0.1 myfunkydomain.dev
-</pre></code>
-
-<p>The domain can be absolutely anything you want, as long as it is a valid domain format. I usually end mine with <code>.dev</code>, so I know I use for development.</p>
-
-<h4>Enter the Ghost!</h4>
-
-<p>I found an even easier and funkier way to add and edit my local hosts. <a href="http://codaset.com/joelmoss/ghost">Ghost</a> is a Ruby gem (of course) that makes it really quick and easy to add, edit, list and remove local host names. To add a new domain, just run this from your command line:</p>
-
-<code><pre>
-    $ ghost add mynewfunkydevsite.dev
-    =>  [Adding] mynewfunkydevsite.dev -> 127.0.0.1
-</pre></code>
-
-<p>And the domain <code>mynewfunkydevsite.dev</code> is instantly ready and waiting to serve your needs. By default it will point to your local IP: <code>127.0.0.1</code>, but if you want to point it to a different IP, just add it on the end:</p>
-
-<code><pre>
-    $ ghost add mynewfunkydevsite.dev 123.123.123.123
-    =>  [Adding] mynewfunkydevsite.dev -> 123.123.123.123
-</pre></code>
-
-<p>Here are the other commands:</p>
-
-<code><pre>
-    $ ghost list
-    Listing 2 host(s):
-      mydevsite.local      -> 127.0.0.1
-      staging-server.local -> 67.207.136.164
-
-    $ ghost delete mydevsite.local
-      [Deleting] mydevsite.local
-
-    $ ghost delete_matching test
-      [Deleting] test2.local
-      [Deleting] test.local
-
-    $ ghost list
-    Listing 1 host(s):
-      staging-server.local -> 67.207.136.164
-
-    $ ghost modify staging-server.local 64.233.167.99
-      [Modifying] staging-server.local -> 64.233.167.99
-
-    $ ghost list
-    Listing 1 host(s):
-      staging-server.local -> 64.233.167.99
-
-    $ ghost export > some_file
-
-    $ ghost empty
-      [Emptying] Done.
-
-    $ ghost list
-    Listing 0 host(s):
-
-    $ ghost import some_file
-      [Adding] staging-server.local -> 64.233.167.99
-
-    $ ghost list
-    Listing 1 host(s):
-      staging-server.local -> 64.233.167.99
-</pre></code>
-
-<p>Give it a go. Your [developer] life depends on it!</p></div>
-  
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -558,6 +498,10 @@ Usually I would add a new line at the bottom of this file, with my domain and th
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/06/22/speeding-up-sql-queries-containing-text-fields/">Speeding up SQL queries containing TEXT fields</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
       </li>
     
@@ -575,10 +519,6 @@ Usually I would add a new line at the bottom of this file, with my domain and th
     
       <li class="post">
         <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
       </li>
     
   </ul>

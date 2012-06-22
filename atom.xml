@@ -4,13 +4,40 @@
   <title>Develop With Style</title>
   <link href="http://developwithstyle.com/atom.xml" rel="self"/>
   <link href="http://developwithstyle.com/"/>
-  <updated>2012-05-23T15:23:19+01:00</updated>
+  <updated>2012-06-22T11:16:04+01:00</updated>
   <id>http://developwithstyle.com/</id>
   <author>
     <name>Joel Moss</name>
     
   </author>
 
+  
+  <entry>
+    <title>Speeding up SQL queries containing TEXT fields</title>
+    <link href="http://developwithstyle.com/articles/2012/06/22/speeding-up-sql-queries-containing-text-fields/"/>
+    <updated>2012-06-22T00:00:00+01:00</updated>
+    <id>http://developwithstyle.com/articles/2012/06/22/speeding-up-sql-queries-containing-text-fields</id>
+    <content type="html">&lt;p&gt;Last week, we encountered some performance issues with a particular MySQL query that was creating a lot of disk based temporary tables, despite the servers having plenty of room to create these temporary tables in RAM. After a little digging we discovered that when MySQL is running an ordered query that involves a TEXT field, it will create temporary tables on disk every time.&lt;/p&gt;
+
+&lt;p&gt;So a query like this would create temporary tables on disk, if any one of the included columns has a type of TEXT:&lt;/p&gt;
+
+&lt;figure class=&#8217;code&#8217;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&#8217;line-number&#8217;&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;&lt;code class=&#8221;&gt;&lt;span class=&#8217;line&#8217;&gt;SELECT deals.* FROM deals ORDER BY created_at;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;
+
+
+&lt;p&gt;The above is a very simple example, and our query was much larger, so was even more pronounced for us. But you get the point - I hope!&lt;/p&gt;
+
+&lt;p&gt;So what we needed to do was avoid the inclusion of our TEXT fields in the query, but while still returning the value of our TEXT field. The following is what we came up with:&lt;/p&gt;
+
+&lt;figure class=&#8217;code&#8217;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class=&#8217;line-number&#8217;&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;&lt;code class=&#8221;&gt;&lt;span class=&#8217;line&#8217;&gt;SELECT * FROM deals INNER JOIN ( SELECT DISTINCT deals.id FROM deals ORDER BY RAND() ) x ON (x.id = deals.id)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;
+
+
+&lt;p&gt;The above simply wraps the current query in an &lt;code&gt;INNER JOIN&lt;/code&gt;, but the key to this is the change in what fields we are selecting. The old query is returning all fields using &lt;code&gt;deals.*&lt;/code&gt; which includes any TEXT fields, but this new one is only including the ID with &lt;code&gt;deals.id&lt;/code&gt;, which already makes things much faster, and of course avoids the need to create disk based temporary tables.&lt;/p&gt;
+
+&lt;p&gt;We ended up speeding up some of our SQL queries by up to 300% using this technique.&lt;/p&gt;
+</content>
+  </entry>
   
   <entry>
     <title>Lessons learnt from building a REST API</title>
@@ -1981,24 +2008,6 @@ Need help?&lt;/p&gt;
 &lt;p&gt;Grab and/or fork the code from the &lt;a href=&quot;http://codaset.com/joelmoss/rails-concerns&quot;&gt;Codaset project&lt;/a&gt;&lt;/p&gt;
 
 </content>
-  </entry>
-  
-  <entry>
-    <title>Codaset Opens up its Beta to Everyone.</title>
-    <link href="http://developwithstyle.com/articles/2009/10/06/codaset-opens-up-its-beta-to-everyone/"/>
-    <updated>2009-10-06T00:00:00+01:00</updated>
-    <id>http://developwithstyle.com/articles/2009/10/06/codaset-opens-up-its-beta-to-everyone</id>
-    <content type="html">&lt;p&gt;This is a reprint of an announcement made a few minutes ago at &lt;a href=&quot;http://codaset.com&quot;&gt;Codaset.com&lt;/a&gt;&amp;#8230;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;I am very pleased to announce that Codaset has ended it&amp;#8217;s private beta phase, and is now open to all. The beta tag is still in place, so the site is effectively in public beta. This means that no invite is needed to register and create an account. Anyone can create projects, and anyone can take part in any activity on the site.&lt;/p&gt;
-
-&lt;p&gt;Along with this announcement, also brings with it a few bug fixes, and minor improvements. Nothing huge, but you should find that browsing the site in Safari is much improved, and several styling bugs have been fixed. I also added URL slugs to milestones, which means your Milestones look prettier and are more familiar to browse.&lt;/p&gt;
-
-&lt;p&gt;So I am hoping that with this announcement and release, we will start to see an increase in the number of registered users, and active users. And of course, Codaset is one step closer to a final release. So if there are any features you want to see in the final release; and if there is not already a ticket for it, please create one now. If there is a ticket already created for your requested feature, please vote it up. Voting for tickets is the best way for me to see what you want.&lt;/p&gt;
-
-&lt;p&gt;You can see Codaset&amp;#8217;s tickets at &lt;a href=&quot;http://codaset.com/tickets&quot;&gt;http://codaset.com/tickets&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</content>
   </entry>
   
 </feed>

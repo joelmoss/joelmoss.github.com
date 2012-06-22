@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="Concerns is a simple Rails plugin that provides you with a simple way to organise your Controllers, Models and Mailers, and split them into smaller &hellip;">
+  <meta name="description" content="I needed to send an email to all the users of Codaset, and wanted a quick and easy way to do so. So I just wrote a quick Rake task that will loop &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,142 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2009/12/01/quick-and-easy-emailing-in-ruby-with-pony/">Quick and Easy Emailing in Ruby With Pony</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-01T00:00:00+00:00" pubdate data-updated="true">Dec 1<span>st</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I needed to send an email to all the users of Codaset, and wanted a quick and easy way to do so. So I just wrote a quick Rake task that will loop through all the users in the Codaset database, and send each one an email. However, when I was looking at how to send the emails, there didn&#8217;t seem to be an easy way to do so without having to write several lines of code just to send one email. What I needed was something similar to <a href="http://www.php.net/manual/en/function.mail.php">PHP&#8217;s mail() function</a> which lets me send an email with one line of code:</p>
+
+
+
+
+<figure class='code'><figcaption><span>php </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mail('you@example.com', 'My Subject', $message);</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>I don&#8217;t need to use an SMTP server to send it, as it works just fine with sendmail.</p>
+
+
+
+
+<p>Unfortunately, Ruby and Rails built in mail classes don&#8217;t offer such simplicity, which is very rare. But then I found <a href="http://github.com/benprew/pony">Pony</a>, which is a Ruby gem that mimics PHP&#8217;s mail function. Now I can can send an email in Ruby with one short line of code, and no configuration needed:</p>
+
+
+
+
+<figure class='code'><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Pony.mail(:to => 'you@example.com', :from => 'me@example.com', :subject => 'hi', :body => 'Hello there.')</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Easy peasy!</p>
+
+
+
+
+<p>For those of you who are interested, here is my rake task in its entirety:</p>
+
+
+
+
+<figure class='code'><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>require "pony"
+</span><span class='line'>require "erb"
+</span><span class='line'>
+</span><span class='line'>desc "Send an email to all users"
+</span><span class='line'>task :email_users => :environment do
+</span><span class='line'>  raise "No template provided. Please set TEMPLATE=file_name" if ENV['TEMPLATE'].blank?
+</span><span class='line'>
+</span><span class='line'>  template  = File.read ENV['TEMPLATE']
+</span><span class='line'>  subject   = ENV['SUBJECT'] || "Hello from Codaset"
+</span><span class='line'>  
+</span><span class='line'>  if ENV['TEST']
+</span><span class='line'>    name = 'Joel Test'
+</span><span class='line'>    Pony.mail :to => 'joel@developwithstyle.com', :from => "Codaset &lt;help@codaset.com>", :subject => subject, :body => ERB.new(template).result(binding)
+</span><span class='line'>    puts "Email test ('#{subject}') sent to joel@developwithstyle.com"
+</span><span class='line'>  else
+</span><span class='line'>    User.find_each do |user|
+</span><span class='line'>      unless user.email.blank?
+</span><span class='line'>        name = user.title
+</span><span class='line'>        Pony.mail :to => user.email, :from => "Codaset &lt;help@codaset.com>", :subject => subject, :body => ERB.new(template).result(binding)
+</span><span class='line'>        puts "Email ('#{subject}') sent to #{user.email}"
+</span><span class='line'>      end
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>This simply loops through each user in the database, and sends them an email. The body of the email is built using a templated file, that uses ERB. Which means I can use it as a normal view template. I run it like this:</p>
+
+
+
+
+<figure class='code'><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake email_users RAILS_ENV=production TEMPLATE=my_email_template.txt SUBJECT='Look at my email i sent ya!'</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+  </article>
 
 
   <article>
@@ -604,62 +740,6 @@ rails -m http://codaset.com/joelmoss/railings/source/master/raw/railings.rb /pat
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2009/07/19/codaset-is-alive/">Codaset Is Alive!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-07-19T00:00:00+01:00" pubdate data-updated="true">Jul 19<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Yes I know it&#8217;s been quite around here, and yes I know I&#8217;ve only written five of the 10 reasons why Ruby is better than PHP, but I&#8217;ve been really, really busy! And now I have something to show for my busy-ness. Codaset went live about 30 minutes ago, and is now up at http://Codaset.com. You can only get an account if you apply for the beta, but you can still do loads more on the site without one.</p>
-
-<p>Here&#8217;s a reprint of the official blog post from the new <a href="http://codaset.com/codaset/codaset/blog">Codaset Blog</a>&#8230;</p>
-
-<p><strong>Phew!! I did it!</strong> Codaset beta just went live about 10 minutes ago, and if you are reading this, then you are already using the beta.</p>
-
-<p>What started as a genuine need and a desire to create a software development management platform that is actually useful, has turned into what you see right here. Codaset is and will be a tool that I use personally, simply because I am always having to use several different tools or services, to achieve what I need and want. Tools and services such as Github, Trac and Campfire all have pride of place in my browsers bookmarks. They are excellent at what they do, but of course they only do certain things. I want a tool that will gather everything that is good about these three services (and others), and present them to me in an easy, but very useful way.</p>
-
-<p>Right now, Codaset is beta software, which means nothing is complete, and there maybe (and probably will be) bugs. So any bugs you do find should be reported to me as soon as you see them. And what better place to do that, than Codaset itself! <a href="http://codaset.com/codaset/codaset/tickets/new">Create a ticket</a> for any bugs you find, and any features, or enhancements that you think would rock yours - or anyone elses - world.</p>
-
-<p>There are still so many, many more things that will be added during the beta, and I will be blogging about them all right here. You can also keep up to date with Codaset via <a href="http://twitter.com/codaset">Twitter</a>.</p>
-
-<p>Even though this is a beta, parts of the site are open to non beta and anonymous users. But you can only create an account, create and fork projects if you have applied for the beta, and have since been approved. So all of you who applied to the beta prior to us going live today, will be receiving an email within the next few days. This will contain instructions on how you can get your account created, and your first project started on Codaset.</p>
-
-<p>Everyone else can still get a beta account, by applying from the homepage at <a href="http://codaset.com">Codaset.com</a>, and I will try my best to get you an account.</p>
-
-<p>Beta testers will receive full and unrestricted access to the entire site during the beta. Once the beta ends (don&#8217;t ask, as I have no idea when that might be) you will continue to receive access to those same features at no cost. However, I cannot guarantee that any new features introduced after the beta ends, will be provided to you at no cost. Hey, but I will definately try.</p>
-
-<p>That&#8217;s all I wanna say for now, because I&#8217;m completely knackered. So I&#8217;m off to play a little xbox. Oh yeah, and I suppose it might be a good idea to eat ;)</p>
-
-<p>Thank you to all of you, and please play with it all! Enjoy!</p>
-</div>
-  
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -699,6 +779,10 @@ rails -m http://codaset.com/joelmoss/railings/source/master/raw/railings.rb /pat
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/06/22/speeding-up-sql-queries-containing-text-fields/">Speeding up SQL queries containing TEXT fields</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
       </li>
     
@@ -716,10 +800,6 @@ rails -m http://codaset.com/joelmoss/railings/source/master/raw/railings.rb /pat
     
       <li class="post">
         <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
       </li>
     
   </ul>

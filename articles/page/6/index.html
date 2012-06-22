@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="Ever since I began working for ShermansTravel, and in particular, since I became more involved with CakePHP and open source software, I&#8217;ve &hellip;">
+  <meta name="description" content="So Codaset is being written in Ruby on Rails and not CakePHP. A bold decision I think, but a decision backed up by years of sitting on the fence when &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,123 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2009/05/19/why-i-chose-ruby-on-rails-instead-of-cakephp-for-codaset/">Why I Chose Ruby on Rails Instead of CakePHP for Codaset</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-19T00:00:00+01:00" pubdate data-updated="true">May 19<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So <a href="http://codaset.com">Codaset</a> is being written in Ruby on Rails and not CakePHP. A bold decision I think, but a decision backed up by years of sitting on the fence when it came to Ruby and Rails, but also a little controversial, since I have been working with PHP and Cake for a long time now. So I wanted to lay out my reasons for going with Rails for the development of Codaset.</p>
+
+
+
+
+<p>CakePHP is and probably always will be, the best PHP framework out there. I like to think that it has its head screwed on. Of course, that is all about the heads of the core team leading it, but as long as they stay focused on what Cake is there for, then it should stay like that. I continue to use Cake extensively with my day job at <a href="http://shermanstravel.com">ShermansTravel</a>, and will do so for while to come. But, ever since I discovered Ruby on Rails a few years ago, I&#8217;ve been constantly teased by it&#8217;s power - due largely in part by the Ruby language it is written in. A power that PHP simply does not have, and probably never will. Cake is severely limited by PHP, and makes the most of a language that is probably a little inadaquet at times. Unfortunately PHP has bad design decisions written all over it.</p>
+
+
+
+
+<p>In fact, there is not a day goes by, that PHP does not frustrate me with its design. A task completed in PHP, is - most of the time - completed so much more elegantly if done in Ruby. Ruby is just so damn expressive, and actually, very, very natural. PHP is not! I mean, why the hell should I have to write curly braces around every single expression, or wrap things in parenthesis? In Ruby, parentheses are optional in method calls, except to clarify which parameters go to which method calls.</p>
+
+
+
+
+<p>This is PHP:</p>
+
+
+
+
+<figure class='code'><figcaption><span>php </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class Parrot {
+</span><span class='line'>  public function say($word) {
+</span><span class='line'>    // say it here
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>And this is Ruby:</p>
+
+
+
+
+<figure class='code'><figcaption><span>ruby </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class Parrot
+</span><span class='line'>  def say(word)
+</span><span class='line'>    # say it here
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Now isn&#8217;t that so much nicer?</p>
+
+
+
+
+<p>Yes, I know that&#8217;s all about aesthetics, but I like my code to look good. It makes looking at it and working with it, much more pleasant. But also this is just one of the hundreds of reasons why I chose Ruby and Rails. I suppose you could name this post &#8220;Why I chose Rails instead of Cake: <strong>Reason #1</strong>&#8221;.</p>
+
+
+
+
+<p>The bottom line, is that I have played around with Rails for years now, but never took the plunge and wrote an entire - completed - application with it. I started a few times, but then went back to using Cake. But this was because I didn&#8217;t know Ruby well enough, and because of that, it was taking a long time to do something that I could have done much quicker in PHP. But because of all that tinkering, I can confidently say that I now know the basics of Ruby and can quite easily write a Ruby script, or a full Rails app.</p>
+
+
+
+
+<p>So writing Codaset in Rails was the right decision. Every time I open it up in Textmate, I&#8217;m excited by what I see. Everytime I see another Rails plugin or Ruby gem, I want to install it. The thought of developing the next feature of Codaset exites me in ways that PHP almost never has. And because of all that, I&#8217;m learning a new programming language at an incredible rate. Once you get past the learning curve, you really start zooming through any app.</p>
+
+
+
+
+<p>I&#8217;m even considering open sourcing Codaset! I want the world to see what I&#8217;ve done, and how I did it.</p>
+
+
+
+
+<p>Lovin&#8217; it!</p>
+
+</div>
+  
+  
+
+
+  </article>
 
 
   <article>
@@ -523,74 +640,6 @@
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2008/12/04/cakephp-plugins-that-love-git/">CakePHP Plugins That Love Git</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-12-04T00:00:00+00:00" pubdate data-updated="true">Dec 4<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Since the announcement of the <a href="http://github.com/cakephp/debug_kit">DebugKit plugin</a>, and its source control taking place on <a href="http://github.com">Github</a>, there have been a slew of Cake users placing their code under Git control, in particular, on Github. So I thought I would give you all a run down of the great and good in Cake/Git land.</p>
-
-<p><a href="https://github.com/joelmoss/cakephp-db-migrations"><strong>DB Migrations</strong></a></p>
-
-<p>Oh come on! You didn&#8217;t really think I wouldn&#8217;t mention this one did ya? The easiest and best way to manage your database schema has been Gittified for a few months now. And already the new wiki has received contributions from people other than me.</p>
-
-<p><a href="http://github.com/joelmoss/cakephp-namedscope"><strong>Named Scope</strong></a></p>
-
-<p>Last one of mine - I promise! Inspired by a Ruby on Rails feature, Named Scope is actually a very powerful and useful addition to Cake. I&#8217;ve started to use it extensively in my Cake apps. You really should check it out. You&#8217;ll wonder how you ever got by without it.</p>
-
-<p><a href="http://github.com/cakephp/debug_kit"><strong>Debug Kit</strong></a></p>
-
-<p>Probably the most popular Cake repo controlled by Git and Github, this extremely useful plugin places a small bar at the top right of your app&#8217;s pages, presenting you with debugging data, such as your DB log, view variables, and params. This should be part of the core, and is the best example of how Git can really help with developing open source code, and encouraging others to contribute. It has already been forked several times.</p>
-
-<p><a href="http://github.com/rafaelbandeira3/cakephp-plugins"><strong>Rafael Bandeira&#8217;s Plugins</strong></a></p>
-
-<p><em>Rafael Bandeira</em> created a couple of model behaviors, and has made them available on Github for all to see. One in particular sticks out and impresses, and that is the <a href="http://github.com/rafaelbandeira3/cakephp-plugins/tree/master/behaviors%2Flazy_loader.php">Lazy Loader behavior</a>. This will allow you to get related model data with simple, readable and nice method calls. <a href="http://rafaelbandeira3.wordpress.com/2008/11/21/lazy-loader-behavior-what-you-need-when-you-need-the-way-you-want/">His blog</a> explains more.</p>
-
-<p><a href="http://github.com/klevo/wildflower"><strong>Wildflower</strong></a></p>
-
-<p>Wildflower is a very promising &#8220;Content management system and application platform built on the CakePHP framework and jQuery Javascript library&#8221;. I actually discovered this after a tip from Nate. If handled well, this could mean good things for Cake.</p>
-
-<p><a href="http://github.com/markstory/story-scribbles/tree/master/cakephp"><strong>Story Scribbles</strong></a></p>
-
-<p>Cake&#8217;s very own <em>Mark Story</em> now has a Github repo full of lovely little Cake &#8216;scribbles&#8217;. Enjoy things such as his ACL based Menu component, web service behavior and his Geshi helper.</p>
-
-<p><a href="http://github.com/felixge/debuggable-scraps/tree/master/cakephp"><strong>Felix&#8217;s Scraps</strong></a></p>
-
-<p>Another bunch of Cake bits and bobs, but this time from <em>Felix Geisendorfer</em>, he of <a href="http://debuggable.com/">Debuggable</a> fame. What interests me the most is his collection of datasources, allowing you to connect your Cake apps to external services such as Akismet, Amazon and Google.</p>
-
-<p>These are just what I feel are the pick of the crop, but there is <a href="http://github.com/search?q=cakephp">a lot more</a> than I originally thought on Github, including an <a href="http://github.com/georgious/cakephp-yaml-migrations-and-fixtures">alternative migrations shell</a>, that doesn&#8217;t rely on Pear, and that just might spur me on to get rid of my reliance on the MDB2 library.</p>
-
-<p>The Cake community seems to be loving Git right now. I only wish the powers that be will make that decision to switch.</p>
-</div>
-  
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -630,6 +679,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/06/22/speeding-up-sql-queries-containing-text-fields/">Speeding up SQL queries containing TEXT fields</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
       </li>
     
@@ -647,10 +700,6 @@
     
       <li class="post">
         <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
       </li>
     
   </ul>

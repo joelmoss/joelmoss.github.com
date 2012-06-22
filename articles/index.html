@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="Late last year, I built a REST based API for ShermansTravel using Rails and ActsAsAPI. The API allowed us to tag and/or geotag any object, and was &hellip;">
+  <meta name="description" content="Last week, we encountered some performance issues with a particular MySQL query that was creating a lot of disk based temporary tables, despite the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,60 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2012/06/22/speeding-up-sql-queries-containing-text-fields/">Speeding Up SQL Queries Containing TEXT Fields</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-22T00:00:00+01:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Last week, we encountered some performance issues with a particular MySQL query that was creating a lot of disk based temporary tables, despite the servers having plenty of room to create these temporary tables in RAM. After a little digging we discovered that when MySQL is running an ordered query that involves a TEXT field, it will create temporary tables on disk every time.</p>
+
+<p>So a query like this would create temporary tables on disk, if any one of the included columns has a type of TEXT:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SELECT deals.* FROM deals ORDER BY created_at;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above is a very simple example, and our query was much larger, so was even more pronounced for us. But you get the point - I hope!</p>
+
+<p>So what we needed to do was avoid the inclusion of our TEXT fields in the query, but while still returning the value of our TEXT field. The following is what we came up with:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SELECT * FROM deals INNER JOIN ( SELECT DISTINCT deals.id FROM deals ORDER BY RAND() ) x ON (x.id = deals.id)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above simply wraps the current query in an <code>INNER JOIN</code>, but the key to this is the change in what fields we are selecting. The old query is returning all fields using <code>deals.*</code> which includes any TEXT fields, but this new one is only including the ID with <code>deals.id</code>, which already makes things much faster, and of course avoids the need to create disk based temporary tables.</p>
+
+<p>We ended up speeding up some of our SQL queries by up to 300% using this technique.</p>
+</div>
+  
+  
+
+
+  </article>
 
 
   <article>
@@ -335,66 +389,6 @@
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters With Javascript</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-29T00:00:00+01:00" pubdate data-updated="true">Jun 29<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>So I use Ajax quite a bit in many of my projects. And why not? It kicks ass! I have one project which dynamically updates specific elements of an HTML page via Ajax. Something like this:</p>
-
-
-
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/travel_guide/Paris&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#advice&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>The problem I have, is that sometimes that data can include HTML entities like <code>&amp;amp;</code> and <code>&amp;gt;</code>, and for reasons I don&#8217;t want to bore you with, I cannot do anything about it on the server side. When inserting a block of text that contain HTML entities into the DOM, those entities are not parsed as such, and get printed exactly as they are.</p>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/articles/2010/06/29/converting-html-entities-to-characters/">Read on &rarr;</a>
-    </footer>
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -432,6 +426,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/06/22/speeding-up-sql-queries-containing-text-fields/">Speeding up SQL queries containing TEXT fields</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
       </li>
     
@@ -449,10 +447,6 @@
     
       <li class="post">
         <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
       </li>
     
   </ul>

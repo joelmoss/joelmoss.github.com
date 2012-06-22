@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="I&#8217;ve been threatening to start producing some sort of podcast for ages now. Well I&#8217;ve only gone and bloody done it! The Codaset Video &hellip;">
+  <meta name="description" content="I don&#8217;t know about you, but I&#8217;m forever editing my local hosts file, when developing apps and sites. Hopefully, you already know that you &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,126 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2010/03/26/easily-manage-your-local-hosts-with-ghost/">Easily Manage Your Local Hosts With Ghost</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-26T00:00:00+00:00" pubdate data-updated="true">Mar 26<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I don&#8217;t know about you, but I&#8217;m forever editing my local hosts file, when developing apps and sites. Hopefully, you already know that you can create your own custom, virtual domains, that can point to any IP address.</p>
+
+<p>So for example, I&#8217;ve started building a new site and want to be able to access my local copy of the site via a domain, rather than local IP or via <code>localhost</code>. So all I gotta do is open up the <a href="http://macromates.com/">one true text editor</a> and edit my <code>/etc/hosts</code> file. The location of this file will vary depending on your OS, but on a Mac, <code>/etc/hosts</code> is where you will find it.</p>
+
+<p>The contents of the file should look something like this:</p>
+
+<code><pre>
+    ##
+    # Host Database
+    #
+    # localhost is used to configure the loopback interface
+    # when the system is booting.  Do not change this entry.
+    ##
+    127.0.0.1	localhost
+    255.255.255.255	broadcasthost
+    ::1             localhost 
+    fe80::1%lo0	localhost
+</pre></code>
+
+Usually I would add a new line at the bottom of this file, with my domain and the IP I want to point it to:
+
+<code><pre>
+    127.0.0.1 myfunkydomain.dev
+</pre></code>
+
+<p>The domain can be absolutely anything you want, as long as it is a valid domain format. I usually end mine with <code>.dev</code>, so I know I use for development.</p>
+
+<h4>Enter the Ghost!</h4>
+
+<p>I found an even easier and funkier way to add and edit my local hosts. <a href="http://codaset.com/joelmoss/ghost">Ghost</a> is a Ruby gem (of course) that makes it really quick and easy to add, edit, list and remove local host names. To add a new domain, just run this from your command line:</p>
+
+<code><pre>
+    $ ghost add mynewfunkydevsite.dev
+    =>  [Adding] mynewfunkydevsite.dev -> 127.0.0.1
+</pre></code>
+
+<p>And the domain <code>mynewfunkydevsite.dev</code> is instantly ready and waiting to serve your needs. By default it will point to your local IP: <code>127.0.0.1</code>, but if you want to point it to a different IP, just add it on the end:</p>
+
+<code><pre>
+    $ ghost add mynewfunkydevsite.dev 123.123.123.123
+    =>  [Adding] mynewfunkydevsite.dev -> 123.123.123.123
+</pre></code>
+
+<p>Here are the other commands:</p>
+
+<code><pre>
+    $ ghost list
+    Listing 2 host(s):
+      mydevsite.local      -> 127.0.0.1
+      staging-server.local -> 67.207.136.164
+
+    $ ghost delete mydevsite.local
+      [Deleting] mydevsite.local
+
+    $ ghost delete_matching test
+      [Deleting] test2.local
+      [Deleting] test.local
+
+    $ ghost list
+    Listing 1 host(s):
+      staging-server.local -> 67.207.136.164
+
+    $ ghost modify staging-server.local 64.233.167.99
+      [Modifying] staging-server.local -> 64.233.167.99
+
+    $ ghost list
+    Listing 1 host(s):
+      staging-server.local -> 64.233.167.99
+
+    $ ghost export > some_file
+
+    $ ghost empty
+      [Emptying] Done.
+
+    $ ghost list
+    Listing 0 host(s):
+
+    $ ghost import some_file
+      [Adding] staging-server.local -> 64.233.167.99
+
+    $ ghost list
+    Listing 1 host(s):
+      staging-server.local -> 64.233.167.99
+</pre></code>
+
+<p>Give it a go. Your [developer] life depends on it!</p></div>
+  
+  
+
+
+  </article>
 
 
   <article>
@@ -386,142 +506,6 @@ technoweenie: hey that's a great way to start off a new web framework, simulate 
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2009/12/01/quick-and-easy-emailing-in-ruby-with-pony/">Quick and Easy Emailing in Ruby With Pony</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-01T00:00:00+00:00" pubdate data-updated="true">Dec 1<span>st</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I needed to send an email to all the users of Codaset, and wanted a quick and easy way to do so. So I just wrote a quick Rake task that will loop through all the users in the Codaset database, and send each one an email. However, when I was looking at how to send the emails, there didn&#8217;t seem to be an easy way to do so without having to write several lines of code just to send one email. What I needed was something similar to <a href="http://www.php.net/manual/en/function.mail.php">PHP&#8217;s mail() function</a> which lets me send an email with one line of code:</p>
-
-
-
-
-<figure class='code'><figcaption><span>php </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mail('you@example.com', 'My Subject', $message);</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>I don&#8217;t need to use an SMTP server to send it, as it works just fine with sendmail.</p>
-
-
-
-
-<p>Unfortunately, Ruby and Rails built in mail classes don&#8217;t offer such simplicity, which is very rare. But then I found <a href="http://github.com/benprew/pony">Pony</a>, which is a Ruby gem that mimics PHP&#8217;s mail function. Now I can can send an email in Ruby with one short line of code, and no configuration needed:</p>
-
-
-
-
-<figure class='code'><figcaption><span>ruby </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Pony.mail(:to => 'you@example.com', :from => 'me@example.com', :subject => 'hi', :body => 'Hello there.')</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>Easy peasy!</p>
-
-
-
-
-<p>For those of you who are interested, here is my rake task in its entirety:</p>
-
-
-
-
-<figure class='code'><figcaption><span>ruby </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>require "pony"
-</span><span class='line'>require "erb"
-</span><span class='line'>
-</span><span class='line'>desc "Send an email to all users"
-</span><span class='line'>task :email_users => :environment do
-</span><span class='line'>  raise "No template provided. Please set TEMPLATE=file_name" if ENV['TEMPLATE'].blank?
-</span><span class='line'>
-</span><span class='line'>  template  = File.read ENV['TEMPLATE']
-</span><span class='line'>  subject   = ENV['SUBJECT'] || "Hello from Codaset"
-</span><span class='line'>  
-</span><span class='line'>  if ENV['TEST']
-</span><span class='line'>    name = 'Joel Test'
-</span><span class='line'>    Pony.mail :to => 'joel@developwithstyle.com', :from => "Codaset &lt;help@codaset.com>", :subject => subject, :body => ERB.new(template).result(binding)
-</span><span class='line'>    puts "Email test ('#{subject}') sent to joel@developwithstyle.com"
-</span><span class='line'>  else
-</span><span class='line'>    User.find_each do |user|
-</span><span class='line'>      unless user.email.blank?
-</span><span class='line'>        name = user.title
-</span><span class='line'>        Pony.mail :to => user.email, :from => "Codaset &lt;help@codaset.com>", :subject => subject, :body => ERB.new(template).result(binding)
-</span><span class='line'>        puts "Email ('#{subject}') sent to #{user.email}"
-</span><span class='line'>      end
-</span><span class='line'>    end
-</span><span class='line'>  end
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<p>This simply loops through each user in the database, and sends them an email. The body of the email is built using a templated file, that uses ERB. Which means I can use it as a normal view template. I run it like this:</p>
-
-
-
-
-<figure class='code'><figcaption><span>ruby </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake email_users RAILS_ENV=production TEMPLATE=my_email_template.txt SUBJECT='Look at my email i sent ya!'</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -561,6 +545,10 @@ technoweenie: hey that's a great way to start off a new web framework, simulate 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/06/22/speeding-up-sql-queries-containing-text-fields/">Speeding up SQL queries containing TEXT fields</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
       </li>
     
@@ -578,10 +566,6 @@ technoweenie: hey that's a great way to start off a new web framework, simulate 
     
       <li class="post">
         <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
       </li>
     
   </ul>

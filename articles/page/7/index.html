@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="Welcome to the second edition of Cake Nibbles; where I tell you all about the latest goings-on in the world of CakePHP. Cook Book goes open source &hellip;">
+  <meta name="description" content="Since the announcement of the DebugKit plugin, and its source control taking place on Github, there have been a slew of Cake users placing their code &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,74 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2008/12/04/cakephp-plugins-that-love-git/">CakePHP Plugins That Love Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-12-04T00:00:00+00:00" pubdate data-updated="true">Dec 4<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Since the announcement of the <a href="http://github.com/cakephp/debug_kit">DebugKit plugin</a>, and its source control taking place on <a href="http://github.com">Github</a>, there have been a slew of Cake users placing their code under Git control, in particular, on Github. So I thought I would give you all a run down of the great and good in Cake/Git land.</p>
+
+<p><a href="https://github.com/joelmoss/cakephp-db-migrations"><strong>DB Migrations</strong></a></p>
+
+<p>Oh come on! You didn&#8217;t really think I wouldn&#8217;t mention this one did ya? The easiest and best way to manage your database schema has been Gittified for a few months now. And already the new wiki has received contributions from people other than me.</p>
+
+<p><a href="http://github.com/joelmoss/cakephp-namedscope"><strong>Named Scope</strong></a></p>
+
+<p>Last one of mine - I promise! Inspired by a Ruby on Rails feature, Named Scope is actually a very powerful and useful addition to Cake. I&#8217;ve started to use it extensively in my Cake apps. You really should check it out. You&#8217;ll wonder how you ever got by without it.</p>
+
+<p><a href="http://github.com/cakephp/debug_kit"><strong>Debug Kit</strong></a></p>
+
+<p>Probably the most popular Cake repo controlled by Git and Github, this extremely useful plugin places a small bar at the top right of your app&#8217;s pages, presenting you with debugging data, such as your DB log, view variables, and params. This should be part of the core, and is the best example of how Git can really help with developing open source code, and encouraging others to contribute. It has already been forked several times.</p>
+
+<p><a href="http://github.com/rafaelbandeira3/cakephp-plugins"><strong>Rafael Bandeira&#8217;s Plugins</strong></a></p>
+
+<p><em>Rafael Bandeira</em> created a couple of model behaviors, and has made them available on Github for all to see. One in particular sticks out and impresses, and that is the <a href="http://github.com/rafaelbandeira3/cakephp-plugins/tree/master/behaviors%2Flazy_loader.php">Lazy Loader behavior</a>. This will allow you to get related model data with simple, readable and nice method calls. <a href="http://rafaelbandeira3.wordpress.com/2008/11/21/lazy-loader-behavior-what-you-need-when-you-need-the-way-you-want/">His blog</a> explains more.</p>
+
+<p><a href="http://github.com/klevo/wildflower"><strong>Wildflower</strong></a></p>
+
+<p>Wildflower is a very promising &#8220;Content management system and application platform built on the CakePHP framework and jQuery Javascript library&#8221;. I actually discovered this after a tip from Nate. If handled well, this could mean good things for Cake.</p>
+
+<p><a href="http://github.com/markstory/story-scribbles/tree/master/cakephp"><strong>Story Scribbles</strong></a></p>
+
+<p>Cake&#8217;s very own <em>Mark Story</em> now has a Github repo full of lovely little Cake &#8216;scribbles&#8217;. Enjoy things such as his ACL based Menu component, web service behavior and his Geshi helper.</p>
+
+<p><a href="http://github.com/felixge/debuggable-scraps/tree/master/cakephp"><strong>Felix&#8217;s Scraps</strong></a></p>
+
+<p>Another bunch of Cake bits and bobs, but this time from <em>Felix Geisendorfer</em>, he of <a href="http://debuggable.com/">Debuggable</a> fame. What interests me the most is his collection of datasources, allowing you to connect your Cake apps to external services such as Akismet, Amazon and Google.</p>
+
+<p>These are just what I feel are the pick of the crop, but there is <a href="http://github.com/search?q=cakephp">a lot more</a> than I originally thought on Github, including an <a href="http://github.com/georgious/cakephp-yaml-migrations-and-fixtures">alternative migrations shell</a>, that doesn&#8217;t rely on Pear, and that just might spur me on to get rid of my reliance on the MDB2 library.</p>
+
+<p>The Cake community seems to be loving Git right now. I only wish the powers that be will make that decision to switch.</p>
+</div>
+  
+  
+
+
+  </article>
 
 
   <article>
@@ -484,64 +552,6 @@
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2008/10/23/cake-nibbles-phpshop-debug-toolbar-and-google-no1/">Cake Nibbles: PHPShop, Debug Toolbar and Google No.1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-10-23T00:00:00+01:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Not posted much here recently, so It&#8217;s great that all of a sudden I have lots of Cake related news and tidbits to share with you all. So hopefully, this will be post number one in a long series of posts covering CakPHP related news and items, entitled Cake Nibbles. Enjoy!</p>
-
-<p><strong>PHPShop</strong></p>
-
-<p>The <a href="http://groups.google.com/group/cake-php/browse_thread/thread/6e648259fb875997/99c99b1c28f5788a?show_docid=99c99b1c28f5788a">Google Group revealed some interesting news</a> about a well know open source PHP shopping cart application. It appears that the next version of <a href="http://www.phpshop.org/">PHPShop</a> will be built with CakePHP 1.2. That can be nothing but positive for Cake Land.</p>
-
-<p><strong>Google No. 1</strong></p>
-
-<p>Search for &#8220;PHP framework&#8221; on Google, and guess what? <a href="http://www.google.com/search?q=php+framework">Cake is now number one!</a> Oh yes, NUMBER 1! Top of the pops!</p>
-
-<p><strong>Debug Kit</strong></p>
-
-<p>Not content with being one of the biggest contributors to the core, Mark Story has created a plugin for CakePHP to help with debugging your applications. <a href="http://github.com/cakephp/debug_kit/tree/master">The Cake DebugKit</a>, which is now publicly available at GitHub, is similar to the extremely helpful Debug Bar that can be found in the Symfony framework. It displays at the top right of your screen, and shows you info about your app, such as load time and SQL queries.</p>
-
-<p>It&#8217;s early days, but its a great start, and is something that is sorely needed in Cake. I hope to help out with it myself. And the idea of including it in a plugin is genius, and has made me realise how powerful the plugin architecture has become in 1.2</p>
-
-<p><strong>TextMate Bundle</strong></p>
-
-<p>Also on GitHub, you can now find another version of the <a href="http://github.com/cakephp/tm_bundle/tree/master">Cake TextMate bundle</a>. But this one is somewhat official, in that it is being maintained by Nate; Cake&#8217;s Lead Dev.</p>
-
-<p>So thats it for this issue of Cake Nibbles, but I hope to post again soon.</p>
-
-<p>If you have any interesting, or non-interesting news in Cake land, please let me know.</p>
-</div>
-  
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -581,6 +591,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/06/22/speeding-up-sql-queries-containing-text-fields/">Speeding up SQL queries containing TEXT fields</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
       </li>
     
@@ -598,10 +612,6 @@
     
       <li class="post">
         <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
       </li>
     
   </ul>

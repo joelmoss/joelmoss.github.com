@@ -9,7 +9,7 @@
   <meta name="author" content="Joel Moss">
 
   
-  <meta name="description" content="Well, it finally happened. On April 12th, I sold HomepageUniverse and permanently left the web hosting company I started over seven years ago. And &hellip;">
+  <meta name="description" content="If you keep an eye on the CakePHP trac or the Bakery, you should have noticed that PHPNut and friends have just pushed out the latest alpha release &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,57 @@
 </header>
       <div class="blog-index">
 
+
+
+  <article>
+    
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2007/05/20/closer-to-greatness/">Closer to Greatness!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-05-20T00:00:00+01:00" pubdate data-updated="true">May 20<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you keep an eye on the <a href="http://trac.cakephp.org">CakePHP trac</a> or the <a href="http://bakery.cakephp.org">Bakery</a>, you should have noticed that PHPNut and friends have just pushed out the latest alpha release of CakePHP 1.2.</p>
+
+<p>Version 1.2.0.5137alpha introduces an all new caching system that supports multiple cache backends, including apc, memcache, xcache, file, and models. I have yet to explore this, but I intend to when I get a need for it.</p>
+
+<p>Another major change/addition, is the old scripts system. This is now known as Cake&#8217;s console shells and is a step in the right direction. It is now even easier to create console scripts (sorry; shells) when working with your app in Cake. I have already refactored my various tasks to work with this new system. So watch out for a new version of Cake Migrations and Fixtures.</p>
+
+<p>A couple of other changes include a translation behaviour and improvements to the Security component. And according to PHPNut, this should be the last alpha release before beta is reached:</p>
+
+<blockquote>We have some more changes before we can release the Beta. The most major change will be the transition from defines in core.php to the $config array used by the Configure class. This will be the last release that allows for defines inside of core.php. Moving away from defines provides much greater flexibility. The next release will also see the inclusion of a Session model, which will allow easier access to the database session handling.</blockquote>
+
+
+<p>So as you may recognise, I have decided to leave Rails alone for a while and concentrate on developing with CakePHP, and perhaps helping out a bit in the community. I also have a few more scripts that I hope to make available to the public, that are currently making my life even easier with Cake.</p>
+
+<p>And finally, I will soon be launching a really exciting new project that I hope will help the Cake community grow even more. If you know of Ryan Bates and his excellent <a href="http://railscasts.com">Railscasts</a> site, then you will like what I have planned.</p>
+
+<p>Keep it here! ;)</p>
+</div>
+  
+  
+
+
+  </article>
 
 
   <article>
@@ -360,53 +411,6 @@ bake2.php notes app_alias optimise
 
   </article>
 
-
-  <article>
-    
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2007/02/23/new-in-cake-12-debugger-class/">New in Cake 1.2: Debugger Class</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-02-23T00:00:00+00:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Just checked out the CakePHP 1.2 branch this morning and discovered a shiny new class called Debugger. It&#8217;s pretty obvious what this is, but it ain&#8217;t no simple debugging function.</p>
-
-<p>The Debugger replaces the default PHP error handling and &#8220;provides enhanced logging, stack traces, and rendering debug views&#8221;. Basically, if any errors occur, Debugger will print these to your browser and tell you everything you need to know about the problem.</p>
-
-<p>To use it, simply include the Debugger class file into your app. This can be achieved very easily by placing the following line at the top of your app/config/bootstrap.php file:</p>
-
-<pre><code>uses('debugger');</code></pre>
-
-
-<p>And now you get all the data you need when something goes wrong, and right within your browser.</p>
-
-<p>One thing that is lacking though, that I would really like to see, is the option to output the debugging results to a log file instead. As outputting to the browser can be very messy. I have already opened a ticket with this suggestion, so hopefully the core team will add that.</p>
-</div>
-  
-  
-
-
-  </article>
-
 <nav role="pagination">
   <div>
     
@@ -446,6 +450,10 @@ bake2.php notes app_alias optimise
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/06/22/speeding-up-sql-queries-containing-text-fields/">Speeding up SQL queries containing TEXT fields</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2012/05/23/lessons-learnt-from-building-a-rest-based-api/">Lessons learnt from building a REST API</a>
       </li>
     
@@ -463,10 +471,6 @@ bake2.php notes app_alias optimise
     
       <li class="post">
         <a href="/articles/2010/07/09/handling-dates-in-mongodb/">Handling Dates in MongoDB</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2010/06/29/converting-html-entities-to-characters/">Converting HTML Entities to Characters with Javascript</a>
       </li>
     
   </ul>
