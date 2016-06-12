@@ -7,7 +7,7 @@ It's been too long, but here's another handful of nibbles for your CakePHP appli
 
 <strong>Plugin Server</strong>
 
-After some great improved support for re-usable plugins in Cake 1.2, and Gwoo's <span style="text-decoration: line-through;">announcement</span> mention at last years CakeFest in Florida; we are now starting to see some evidence of a fabled plugin server. The idea, is that after installing a small Cake shell in your vendors directory, you would be able to install a selection of official and unoffical Cake plugins into your application via the command line. So no need to manually download, unzip and copy files into your plugins directory, as the shell would do it for you. The actual server code is also planning on becoming publicly available, so that we can all host our own CakePHP plugin server.
+After some great improved support for re-usable plugins in Cake 1.2, and Gwoo's <span style="text-decoration: line-through;">announcement</span> mention at last years CakeFest in Florida; we are now starting to see some evidence of a fabled plugin server. The idea, is that after installing a small Cake shell in your vendors directory, you would be able to install a selection of official and unofficial Cake plugins into your application via the command line. So no need to manually download, unzip and copy files into your plugins directory, as the shell would do it for you. The actual server code is also planning on becoming publicly available, so that we can all host our own CakePHP plugin server.
 
 You can test the first release at <a href="http://plugins.thoughtglade.com">http://plugins.thoughtglade.com</a>
 

@@ -60,7 +60,7 @@ Previously you had to specify that you wanted the <em>created</em> and <em>modif
 <h4>Primary Key auto incremented</h4>
 One thing that I left out in previous versions was to make the primary key field auto increment. This is now added.
 
-As you can see, not many changes there, but I thought it deserved a minor increment in version number because of the addition of Fixtures. Watch out for more changes, including the ability to generate migration files from the structure of an existing database. I also plan on making the Migrations script independant. So it will work with and without Cake.
+As you can see, not many changes there, but I thought it deserved a minor increment in version number because of the addition of Fixtures. Watch out for more changes, including the ability to generate migration files from the structure of an existing database. I also plan on making the Migrations script independent. So it will work with and without Cake.
 
 So as usual, please play around with it and let me if you find any bugs. It would also be great to hear what you all think about it all.
 
