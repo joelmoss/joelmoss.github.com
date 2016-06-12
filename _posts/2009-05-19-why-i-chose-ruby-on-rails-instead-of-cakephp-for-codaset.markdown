@@ -35,7 +35,7 @@ end
 
 <p>The bottom line, is that I have played around with Rails for years now, but never took the plunge and wrote an entire - completed - application with it. I started a few times, but then went back to using Cake. But this was because I didn't know Ruby well enough, and because of that, it was taking a long time to do something that I could have done much quicker in PHP. But because of all that tinkering, I can confidently say that I now know the basics of Ruby and can quite easily write a Ruby script, or a full Rails app.</p>
 
-<p>So writing Codaset in Rails was the right decision. Every time I open it up in Textmate, I'm excited by what I see. Everytime I see another Rails plugin or Ruby gem, I want to install it. The thought of developing the next feature of Codaset exites me in ways that PHP almost never has. And because of all that, I'm learning a new programming language at an incredible rate. Once you get past the learning curve, you really start zooming through any app.</p>
+<p>So writing Codaset in Rails was the right decision. Every time I open it up in Textmate, I'm excited by what I see. Every Time I see another Rails plugin or Ruby gem, I want to install it. The thought of developing the next feature of Codaset exites me in ways that PHP almost never has. And because of all that, I'm learning a new programming language at an incredible rate. Once you get past the learning curve, you really start zooming through any app.</p>
 
 <p>I'm even considering open sourcing Codaset! I want the world to see what I've done, and how I did it.</p>
 

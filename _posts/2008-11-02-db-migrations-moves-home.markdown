@@ -3,7 +3,7 @@ layout: post
 title: DB Migrations moves home
 categories: articles
 ---
-I've been slowly moving all my public and private projects over to Git and Github whenever, and whereever I can. I've already created a mirror of the <a href="http://github.com/joelmoss/cakephp">CakePHP 1.2 branch at Github</a>, and I have a number of my private projects up too.
+I've been slowly moving all my public and private projects over to Git and Github whenever, and wherever I can. I've already created a mirror of the <a href="http://github.com/joelmoss/cakephp">CakePHP 1.2 branch at Github</a>, and I have a number of my private projects up too.
 
 So I just completed the switch for CakePHP DB Migrations. The source is now available on <a href="http://github.com/joelmoss/cakephp-db-migrations/tree">Github</a> and is open to any pull requests. If you have any funky new features, or really need a bug fixed quickly, please feel free to fork the project. But please remember to send me a pull request.
 

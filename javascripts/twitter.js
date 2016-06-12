@@ -1,5 +1,5 @@
 // JSON-P Twitter fetcher for Octopress
-// (c) Brandon Mathis // MIT Lisence
+// (c) Brandon Mathis // MIT License
 function getTwitterFeed(user, count, replies) {
   var feed = new jXHR();
 

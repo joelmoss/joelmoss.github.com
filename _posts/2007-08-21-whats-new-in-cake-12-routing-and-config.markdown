@@ -37,6 +37,6 @@ For example, with the prefix variable set to admin in your route, you could acce
 
 which would then call the admin_create action within the posts controller.
 
-So we still have some new things to look forward to in 1.2. In fact I am beginning to think that CakePHP 1.2 would be best refered to as CakePHP 2.0.
+So we still have some new things to look forward to in 1.2. In fact I am beginning to think that CakePHP 1.2 would be best referred to as CakePHP 2.0.
 
 Enjoy!

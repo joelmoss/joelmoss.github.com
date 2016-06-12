@@ -5,7 +5,7 @@ categories: articles
 ---
 Well this week, after months of "will I won't I?", and "shall I, should I?", I finally sat down and began to write my first app with <a href="http://rubyonrails.com">Ruby on Rails</a>. And you know what? It was, and is fun!
 
-Admitedly, I haven't gotten very far, but I do now have a basic understanding of the Ruby language and how Rails works. And I can't yet say whether I will be saying bye to Cake and PHP. I still want to do more with Rails and really see if I can develop faster and easier.
+Admittedly, I haven't gotten very far, but I do now have a basic understanding of the Ruby language and how Rails works. And I can't yet say whether I will be saying bye to Cake and PHP. I still want to do more with Rails and really see if I can develop faster and easier.
 
 But what I would like to do right now, is give those of you who were in the same boat as me, who want to learn Rails but don't know where to start. The following are a list of resources that I have found invaluable in my learning of Ruby and Rails.
 
