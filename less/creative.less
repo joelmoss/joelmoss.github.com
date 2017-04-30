@@ -79,10 +79,12 @@ aside {
     .sans-serif-font;
     .transition-all;
     .navbar-header .navbar-brand {
-        color: @theme-primary;
-        .sans-serif-font;
-        font-weight: 700;
-        text-transform: uppercase;
+        background: url('/img/logo_dark.svg') no-repeat 0;
+        background-size: 74% !important;
+        margin-left: 10px;
+        padding: 0;
+        text-indent: -9999px;
+        width: 200px;
         &:hover,
         &:focus {
             color: darken(@theme-primary, 10%);
@@ -122,11 +124,8 @@ aside {
         background-color: transparent;
         border-color: fade(white, 30%);
         .navbar-header .navbar-brand {
-            color: fade(white, 70%);
-            &:hover,
-            &:focus {
-                color: white;
-            }
+            background-image: url('/img/logo.svg');
+            margin-left: 0;
         }
         .nav > li > a,
         .nav > li > a:focus {
@@ -139,12 +138,7 @@ aside {
             background-color: white;
             border-color: fade(@gray-darker, 5%);
             .navbar-header .navbar-brand {
-                color: @theme-primary;
-                font-size: 14px;
-                &:hover,
-                &:focus {
-                    color: darken(@theme-primary, 10%);
-                }
+                background-image: url('/img/logo_dark.svg');
             }
             .nav > li > a,
             .nav > li > a:focus {
@@ -227,9 +221,9 @@ header {
 
 .service-box {
     max-width: 400px;
-    margin: 50px auto 0;
+    margin: 50px auto;
     @media (min-width: 992px) {
-        margin: 20px auto 0;
+        margin: 20px auto;
     }
     p {
         margin-bottom: 0;
