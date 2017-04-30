@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="197px" height="45px" viewBox="0 0 197 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-39.000000, -57.000000)" fill="#FFFFFF">
+            <g id="Logo" transform="translate(37.000000, 48.000000)">
+                <text id="Develop" font-family="HelveticaNeue-Thin, Helvetica Neue" font-size="36" font-weight="300" letter-spacing="-1.25">
+                    <tspan x="0" y="42">Develop</tspan>
+                </text>
+                <text id="with" font-family="HelveticaNeue-Thin, Helvetica Neue" font-size="12" font-weight="300">
+                    <tspan x="99" y="20">with</tspan>
+                </text>
+                <text id="Style" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="48" font-style="italic" font-weight="normal" letter-spacing="-2.20000029">
+                    <tspan x="115" y="43">Style</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
