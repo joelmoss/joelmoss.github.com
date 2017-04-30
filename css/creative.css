@@ -161,6 +161,11 @@ header .header-content .header-content-inner h1 {
   margin-bottom: 0;
   font-size: 30px;
 }
+header .header-content .header-content-inner h1 span {
+  text-transform: lowercase;
+  font-weight: 300;
+  font-style: italic;
+}
 header .header-content .header-content-inner hr {
   margin: 30px auto;
 }
